@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cefiro - Catálogo de Perfumes</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #3E2723;
+            --primary-gold: #D4A373;
+            --accent-brown: #8D6E63;
+            --light-cream: #FFE0B2;
+            --lightest-cream: #FFF3E0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--lightest-cream) 0%, var(--light-cream) 100%);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            color: var(--primary-dark);
+        }
+
+        .brand-header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--accent-brown) 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="0.5" fill="white" opacity="0.1"/><circle cx="40" cy="80" r="1.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .brand-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 1rem;
+        }
+
+        .slogan-space {
+            height: 2rem;
+            font-style: italic;
+            font-size: 1rem;
+            opacity: 0.8;
+            position: relative;
+            z-index: 2;
+        }
+
+        .share-buttons {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .share-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .share-btn:hover {
+            transform: scale(1.1);
+            color: white;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+
+        .share-link-btn {
+            background: linear-gradient(135deg, var(--primary-gold), var(--accent-brown));
+        }
+
+        .search-section {
+            background: white;
+            padding: 2rem 0;
+            box-shadow: 0 2px 10px rgba(62, 39, 35, 0.1);
+        }
+
+        .search-input {
+            border: 2px solid var(--light-cream);
+            border-radius: 50px;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 0.2rem rgba(212, 163, 115, 0.25);
+            outline: none;
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, var(--primary-gold), var(--accent-brown));
+            border: none;
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4);
+            color: white;
+        }
+
+        .filter-section {
+            padding: 1.5rem 0;
+        }
+
+        .filter-btn {
+            background: white;
+            color: var(--primary-dark);
+            border: 2px solid var(--light-cream);
+            border-radius: 25px;
+            padding: 0.8rem 1.5rem;
+            margin: 0.3rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary-gold), var(--accent-brown));
+            color: white;
+            border-color: var(--primary-gold);
+            transform: translateY(-2px);
+        }
+
+        .perfume-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            height: 100%;
+            box-shadow: 0 8px 25px rgba(62, 39, 35, 0.1);
+            position: relative;
+        }
+
+        .perfume-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(62, 39, 35, 0.2);
+        }
+
+        .card-img-top {
+            height: 280px;
+            object-fit: cover;
+            object-position: center;
+            transition: all 0.4s ease;
+        }
+
+        .perfume-card:hover .card-img-top {
+            transform: scale(1.1);
+        }
+
+        .gender-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .femenino {
+            background: rgba(255, 105, 180, 0.9);
+            color: white;
+        }
+
+        .masculino {
+            background: rgba(62, 39, 35, 0.9);
+            color: white;
+        }
+
+        .unisex {
+            background: rgba(212, 163, 115, 0.9);
+            color: white;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .perfume-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--primary-dark);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .brand-name {
+            color: var(--accent-brown);
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .notes-preview {
+            color: var(--accent-brown);
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        .view-details-btn {
+            background: linear-gradient(135deg, var(--primary-gold), var(--accent-brown));
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 0.8rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .view-details-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4);
+            color: white;
+        }
+
+        .modal-content {
+            border-radius: 20px;
+            border: none;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--accent-brown));
+            color: white;
+            padding: 1.5rem 2rem;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .btn-close {
+            filter: brightness(0) invert(1);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .notes-section h6 {
+            color: var(--primary-dark);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .notes-section p {
+            color: var(--accent-brown);
+            line-height: 1.5;
+        }
+
+        .empty-note {
+            color: #ccc;
+            font-style: italic;
+        }
+
+        .modal-footer {
+            background: var(--lightest-cream);
+            border: none;
+        }
+
+        .catalog-grid {
+            padding: 3rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .brand-title {
+                font-size: 2.5rem;
+                letter-spacing: 1px;
+            }
+            
+            .share-buttons {
+                right: 10px;
+                gap: 10px;
+            }
+            
+            .share-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .search-input {
+                font-size: 1rem;
+                padding: 0.8rem 1.2rem;
+            }
+            
+            .filter-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+
+        .toast {
+            background: var(--primary-dark);
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header de la marca -->
+    <header class="brand-header">
+        <div class="container">
+            <h1 class="brand-title">CEFIRO</h1>
+            <p class="brand-subtitle">Perfumería Exclusiva</p>
+            <div class="slogan-space">
+                <!-- Espacio reservado para el eslogan -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Botones flotantes de compartir -->
+    <div class="share-buttons">
+        <a href="#" class="share-btn whatsapp-btn" id="whatsappBtn" title="Compartir en WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="#" class="share-btn share-link-btn" id="shareLinkBtn" title="Copiar enlace">
+            <i class="fas fa-share-alt"></i>
+        </a>
+    </div>
+
+    <!-- Sección de búsqueda -->
+    <section class="search-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <input type="text" id="searchInput" class="form-control search-input" 
+                               placeholder="Buscar perfumes, marcas o notas...">
+                        <button class="btn search-btn" type="button" id="searchButton">
+                            <i class="fas fa-search me-2"></i>Buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtros -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <button type="button" class="btn filter-btn active" data-filter="all">Todos</button>
+                    <button type="button" class="btn filter-btn" data-filter="Femenino">Femenino</button>
+                    <button type="button" class="btn filter-btn" data-filter="Masculino">Masculino</button>
+                    <button type="button" class="btn filter-btn" data-filter="Unisex">Unisex</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo -->
+    <section class="catalog-grid">
+        <div class="container">
+            <div id="perfumeCatalog" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+                <!-- Los perfumes se cargarán aquí dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para vista detallada -->
+    <div class="modal fade" id="perfumeModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="modalImage" src="" class="img-fluid rounded" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <p id="modalBrand" class="brand-name fs-5"></p>
+                            <p id="modalGender" class="badge"></p>
+                            <hr>
+                            <div class="notes-section">
+                                <h6>Notas de Salida:</h6>
+                                <p id="modalTopNotes"></p>
+                                <h6>Notas de Corazón:</h6>
+                                <p id="modalHeartNotes"></p>
+                                <h6>Notas de Fondo:</h6>
+                                <p id="modalBaseNotes"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast para notificaciones -->
+    <div class="toast-container">
+        <div id="copyToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body">
+                <i class="fas fa-check me-2"></i>¡Enlace copiado al portapapeles!
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        const perfumeData = [
+
+        {
+    "nombre_comercial": "VALENTINO DONNA",
+    "casa_fabricante": "Valentino",
+    "notas": {
+      "salida": "",
+      "corazon": "",
+      "fondo": "Notas atalcadas, avainilladas"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://www.perfumesbogota.com.co/cdn/shop/products/VALENTINO_DONNA_BORN_IN_ROMA_1024x1024@2x.webp?v=1677722034"
+  },
+  {
+    "nombre_comercial": "BLEECKER STREET",
+    "casa_fabricante": "Bond No. 9",
+    "notas": {
+      "salida": "Hojas de violeta, arándano, tomillo",
+      "corazon": "Cedro, jazmín, vainilla, canela",
+      "fondo": "Musgo de roble, gamuza, pachulí, ámbar"
+    },
+    "genero": "Unisex",
+    "imagen_url": "https://perfumescolombia.com.co/cdn/shop/files/bond-n9-bleecker-street-karol-g-100ml-edp-11-premium-4477199.webp?v=1751883931"
+  },
+  {
+    "nombre_comercial": "FLOWERBOMB",
+    "casa_fabricante": "Viktor & Rolf",
+    "notas": {
+      "salida": "Osmanthus, té, bergamota",
+      "corazon": "Orquídea, rosa, fresia, flor de naranjo africano, jazmín",
+      "fondo": "Pachulí, almizcle"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://m.media-amazon.com/images/I/61RWULJE6+L._SX522_.jpg"
+  },
+  {
+    "nombre_comercial": "ECLAIRE",
+    "casa_fabricante": "Lattafa",
+    "notas": {
+      "salida": "Caramelo, leche, azúcar",
+      "corazon": "Flores blancas, miel",
+      "fondo": "Vainilla, praliné, almizcle"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://http2.mlstatic.com/D_NQ_NP_792591-MLA84559080116_052025-O.webp"
+  },
+  {
+    "nombre_comercial": "YARA MOI",
+    "casa_fabricante": "Lattafa",
+    "notas": {
+      "salida": "",
+      "corazon": "",
+      "fondo": ""
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://veronnaperfumeria.com/cdn/shop/files/photo-output_130_1800x1800.heic.jpg?v=1718414496"
+  },
+  {
+    "nombre_comercial": "CLOUD",
+    "casa_fabricante": "Ariana Grande",
+    "notas": {
+      "salida": "Flor de lavanda, pera jugosa, bergamota",
+      "corazon": "Crema de coco, praliné, orquídea de vainilla",
+      "fondo": "Almizcles sensuales, maderas rubias cremosas"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://http2.mlstatic.com/D_NQ_NP_726719-MLU72836480957_112023-O.webp"
+  },
+  {
+    "nombre_comercial": "GOOD GIRL SUPREME",
+    "casa_fabricante": "Carolina Herrera",
+    "notas": {
+      "salida": "Bayas, jazmín",
+      "corazon": "Nardos, haba tonka tostada",
+      "fondo": "Vetiver"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://medipielsa.vtexassets.com/arquivos/ids/194648-800-auto?v=638617520790870000&width=800&height=auto&aspect=true"
+  },
+  {
+    "nombre_comercial": "212 VIP ROSE",
+    "casa_fabricante": "Carolina Herrera",
+    "notas": {
+      "salida": "Champagne Rosé, pimienta rosa",
+      "corazon": "Flor de durazno, bouquet de rosas",
+      "fondo": "Queenwood, almizcle"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://noirperfumeria.co/cdn/shop/files/212-vip-ROse-NP.webp?v=1682953708&width=713"
+  },
+  {
+    "nombre_comercial": "BRIGHT CRYSTAL",
+    "casa_fabricante": "Versace",
+    "notas": {
+      "salida": "Yuzu, granada",
+      "corazon": "Peonía, magnolia, flor de loto",
+      "fondo": "Almizcle, ámbar"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://static.wixstatic.com/media/7e4077_1c1412a8cc4c4dd4ab46ba24760f9920~mv2.png/v1/fill/w_500,h_500,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7e4077_1c1412a8cc4c4dd4ab46ba24760f9920~mv2.png"
+  },
+  {
+    "nombre_comercial": "LA VIE EST BELLE",
+    "casa_fabricante": "Lancôme",
+    "notas": {
+      "salida": "Frambuesa, pimienta rosa, bergamota (Oui La Vie Est Belle); Grosella negra, pera (La Vie Est Belle original)",
+      "corazon": "Rosa, ylang-ylang (Oui La Vie Est Belle); Iris, jazmín, flor de azahar del naranjo (La Vie Est Belle original)",
+      "fondo": "Notas dulces, iris, pachulí (Oui La Vie Est Belle); Pachulí, haba tonka, vainilla, praliné (La Vie Est Belle original)"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://i5.walmartimages.com/asr/3d994134-2478-495e-b5ea-2244fcf4871c_2.a3c248744c84d72028dbee26ccf6f239.jpeg"
+  },
+  {
+    "nombre_comercial": "COCONUT PASSION",
+    "casa_fabricante": "Victoria's Secret",
+    "notas": {
+      "salida": "",
+      "corazon": "",
+      "fondo": "Vainilla, coco, notas dulces, lácteas, atalcadas, tropicales"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://http2.mlstatic.com/D_NQ_NP_857926-MLU73809168593_012024-O.webp"
+  },
+  {
+    "nombre_comercial": "BEAUTY RUSH JUICED BERRY",
+    "casa_fabricante": "Victoria's Secret",
+    "notas": {
+      "salida": "",
+      "corazon": "",
+      "fondo": "Varias bayas (fresas, frambuesas, moras), notas dulces y cítricas"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://m.media-amazon.com/images/I/61riQDFTskL._AC_SY606_.jpg"
+  },
+  {
+    "nombre_comercial": "9PM",
+    "casa_fabricante": "Afnan",
+    "notas": {
+      "salida": "Manzana, bergamota, lavanda, canela",
+      "corazon": "Flor de naranjo, lirio del valle",
+      "fondo": "Vainilla, haba tonka, ámbar, pachulí"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://http2.mlstatic.com/D_NQ_NP_861650-CBT82788540392_032025-O.webp"
+  },
+  {
+    "nombre_comercial": "VALENTINO UOMO BORN IN ROMA",
+    "casa_fabricante": "Valentino",
+    "notas": {
+      "salida": "Salvia",
+      "corazon": "Jengibre, sal mineral",
+      "fondo": "Vetiver, madera de guayacán"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://www.perfumesbogota.com.co/cdn/shop/products/D_NQ_NP_770818-MEC47398130236_092021-W_1024x1024@2x.jpg?v=1677779209"
+  },
+  {
+    "nombre_comercial": "LE BEAU",
+    "casa_fabricante": "Jean Paul Gaultier",
+    "notas": {
+      "salida": "Piña, iris, jengibre, ciprés",
+      "corazon": "Coco, notas amaderadas",
+      "fondo": "Ámbar, haba tonka"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://www.perfumesbogota.com.co/cdn/shop/products/le_beau_le_male_1024x1024@2x.jpg?v=1677779652"
+  },
+  {
+    "nombre_comercial": "ACQUA DI GIO PROFUMO",
+    "casa_fabricante": "Giorgio Armani",
+    "notas": {
+      "salida": "Notas marinas",
+      "corazon": "Romero, salvia, geranio",
+      "fondo": "Incienso, pachulí"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://perfumescolombia.com.co/cdn/shop/products/acqua-di-gio-profumo-11-premium-1959112.png?v=1751884239"
+  },
+  {
+    "nombre_comercial": "CLUB DE NUIT INTENSE MAN",
+    "casa_fabricante": "Armaf",
+    "notas": {
+      "salida": "Limón, piña, grosella negra, manzana, bergamota",
+      "corazon": "Abedul, jazmín, rosa",
+      "fondo": "Almizcle, ámbar gris, pachulí, vainilla"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://exitocol.vtexassets.com/arquivos/ids/23602302/perfume-armaf-club-de-nuit-intense-man-hombre-locion-105ml.jpg?v=638563955996100000"
+  },
+  {
+    "nombre_comercial": "BAD BOY",
+    "casa_fabricante": "Carolina Herrera",
+    "notas": {
+      "salida": "Bergamota, pimienta negra, pimienta blanca",
+      "corazon": "Cedro, salvia",
+      "fondo": "Haba tonka, cacao, ámbar"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://frutafrescaco.vtexassets.com/arquivos/ids/68925913-1600-auto?v=638887117472670000&width=1600&height=auto&aspect=true"
+  },
+  {
+    "nombre_comercial": "ONE MILLION LUCKY",
+    "casa_fabricante": "Paco Rabanne",
+    "notas": {
+      "salida": "Ciruela, notas ozónicas, pomelo, bergamota",
+      "corazon": "Avellana, miel, cedro, madera de cachemira, jazmín, flor de naranjo",
+      "fondo": "Amberwood, pachulí, musgo de roble, vetiver"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://luryx.com.co/pub/media/catalog/product/cache/17a2882685dcb778cb02abe71b33b15c/_/6/_6_5_65131403_2.jpg"
+  },
+  {
+    "nombre_comercial": "TERRE D HERMES",
+    "casa_fabricante": "Hermès",
+    "notas": {
+      "salida": "Naranja, pomelo",
+      "corazon": "Pimienta",
+      "fondo": "Vetiver, cedro, pachulí, benjuí"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://mwhite.com.co/cdn/shop/files/terre-de-hermes-parfum-200ml-perfumes-574.webp?v=1713450362&width=493"
+  },
+  {
+    "nombre_comercial": "INVICTUS VICTORY",
+    "casa_fabricante": "Paco Rabanne",
+    "notas": {
+      "salida": "Pimienta rosa, limón",
+      "corazon": "Incienso, lavanda",
+      "fondo": "Vainilla, haba tonka, ámbar"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://http2.mlstatic.com/D_NQ_NP_634002-MLA47844547674_102021-O.webp"
+  },
+  {
+    "nombre_comercial": "212 HEROES",
+    "casa_fabricante": "Carolina Herrera",
+    "notas": {
+      "salida": "Pera, cannabis, jengibre",
+      "corazon": "Geranio, salvia",
+      "fondo": "Almizcle, cuero"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://perfumescolombia.com.co/cdn/shop/products/212-men-heroes-11-premium-1064601.png?v=1751884226"
+  },
+  {
+    "nombre_comercial": "KHAMRAH QAHWA",
+    "casa_fabricante": "Lattafa",
+    "notas": {
+      "salida": "Cardamomo, jengibre, canela",
+      "corazon": "Praliné, flores blancas, frutas confitadas",
+      "fondo": "Café, haba tonka, benjuí, vainilla, almizcle"
+    },
+    "genero": "Unisex",
+    "imagen_url": "https://cdn.wholesale55.com/wp-content/uploads/2024/11/Khamrah-Qahwa-EDP-100-ml-Unisex-by-Lattafa-1.jpg.jpeg"
+  }
+        
+        
+        ];
+
+        // Variables globales
+        let allPerfumes = [];
+        let filteredPerfumes = [];
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            allPerfumes = perfumeData;
+            filteredPerfumes = [...allPerfumes];
+            renderPerfumes();
+            initializeEventListeners();
+        });
+
+        // Event listeners
+        function initializeEventListeners() {
+            // Búsqueda
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            
+            searchButton.addEventListener('click', performSearch);
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+
+            // Filtros de género
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Actualizar estado activo
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Aplicar filtro
+                    const filter = this.getAttribute('data-filter');
+                    applyGenderFilter(filter);
+                });
+            });
+
+            // Botones de compartir
+            document.getElementById('whatsappBtn').addEventListener('click', shareWhatsApp);
+            document.getElementById('shareLinkBtn').addEventListener('click', copyLink);
+        }
+
+        // Funciones de búsqueda y filtrado
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            
+            if (query === '') {
+                filteredPerfumes = [...allPerfumes];
+            } else {
+                filteredPerfumes = allPerfumes.filter(perfume => {
+                    const searchFields = [
+                        perfume.nombre_comercial,
+                        perfume.casa_fabricante,
+                        perfume.notas.salida,
+                        perfume.notas.corazon,
+                        perfume.notas.fondo
+                    ].join(' ').toLowerCase();
+                    
+                    return searchFields.includes(query);
+                });
+            }
+            
+            renderPerfumes();
+        }
+
+        function applyGenderFilter(gender) {
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+            
+            let baseList = allPerfumes;
+            if (searchQuery !== '') {
+                baseList = allPerfumes.filter(perfume => {
+                    const searchFields = [
+                        perfume.nombre_comercial,
+                        perfume.casa_fabricante,
+                        perfume.notas.salida,
+                        perfume.notas.corazon,
+                        perfume.notas.fondo
+                    ].join(' ').toLowerCase();
+                    
+                    return searchFields.includes(searchQuery);
+                });
+            }
+
+            if (gender === 'all') {
+                filteredPerfumes = baseList;
+            } else {
+                filteredPerfumes = baseList.filter(perfume => perfume.genero === gender);
+            }
+            
+            renderPerfumes();
+        }
+
+        // Renderizado de perfumes
+        function renderPerfumes() {
+            const catalog = document.getElementById('perfumeCatalog');
+            
+            if (filteredPerfumes.length === 0) {
+                catalog.innerHTML = `
+                    <div class="col-12">
+                        <div class="text-center py-5">
+                            <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                            <h4 class="text-muted">No se encontraron perfumes</h4>
+                            <p class="text-muted">Intenta con otros términos de búsqueda o filtros</p>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            catalog.innerHTML = filteredPerfumes.map((perfume, index) => {
+                const notesPreview = getNotesPreview(perfume.notas);
+                const genderClass = perfume.genero.toLowerCase();
+                
+                return `
+                    <div class="col">
+                        <div class="card perfume-card h-100">
+                            <div class="position-relative">
+                                <img src="${perfume.imagen_url}" class="card-img-top" alt="${perfume.nombre_comercial}" 
+                                     onerror="this.src='https://via.placeholder.com/300x280/D4A373/FFFFFF?text=Sin+Imagen'">
+                                <span class="gender-badge ${genderClass}">${perfume.genero}</span>
+                            </div>
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="perfume-name">${perfume.nombre_comercial}</h5>
+                                <p class="brand-name">${perfume.casa_fabricante}</p>
+                                <p class="notes-preview flex-grow-1">${notesPreview}</p>
+                                <button class="btn view-details-btn mt-auto" onclick="showPerfumeDetails(${index})">
+                                    Ver Detalles
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function getNotesPreview(notas) {
+            const allNotes = [notas.salida, notas.corazon, notas.fondo]
+                .filter(note => note && note.trim() !== '')
+                .join(', ');
+            
+            if (allNotes.length > 100) {
+                return allNotes.substring(0, 100) + '...';
+            }
+            
+            return allNotes || 'Notas no especificadas';
+        }
+
+        // Modal de detalles
+        function showPerfumeDetails(index) {
+            const perfume = filteredPerfumes[index];
+            const modal = new bootstrap.Modal(document.getElementById('perfumeModal'));
+            
+            // Llenar datos del modal
+            document.getElementById('modalTitle').textContent = perfume.nombre_comercial;
+            document.getElementById('modalBrand').textContent = perfume.casa_fabricante;
+            document.getElementById('modalImage').src = perfume.imagen_url;
+            
+            const genderBadge = document.getElementById('modalGender');
+            genderBadge.textContent = perfume.genero;
+            genderBadge.className = `badge ${perfume.genero.toLowerCase()}`;
+            
+            // Notas
+            document.getElementById('modalTopNotes').innerHTML = 
+                perfume.notas.salida || '<span class="empty-note">No especificadas</span>';
+            document.getElementById('modalHeartNotes').innerHTML = 
+                perfume.notas.corazon || '<span class="empty-note">No especificadas</span>';
+            document.getElementById('modalBaseNotes').innerHTML = 
+                perfume.notas.fondo || '<span class="empty-note">No especificadas</span>';
+            
+            modal.show();
+        }
+
+        // Funciones de compartir
+        function shareWhatsApp() {
+            const url = window.location.href;
+            const message = `¡Mira este increíble catálogo de perfumes de CEFIRO! ${url}`;
+            const whatsappUrl = `https://wa.me/573106197587?text=%C2%A1Hola%20C%C3%A9firo!%20Estoy%20listo%20para%20descubrir%20mi%20pr%C3%B3xima%20fragancia%20favorita.`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function copyLink() {
+            const url = window.location.href;
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(url).then(() => {
+                    showToast();
+                });
+            } else {
+                // Fallback para navegadores más antiguos
+                const textarea = document.createElement('textarea');
+                textarea.value = url;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast();
+            }
+        }
+
+        function showToast() {
+            const toast = new bootstrap.Toast(document.getElementById('copyToast'));
+            toast.show();
+        }
+    </script>
+</body>
+</html>
