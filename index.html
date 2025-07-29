@@ -4,82 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cefiro - Catálogo de Perfumes</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-dark: #3E2723;
-            --primary-gold: #D4A373;
-            --accent-brown: #8D6E63;
-            --light-cream: #FFE0B2;
-            --lightest-cream: #FFF3E0;
-        }
-
-        * {
-            box-sizing: border-box;
+            --primary-black: #1a1a1a;
+            --elegant-white: #ffffff;
+            --cream: #f8f6f0;
+            --cream-dark: #f0ede5;
+            --text-gray: #666666;
+            --border-light: #e8e8e8;
         }
 
         body {
-            background: linear-gradient(135deg, var(--lightest-cream) 0%, var(--light-cream) 100%);
+            background: var(--cream);
             font-family: 'Inter', sans-serif;
-            min-height: 100vh;
-            margin: 0;
-            color: var(--primary-dark);
+            color: var(--primary-black);
+            line-height: 1.6;
         }
 
         .brand-header {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--accent-brown) 100%);
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
+            background: linear-gradient(135deg, var(--primary-black) 0%, #333333 100%);
+            color: var(--elegant-white);
+            padding: 4rem 0;
             position: relative;
-            overflow: hidden;
-        }
-
-        .brand-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="0.5" fill="white" opacity="0.1"/><circle cx="40" cy="80" r="1.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
         }
 
         .brand-title {
             font-family: 'Playfair Display', serif;
-            font-size: 4rem;
+            font-size: clamp(3rem, 6vw, 5rem);
             font-weight: 700;
-            letter-spacing: 3px;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .brand-subtitle {
-            font-size: 1.2rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-            opacity: 0.9;
-            position: relative;
-            z-index: 2;
+            letter-spacing: 4px;
             margin-bottom: 1rem;
         }
 
-        .slogan-space {
-            height: 2rem;
-            font-style: italic;
-            font-size: 1rem;
-            opacity: 0.8;
-            position: relative;
-            z-index: 2;
+        .brand-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            opacity: 0.9;
         }
 
-        .share-buttons {
+        .slogan {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-buttons {
             position: fixed;
             top: 50%;
             right: 20px;
@@ -90,7 +66,7 @@
             gap: 15px;
         }
 
-        .share-btn {
+        .social-btn {
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -101,212 +77,213 @@
             color: white;
             font-size: 1.5rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
-        .share-btn:hover {
+        .social-btn:hover {
             transform: scale(1.1);
             color: white;
-            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
         }
 
-        .whatsapp-btn {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-        }
-
-        .share-link-btn {
-            background: linear-gradient(135deg, var(--primary-gold), var(--accent-brown));
-        }
+        .whatsapp-btn { background: linear-gradient(135deg, #25D366, #128C7E); }
+        .instagram-btn { background: linear-gradient(135deg, #E4405F, #C13584, #833AB4); }
+        .tiktok-btn { background: linear-gradient(135deg, #000000, #FF0050); }
+        .share-link-btn { background: linear-gradient(135deg, var(--primary-black), #444444); }
 
         .search-section {
-            background: white;
-            padding: 2rem 0;
-            box-shadow: 0 2px 10px rgba(62, 39, 35, 0.1);
+            background: var(--elegant-white);
+            padding: 3rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
         }
 
         .search-input {
-            border: 2px solid var(--light-cream);
+            border: 2px solid var(--border-light);
             border-radius: 50px;
-            padding: 1rem 1.5rem;
+            padding: 1.2rem 2rem;
             font-size: 1.1rem;
+            background: var(--cream);
             transition: all 0.3s ease;
         }
 
         .search-input:focus {
-            border-color: var(--primary-gold);
-            box-shadow: 0 0 0 0.2rem rgba(212, 163, 115, 0.25);
-            outline: none;
+            border-color: var(--primary-black);
+            box-shadow: 0 0 0 0.2rem rgba(26, 26, 26, 0.15);
+            background: var(--elegant-white);
         }
 
-        .search-btn {
-            background: linear-gradient(135deg, var(--primary-gold), var(--accent-brown));
+        .btn-search {
+            background: var(--primary-black);
             border: none;
+            color: var(--elegant-white);
+            padding: 1.2rem 2.5rem;
             border-radius: 50px;
-            padding: 1rem 2rem;
-            color: white;
+            font-weight: 500;
             transition: all 0.3s ease;
         }
 
-        .search-btn:hover {
+        .btn-search:hover {
+            background: #333333;
+            color: var(--elegant-white);
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4);
-            color: white;
+            box-shadow: 0 8px 25px rgba(26, 26, 26, 0.2);
         }
 
         .filter-section {
-            padding: 1.5rem 0;
+            background: var(--cream-dark);
+            padding: 2rem 0;
         }
 
         .filter-btn {
-            background: white;
-            color: var(--primary-dark);
-            border: 2px solid var(--light-cream);
-            border-radius: 25px;
-            padding: 0.8rem 1.5rem;
-            margin: 0.3rem;
-            transition: all 0.3s ease;
+            background: var(--elegant-white);
+            color: var(--primary-black);
+            border: 2px solid var(--border-light);
+            border-radius: 30px;
+            padding: 1rem 2rem;
+            margin: 0.5rem;
             font-weight: 500;
+            transition: all 0.3s ease;
         }
 
         .filter-btn:hover,
         .filter-btn.active {
-            background: linear-gradient(135deg, var(--primary-gold), var(--accent-brown));
-            color: white;
-            border-color: var(--primary-gold);
-            transform: translateY(-2px);
+            background: var(--primary-black);
+            color: var(--elegant-white);
+            border-color: var(--primary-black);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(26, 26, 26, 0.2);
+        }
+
+        .catalog-section {
+            padding: 4rem 0;
+            background: var(--cream);
         }
 
         .perfume-card {
-            background: white;
+            background: var(--elegant-white);
             border-radius: 20px;
             overflow: hidden;
             transition: all 0.4s ease;
             height: 100%;
-            box-shadow: 0 8px 25px rgba(62, 39, 35, 0.1);
-            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: none;
         }
 
         .perfume-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(62, 39, 35, 0.2);
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
 
         .card-img-top {
-            height: 280px;
+            height: 300px;
             object-fit: cover;
-            object-position: center;
-            transition: all 0.4s ease;
+            transition: transform 0.4s ease;
         }
 
         .perfume-card:hover .card-img-top {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
         .gender-badge {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            top: 20px;
+            right: 20px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
             font-weight: 600;
-            font-size: 0.8rem;
-            backdrop-filter: blur(10px);
+            font-size: 0.85rem;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .femenino {
-            background: rgba(255, 105, 180, 0.9);
-            color: white;
-        }
-
-        .masculino {
-            background: rgba(62, 39, 35, 0.9);
-            color: white;
-        }
-
-        .unisex {
-            background: rgba(212, 163, 115, 0.9);
-            color: white;
-        }
+        .femenino { background: rgba(255, 105, 180, 0.9); color: white; }
+        .masculino { background: rgba(26, 26, 26, 0.9); color: white; }
+        .unisex { background: rgba(141, 110, 99, 0.9); color: white; }
 
         .card-body {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .perfume-name {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
-            color: var(--primary-dark);
-            font-size: 1.3rem;
+            color: var(--primary-black);
+            font-size: 1.4rem;
             margin-bottom: 0.5rem;
         }
 
         .brand-name {
-            color: var(--accent-brown);
+            color: var(--text-gray);
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin-bottom: 1rem;
         }
 
         .notes-preview {
-            color: var(--accent-brown);
-            font-size: 0.9rem;
-            line-height: 1.4;
-            margin-bottom: 1rem;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
         }
 
-        .view-details-btn {
-            background: linear-gradient(135deg, var(--primary-gold), var(--accent-brown));
-            color: white;
+        .btn-details {
+            background: var(--primary-black);
             border: none;
-            border-radius: 25px;
-            padding: 0.8rem 1.5rem;
+            color: var(--elegant-white);
+            padding: 1rem 2rem;
+            border-radius: 30px;
             font-weight: 500;
-            transition: all 0.3s ease;
             width: 100%;
+            transition: all 0.3s ease;
         }
 
-        .view-details-btn:hover {
+        .btn-details:hover {
+            background: #333333;
+            color: var(--elegant-white);
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4);
-            color: white;
+            box-shadow: 0 6px 20px rgba(26, 26, 26, 0.3);
         }
 
         .modal-content {
-            border-radius: 20px;
+            border-radius: 25px;
             border: none;
             overflow: hidden;
         }
 
         .modal-header {
-            background: linear-gradient(135deg, var(--primary-dark), var(--accent-brown));
-            color: white;
-            padding: 1.5rem 2rem;
+            background: var(--primary-black);
+            color: var(--elegant-white);
+            padding: 2rem;
+            border: none;
         }
 
         .modal-title {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
 
-        .btn-close {
+        .btn-close { 
             filter: brightness(0) invert(1);
+            font-size: 1.2rem;
         }
 
         .modal-body {
             padding: 2rem;
+            background: var(--elegant-white);
         }
 
         .notes-section h6 {
-            color: var(--primary-dark);
+            color: var(--primary-black);
             font-weight: 600;
-            margin-bottom: 0.5rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
         }
 
         .notes-section p {
-            color: var(--accent-brown);
-            line-height: 1.5;
+            color: var(--text-gray);
+            line-height: 1.6;
+            font-size: 1rem;
         }
 
         .empty-note {
@@ -315,87 +292,114 @@
         }
 
         .modal-footer {
-            background: var(--lightest-cream);
+            background: var(--cream);
             border: none;
+            padding: 2rem;
         }
 
-        .catalog-grid {
-            padding: 3rem 0;
+        .whatsapp-contact-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border: none;
+            color: white;
+            font-weight: 500;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
         }
 
-        @media (max-width: 768px) {
-            .brand-title {
-                font-size: 2.5rem;
-                letter-spacing: 1px;
-            }
-            
-            .share-buttons {
-                right: 10px;
-                gap: 10px;
-            }
-            
-            .share-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-            
-            .search-input {
-                font-size: 1rem;
-                padding: 0.8rem 1.2rem;
-            }
-            
-            .filter-btn {
-                padding: 0.6rem 1rem;
-                font-size: 0.9rem;
-            }
+        .whatsapp-contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            color: white;
         }
 
-        .toast-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1050;
+        .btn-close-modal {
+            background: var(--text-gray);
+            color: var(--elegant-white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-close-modal:hover {
+            background: var(--primary-black);
+            color: var(--elegant-white);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 4rem 0;
+            color: var(--text-gray);
         }
 
         .toast {
-            background: var(--primary-dark);
-            color: white;
+            background: var(--primary-black);
+            color: var(--elegant-white);
             border: none;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .social-buttons {
+                right: 15px;
+                gap: 12px;
+            }
+            
+            .social-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+            }
+
+            .brand-title {
+                font-size: 2.5rem;
+                letter-spacing: 2px;
+            }
+
+            .card-body {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header de la marca -->
-    <header class="brand-header">
+    <header class="brand-header text-center">
         <div class="container">
             <h1 class="brand-title">CEFIRO</h1>
             <p class="brand-subtitle">La esencia del estilo sutil</p>
-            <div class="slogan-space">
-            Descubre el lujo en cada gota. Fragancias inspiradas de calidad premium que elevan tu esencia sin afectar tu bolsillo.🌿 Orgullosamente colombiano y comprometidos con el cuidado ambiental. ¡Experimenta la sofisticación discreta!
-            </div>
+            <p class="slogan">
+                Descubre el lujo en cada gota. Fragancias inspiradas de calidad premium que elevan tu esencia sin afectar tu bolsillo. 🌿 Orgullosamente colombiano y comprometidos con el cuidado ambiental. ¡Experimenta la sofisticación discreta!
+            </p>
         </div>
     </header>
 
-    <!-- Botones flotantes de compartir -->
-    <div class="share-buttons">
-        <a href="#" class="share-btn whatsapp-btn" id="whatsappBtn" title="Compartir en WhatsApp">
+    <div class="social-buttons">
+        <a href="https://wa.me/573106197587?text=%C2%A1Hola%20C%C3%A9firo!%20Estoy%20listo%20para%20descubrir%20mi%20pr%C3%B3xima%20fragancia%20favorita." 
+           class="social-btn whatsapp-btn" title="WhatsApp" target="_blank">
             <i class="fab fa-whatsapp"></i>
         </a>
-        <a href="#" class="share-btn share-link-btn" id="shareLinkBtn" title="Copiar enlace">
+        <a href="https://www.instagram.com/cefiro_parfums?igsh=MW91ZmIwY3czY2c3bA==" 
+           class="social-btn instagram-btn" title="Instagram" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@cefiro_colombia_oficial?_t=ZS-8yQ6rVWeiws&_r=1" 
+           class="social-btn tiktok-btn" title="TikTok" target="_blank">
+            <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="#" class="social-btn share-link-btn" id="shareLinkBtn" title="Copiar enlace">
             <i class="fas fa-share-alt"></i>
         </a>
     </div>
 
-    <!-- Sección de búsqueda -->
     <section class="search-section">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-8">
+                <div class="col-lg-8">
                     <div class="input-group">
                         <input type="text" id="searchInput" class="form-control search-input" 
                                placeholder="Buscar perfumes, marcas o notas...">
-                        <button class="btn search-btn" type="button" id="searchButton">
+                        <button class="btn btn-search" type="button" id="searchButton">
                             <i class="fas fa-search me-2"></i>Buscar
                         </button>
                     </div>
@@ -404,11 +408,10 @@
         </div>
     </section>
 
-    <!-- Filtros -->
     <section class="filter-section">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-8 text-center">
+                <div class="col-lg-8 text-center">
                     <button type="button" class="btn filter-btn active" data-filter="all">Todos</button>
                     <button type="button" class="btn filter-btn" data-filter="Femenino">Femenino</button>
                     <button type="button" class="btn filter-btn" data-filter="Masculino">Masculino</button>
@@ -418,22 +421,20 @@
         </div>
     </section>
 
-    <!-- Catálogo -->
-    <section class="catalog-grid">
+    <section class="catalog-section">
         <div class="container">
             <div id="perfumeCatalog" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
-                <!-- Los perfumes se cargarán aquí dinámicamente -->
+                <!-- Perfumes se cargan dinámicamente -->
             </div>
         </div>
     </section>
 
-    <!-- Modal para vista detallada -->
     <div class="modal fade" id="perfumeModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTitle"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
@@ -441,42 +442,43 @@
                             <img id="modalImage" src="" class="img-fluid rounded" alt="">
                         </div>
                         <div class="col-md-6">
-                            <p id="modalBrand" class="brand-name fs-5"></p>
-                            <p id="modalGender" class="badge"></p>
+                            <p id="modalBrand" class="brand-name fs-4 mb-2"></p>
+                            <span id="modalGender" class="badge mb-4"></span>
                             <hr>
                             <div class="notes-section">
                                 <h6>Notas de Salida:</h6>
-                                <p id="modalTopNotes"></p>
+                                <p id="modalTopNotes" class="mb-3"></p>
                                 <h6>Notas de Corazón:</h6>
-                                <p id="modalHeartNotes"></p>
+                                <p id="modalHeartNotes" class="mb-3"></p>
                                 <h6>Notas de Fondo:</h6>
                                 <p id="modalBaseNotes"></p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-close-modal" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn whatsapp-contact-btn" id="contactWhatsAppBtn">
+                        <i class="fab fa-whatsapp me-2"></i>Contactar por WhatsApp
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Toast para notificaciones -->
-    <div class="toast-container">
-        <div id="copyToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="copyToast" class="toast" role="alert">
             <div class="toast-body">
                 <i class="fas fa-check me-2"></i>¡Enlace copiado al portapapeles!
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
         const perfumeData = [
-
+            
         {
     "nombre_comercial": "VALENTINO DONNA",
     "casa_fabricante": "Valentino",
@@ -730,63 +732,46 @@
     "genero": "Unisex",
     "imagen_url": "https://cdn.wholesale55.com/wp-content/uploads/2024/11/Khamrah-Qahwa-EDP-100-ml-Unisex-by-Lattafa-1.jpg.jpeg"
   }
-        
-        
         ];
 
-        // Variables globales
         let allPerfumes = [];
         let filteredPerfumes = [];
+        let currentPerfume = null;
 
-        // Inicialización
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', () => {
             allPerfumes = perfumeData;
             filteredPerfumes = [...allPerfumes];
             renderPerfumes();
             initializeEventListeners();
         });
 
-        // Event listeners
         function initializeEventListeners() {
-            // Búsqueda
             const searchInput = document.getElementById('searchInput');
             const searchButton = document.getElementById('searchButton');
             
             searchButton.addEventListener('click', performSearch);
-            searchInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    performSearch();
-                }
+            searchInput.addEventListener('keypress', e => {
+                if (e.key === 'Enter') performSearch();
             });
 
-            // Filtros de género
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            filterButtons.forEach(btn => {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
-                    // Actualizar estado activo
-                    filterButtons.forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
-                    
-                    // Aplicar filtro
-                    const filter = this.getAttribute('data-filter');
-                    applyGenderFilter(filter);
+                    applyGenderFilter(this.getAttribute('data-filter'));
                 });
             });
 
-            // Botones de compartir
-            document.getElementById('whatsappBtn').addEventListener('click', shareWhatsApp);
             document.getElementById('shareLinkBtn').addEventListener('click', copyLink);
+            document.getElementById('contactWhatsAppBtn').addEventListener('click', contactWhatsApp);
         }
 
-        // Funciones de búsqueda y filtrado
         function performSearch() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             
-            if (query === '') {
-                filteredPerfumes = [...allPerfumes];
-            } else {
-                filteredPerfumes = allPerfumes.filter(perfume => {
-                    const searchFields = [
+            filteredPerfumes = query === '' ? [...allPerfumes] : 
+                allPerfumes.filter(perfume => {
+                    const searchText = [
                         perfume.nombre_comercial,
                         perfume.casa_fabricante,
                         perfume.notas.salida,
@@ -794,9 +779,8 @@
                         perfume.notas.fondo
                     ].join(' ').toLowerCase();
                     
-                    return searchFields.includes(query);
+                    return searchText.includes(query);
                 });
-            }
             
             renderPerfumes();
         }
@@ -804,10 +788,9 @@
         function applyGenderFilter(gender) {
             const searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
             
-            let baseList = allPerfumes;
-            if (searchQuery !== '') {
-                baseList = allPerfumes.filter(perfume => {
-                    const searchFields = [
+            let baseList = searchQuery === '' ? allPerfumes : 
+                allPerfumes.filter(perfume => {
+                    const searchText = [
                         perfume.nombre_comercial,
                         perfume.casa_fabricante,
                         perfume.notas.salida,
@@ -815,80 +798,66 @@
                         perfume.notas.fondo
                     ].join(' ').toLowerCase();
                     
-                    return searchFields.includes(searchQuery);
+                    return searchText.includes(searchQuery);
                 });
-            }
 
-            if (gender === 'all') {
-                filteredPerfumes = baseList;
-            } else {
-                filteredPerfumes = baseList.filter(perfume => perfume.genero === gender);
-            }
+            filteredPerfumes = gender === 'all' ? baseList : 
+                baseList.filter(perfume => perfume.genero === gender);
             
             renderPerfumes();
         }
 
-        // Renderizado de perfumes
         function renderPerfumes() {
             const catalog = document.getElementById('perfumeCatalog');
             
             if (filteredPerfumes.length === 0) {
                 catalog.innerHTML = `
                     <div class="col-12">
-                        <div class="text-center py-5">
-                            <i class="fas fa-search fa-3x text-muted mb-3"></i>
-                            <h4 class="text-muted">No se encontraron perfumes</h4>
-                            <p class="text-muted">Intenta con otros términos de búsqueda o filtros</p>
+                        <div class="no-results">
+                            <i class="fas fa-search fa-4x mb-4"></i>
+                            <h4>No se encontraron perfumes</h4>
+                            <p>Intenta con otros términos de búsqueda o filtros</p>
                         </div>
                     </div>
                 `;
                 return;
             }
 
-            catalog.innerHTML = filteredPerfumes.map((perfume, index) => {
-                const notesPreview = getNotesPreview(perfume.notas);
-                const genderClass = perfume.genero.toLowerCase();
-                
-                return `
-                    <div class="col">
-                        <div class="card perfume-card h-100">
-                            <div class="position-relative">
-                                <img src="${perfume.imagen_url}" class="card-img-top" alt="${perfume.nombre_comercial}" 
-                                     onerror="this.src='https://via.placeholder.com/300x280/D4A373/FFFFFF?text=Sin+Imagen'">
-                                <span class="gender-badge ${genderClass}">${perfume.genero}</span>
-                            </div>
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="perfume-name">${perfume.nombre_comercial}</h5>
-                                <p class="brand-name">${perfume.casa_fabricante}</p>
-                                <p class="notes-preview flex-grow-1">${notesPreview}</p>
-                                <button class="btn view-details-btn mt-auto" onclick="showPerfumeDetails(${index})">
-                                    Ver Detalles
-                                </button>
-                            </div>
+            catalog.innerHTML = filteredPerfumes.map((perfume, index) => `
+                <div class="col">
+                    <div class="card perfume-card h-100">
+                        <div class="position-relative">
+                            <img src="${perfume.imagen_url}" class="card-img-top" alt="${perfume.nombre_comercial}" 
+                                 onerror="this.src='https://via.placeholder.com/300x300/f8f6f0/1a1a1a?text=Sin+Imagen'">
+                            <span class="gender-badge ${perfume.genero.toLowerCase()}">${perfume.genero}</span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="perfume-name">${perfume.nombre_comercial}</h5>
+                            <p class="brand-name">${perfume.casa_fabricante}</p>
+                            <p class="notes-preview flex-grow-1">${getNotesPreview(perfume.notas)}</p>
+                            <button class="btn btn-details mt-auto" onclick="showPerfumeDetails(${index})">
+                                Ver Detalles
+                            </button>
                         </div>
                     </div>
-                `;
-            }).join('');
+                </div>
+            `).join('');
         }
 
         function getNotesPreview(notas) {
             const allNotes = [notas.salida, notas.corazon, notas.fondo]
-                .filter(note => note && note.trim() !== '')
+                .filter(note => note?.trim())
                 .join(', ');
             
-            if (allNotes.length > 100) {
-                return allNotes.substring(0, 100) + '...';
-            }
-            
-            return allNotes || 'Notas no especificadas';
+            return allNotes.length > 80 ? 
+                allNotes.substring(0, 80) + '...' : 
+                allNotes || 'Notas no especificadas';
         }
 
-        // Modal de detalles
         function showPerfumeDetails(index) {
             const perfume = filteredPerfumes[index];
-            const modal = new bootstrap.Modal(document.getElementById('perfumeModal'));
+            currentPerfume = perfume;
             
-            // Llenar datos del modal
             document.getElementById('modalTitle').textContent = perfume.nombre_comercial;
             document.getElementById('modalBrand').textContent = perfume.casa_fabricante;
             document.getElementById('modalImage').src = perfume.imagen_url;
@@ -897,7 +866,6 @@
             genderBadge.textContent = perfume.genero;
             genderBadge.className = `badge ${perfume.genero.toLowerCase()}`;
             
-            // Notas
             document.getElementById('modalTopNotes').innerHTML = 
                 perfume.notas.salida || '<span class="empty-note">No especificadas</span>';
             document.getElementById('modalHeartNotes').innerHTML = 
@@ -905,14 +873,14 @@
             document.getElementById('modalBaseNotes').innerHTML = 
                 perfume.notas.fondo || '<span class="empty-note">No especificadas</span>';
             
-            modal.show();
+            new bootstrap.Modal(document.getElementById('perfumeModal')).show();
         }
 
-        // Funciones de compartir
-        function shareWhatsApp() {
-            const url = window.location.href;
-            const message = `¡Mira este increíble catálogo de perfumes de CEFIRO! ${url}`;
-            const whatsappUrl = `https://wa.me/573106197587?text=%C2%A1Hola%20C%C3%A9firo!%20Estoy%20listo%20para%20descubrir%20mi%20pr%C3%B3xima%20fragancia%20favorita.`;
+        function contactWhatsApp() {
+            if (!currentPerfume) return;
+            
+            const message = `¡Hola Céfiro! Me interesa el perfume *${currentPerfume.nombre_comercial}* de ${currentPerfume.casa_fabricante}. ¿Podrían darme más información sobre disponibilidad y precio? ¡Gracias! 🌿`;
+            const whatsappUrl = `https://wa.me/573106197587?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         }
 
@@ -920,11 +888,8 @@
             const url = window.location.href;
             
             if (navigator.clipboard) {
-                navigator.clipboard.writeText(url).then(() => {
-                    showToast();
-                });
+                navigator.clipboard.writeText(url).then(() => showToast());
             } else {
-                // Fallback para navegadores más antiguos
                 const textarea = document.createElement('textarea');
                 textarea.value = url;
                 document.body.appendChild(textarea);
@@ -936,8 +901,7 @@
         }
 
         function showToast() {
-            const toast = new bootstrap.Toast(document.getElementById('copyToast'));
-            toast.show();
+            new bootstrap.Toast(document.getElementById('copyToast')).show();
         }
     </script>
 </body>
