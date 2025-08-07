@@ -1,1 +1,383 @@
 
+:root {
+    --primary-black: #1a1a1a;
+    --elegant-white: #ffffff;
+    --cream: #f8f6f0;
+    --cream-dark: #f0ede5;
+    --text-gray: #666666;
+    --border-light: #e8e8e8;
+}
+
+body {
+    background: var(--cream);
+    font-family: 'Inter', sans-serif;
+    color: var(--primary-black);
+    line-height: 1.6;
+}
+
+.btn-back-to-main {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--elegant-white);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+.btn-back-to-main:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: var(--elegant-white);
+    transform: translateY(-2px);
+}
+
+.brand-header {
+    background: linear-gradient(135deg, var(--primary-black) 0%, #333333 100%);
+    color: var(--elegant-white);
+    padding: 4rem 0;
+    position: relative;
+}
+
+.brand-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 1rem;
+}
+
+.brand-subtitle {
+    font-size: 1.3rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    opacity: 0.9;
+}
+
+.slogan {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-top: 1.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.social-buttons {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.social-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.social-btn:hover {
+    transform: scale(1.1);
+    color: white;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+.whatsapp-btn { background: linear-gradient(135deg, #25D366, #128C7E); }
+.instagram-btn { background: linear-gradient(135deg, #E4405F, #C13584, #833AB4); }
+.tiktok-btn { background: linear-gradient(135deg, #000000, #FF0050); }
+.share-link-btn { background: linear-gradient(135deg, var(--primary-black), #444444); }
+
+.search-section {
+    background: var(--elegant-white);
+    padding: 3rem 0;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+}
+
+.search-input {
+    border: 2px solid var(--border-light);
+    border-radius: 50px;
+    padding: 1.2rem 2rem;
+    font-size: 1.1rem;
+    background: var(--cream);
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: var(--primary-black);
+    box-shadow: 0 0 0 0.2rem rgba(26, 26, 26, 0.15);
+    background: var(--elegant-white);
+}
+
+.btn-search {
+    background: var(--primary-black);
+    border: none;
+    color: var(--elegant-white);
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-search:hover {
+    background: #333333;
+    color: var(--elegant-white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(26, 26, 26, 0.2);
+}
+
+.filter-section {
+    background: var(--cream-dark);
+    padding: 2rem 0;
+}
+
+.filter-btn {
+    background: var(--elegant-white);
+    color: var(--primary-black);
+    border: 2px solid var(--border-light);
+    border-radius: 30px;
+    padding: 1rem 2rem;
+    margin: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary-black);
+    color: var(--elegant-white);
+    border-color: var(--primary-black);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(26, 26, 26, 0.2);
+}
+
+.catalog-section {
+    padding: 4rem 0;
+    background: var(--cream);
+}
+
+.perfume-card {
+    background: var(--elegant-white);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    height: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: none;
+}
+
+.perfume-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+
+.card-img-top {
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.perfume-card:hover .card-img-top {
+    transform: scale(1.08);
+}
+
+.gender-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.femenino { background: rgba(255, 105, 180, 0.9); color: white; }
+.masculino { background: rgba(26, 26, 26, 0.9); color: white; }
+.unisex { background: rgba(141, 110, 99, 0.9); color: white; }
+
+.card-body {
+    padding: 2rem;
+}
+
+.perfume-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: var(--primary-black);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.brand-name {
+    color: var(--text-gray);
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.notes-preview {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.btn-details {
+    background: var(--primary-black);
+    border: none;
+    color: var(--elegant-white);
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    font-weight: 500;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.btn-details:hover {
+    background: #333333;
+    color: var(--elegant-white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26, 26, 26, 0.3);
+}
+
+.modal-content {
+    border-radius: 25px;
+    border: none;
+    overflow: hidden;
+}
+
+.modal-header {
+    background: var(--primary-black);
+    color: var(--elegant-white);
+    padding: 2rem;
+    border: none;
+}
+
+.modal-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.btn-close { 
+    filter: brightness(0) invert(1);
+    font-size: 1.2rem;
+}
+
+.modal-body {
+    padding: 2rem;
+    background: var(--elegant-white);
+}
+
+.notes-section h6 {
+    color: var(--primary-black);
+    font-weight: 600;
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.notes-section p {
+    color: var(--text-gray);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.empty-note {
+    color: #ccc;
+    font-style: italic;
+}
+
+.modal-footer {
+    background: var(--cream);
+    border: none;
+    padding: 2rem;
+}
+
+.whatsapp-contact-btn {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    border: none;
+    color: white;
+    font-weight: 500;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    color: white;
+}
+
+.btn-close-modal {
+    background: var(--text-gray);
+    color: var(--elegant-white);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.btn-close-modal:hover {
+    background: var(--primary-black);
+    color: var(--elegant-white);
+}
+
+.no-results {
+    text-align: center;
+    padding: 4rem 0;
+    color: var(--text-gray);
+}
+
+.toast {
+    background: var(--primary-black);
+    color: var(--elegant-white);
+    border: none;
+    border-radius: 15px;
+}
+
+@media (max-width: 768px) {
+    .social-buttons {
+        right: 15px;
+        gap: 12px;
+    }
+    
+    .social-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 1.3rem;
+    }
+
+    .brand-title {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .btn-back-to-main {
+        top: 10px;
+        left: 10px;
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+    }
+}
