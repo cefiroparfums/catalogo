@@ -3,261 +3,906 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Céfiro Parfums | La Esencia del Estilo Sutil</title>
+    <title>Cefiro - Catálogo de Perfumes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-black: #1a1a1a;
+            --elegant-white: #ffffff;
+            --cream: #f8f6f0;
+            --cream-dark: #f0ede5;
+            --text-gray: #666666;
+            --border-light: #e8e8e8;
+        }
+
+        body {
+            background: var(--cream);
+            font-family: 'Inter', sans-serif;
+            color: var(--primary-black);
+            line-height: 1.6;
+        }
+
+        .brand-header {
+            background: linear-gradient(135deg, var(--primary-black) 0%, #333333 100%);
+            color: var(--elegant-white);
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .brand-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        .slogan {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-buttons {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .social-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .social-btn:hover {
+            transform: scale(1.1);
+            color: white;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+        }
+
+        .whatsapp-btn { background: linear-gradient(135deg, #25D366, #128C7E); }
+        .instagram-btn { background: linear-gradient(135deg, #E4405F, #C13584, #833AB4); }
+        .tiktok-btn { background: linear-gradient(135deg, #000000, #FF0050); }
+        .share-link-btn { background: linear-gradient(135deg, var(--primary-black), #444444); }
+
+        .search-section {
+            background: var(--elegant-white);
+            padding: 3rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+
+        .search-input {
+            border: 2px solid var(--border-light);
+            border-radius: 50px;
+            padding: 1.2rem 2rem;
+            font-size: 1.1rem;
+            background: var(--cream);
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-black);
+            box-shadow: 0 0 0 0.2rem rgba(26, 26, 26, 0.15);
+            background: var(--elegant-white);
+        }
+
+        .btn-search {
+            background: var(--primary-black);
+            border: none;
+            color: var(--elegant-white);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-search:hover {
+            background: #333333;
+            color: var(--elegant-white);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(26, 26, 26, 0.2);
+        }
+
+        .filter-section {
+            background: var(--cream-dark);
+            padding: 2rem 0;
+        }
+
+        .filter-btn {
+            background: var(--elegant-white);
+            color: var(--primary-black);
+            border: 2px solid var(--border-light);
+            border-radius: 30px;
+            padding: 1rem 2rem;
+            margin: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-black);
+            color: var(--elegant-white);
+            border-color: var(--primary-black);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(26, 26, 26, 0.2);
+        }
+
+        .catalog-section {
+            padding: 4rem 0;
+            background: var(--cream);
+        }
+
+        .perfume-card {
+            background: var(--elegant-white);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: none;
+        }
+
+        .perfume-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .card-img-top {
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .perfume-card:hover .card-img-top {
+            transform: scale(1.08);
+        }
+
+        .gender-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .femenino { background: rgba(255, 105, 180, 0.9); color: white; }
+        .masculino { background: rgba(26, 26, 26, 0.9); color: white; }
+        .unisex { background: rgba(141, 110, 99, 0.9); color: white; }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .perfume-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--primary-black);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .brand-name {
+            color: var(--text-gray);
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .notes-preview {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-details {
+            background: var(--primary-black);
+            border: none;
+            color: var(--elegant-white);
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-weight: 500;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .btn-details:hover {
+            background: #333333;
+            color: var(--elegant-white);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(26, 26, 26, 0.3);
+        }
+
+        .modal-content {
+            border-radius: 25px;
+            border: none;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: var(--primary-black);
+            color: var(--elegant-white);
+            padding: 2rem;
+            border: none;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.8rem;
+        }
+
+        .btn-close { 
+            filter: brightness(0) invert(1);
+            font-size: 1.2rem;
+        }
+
+        .modal-body {
+            padding: 2rem;
+            background: var(--elegant-white);
+        }
+
+        .notes-section h6 {
+            color: var(--primary-black);
+            font-weight: 600;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .notes-section p {
+            color: var(--text-gray);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .empty-note {
+            color: #ccc;
+            font-style: italic;
+        }
+
+        .modal-footer {
+            background: var(--cream);
+            border: none;
+            padding: 2rem;
+        }
+
+        .whatsapp-contact-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border: none;
+            color: white;
+            font-weight: 500;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            color: white;
+        }
+
+        .btn-close-modal {
+            background: var(--text-gray);
+            color: var(--elegant-white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-close-modal:hover {
+            background: var(--primary-black);
+            color: var(--elegant-white);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 4rem 0;
+            color: var(--text-gray);
+        }
+
+        .toast {
+            background: var(--primary-black);
+            color: var(--elegant-white);
+            border: none;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .social-buttons {
+                right: 15px;
+                gap: 12px;
+            }
+            
+            .social-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+            }
+
+            .brand-title {
+                font-size: 2.5rem;
+                letter-spacing: 2px;
+            }
+
+            .card-body {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <header class="brand-header text-center">
         <div class="container">
-            <a class="navbar-brand" href="#">CÉFIRO</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#fragancias">Fragancias</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-                </ul>
-            </div>
+            <h1 class="brand-title">CEFIRO</h1>
+            <p class="brand-subtitle">La esencia del estilo sutil</p>
+            <p class="slogan">
+                Descubre el lujo en cada gota. Fragancias inspiradas de calidad premium que elevan tu esencia sin afectar tu bolsillo. 🌿 Orgullosamente colombiano y comprometidos con el cuidado ambiental. ¡Experimenta la sofisticación discreta!
+            </p>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="hero-section">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">CÉFIRO PARFUMS</h1>
-                <p class="hero-subtitle">La esencia del estilo sutil</p>
-                <div class="hero-buttons">
-                    <a href="https://cefiroparfums.github.io/catalogo/" class="btn btn-luxury me-3">Explorar Colección</a>
-                    <a href="#contacto" class="btn btn-outline-luxury">Contacto</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="social-buttons">
+        <a href="https://wa.me/573106197587?text=%C2%A1Hola%20C%C3%A9firo!%20Estoy%20listo%20para%20descubrir%20mi%20pr%C3%B3xima%20fragancia%20favorita." 
+           class="social-btn whatsapp-btn" title="WhatsApp" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/cefiro_parfums?igsh=MW91ZmIwY3czY2c3bA==" 
+           class="social-btn instagram-btn" title="Instagram" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@cefiro_colombia_oficial?_t=ZS-8yQ6rVWeiws&_r=1" 
+           class="social-btn tiktok-btn" title="TikTok" target="_blank">
+            <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="#" class="social-btn share-link-btn" id="shareLinkBtn" title="Copiar enlace">
+            <i class="fas fa-share-alt"></i>
+        </a>
+    </div>
 
-    <!-- Features Section -->
-    <section class="section section-alt">
+    <section class="search-section">
         <div class="container">
-            <div class="row g-5">
-                <div class="col-md-4">
-                    <div class="feature-item fade-in">
-                        <div class="feature-icon">
-                            <i class="fas fa-spa"></i>
-                        </div>
-                        <h3 class="feature-title">Fórmulas Exclusivas</h3>
-                        <p class="feature-text">Creaciones únicas con ingredientes premium importados y técnicas artesanales francesas.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature-item fade-in">
-                        <div class="feature-icon">
-                            <i class="fas fa-leaf"></i>
-                        </div>
-                        <h3 class="feature-title">Sostenibilidad</h3>
-                        <p class="feature-text">Compromiso absoluto con el medio ambiente mediante procesos eco-responsables.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature-item fade-in">
-                        <div class="feature-icon">
-                            <i class="fas fa-gem"></i>
-                        </div>
-                        <h3 class="feature-title">Lujo Accesible</h3>
-                        <p class="feature-text">Experiencias olfativas excepcionales sin comprometer la calidad ni el precio.</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="input-group">
+                        <input type="text" id="searchInput" class="form-control search-input" 
+                               placeholder="Buscar perfumes, marcas o notas...">
+                        <button class="btn btn-search" type="button" id="searchButton">
+                            <i class="fas fa-search me-2"></i>Buscar
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section id="fragancias" class="section">
+    <section class="filter-section">
         <div class="container">
-            <h2 class="section-title fade-in">Colección Signature</h2>
-            
-            <!-- Carrusel de productos -->
-            <div id="perfumeCarousel" class="carousel slide fade-in" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <!-- Los items del carrusel se generarán dinámicamente -->
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#perfumeCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#perfumeCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-            
-            <div class="text-center mt-5">
-                <a href="https://cefiroparfums.github.io/catalogo/" class="btn btn-luxury">Ver Colección Completa</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="nosotros" class="section section-dark">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="about-content fade-in">
-                        <h2 class="about-title">La Esencia de Céfiro</h2>
-                        <p class="about-text">Democratizamos el lujo olfativo mediante la creación de fragancias inspiradas de calidad superior, sin comprometer nunca la sostenibilidad ni la excelencia artesanal.</p>
-                        <p class="about-text">Nuestro proceso único combina la tradición perfumera francesa con la innovación colombiana, utilizando alcohol especial para una fijación óptima y una experiencia sensorial incomparable.</p>
-                        <ul class="about-features">
-                            <li><i class="fas fa-check-circle"></i> Materias primas importadas de origen certificado</li>
-                            <li><i class="fas fa-check-circle"></i> Elaborado artesanalmente en Piedecuesta, Santander</li>
-                            <li><i class="fas fa-check-circle"></i> Programa exclusivo para revendedores certificados</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1615368144592-6b7b0e8b1a6b?ixlib=rb-4.0.3&auto=format&fit=crop&w=880&q=80" alt="Proceso Céfiro" class="about-image img-fluid fade-in">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <button type="button" class="btn filter-btn active" data-filter="all">Todos</button>
+                    <button type="button" class="btn filter-btn" data-filter="Femenino">Femenino</button>
+                    <button type="button" class="btn filter-btn" data-filter="Masculino">Masculino</button>
+                    <button type="button" class="btn filter-btn" data-filter="Unisex">Unisex</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="section section-alt">
+    <section class="catalog-section">
         <div class="container">
-            <h2 class="section-title fade-in">Experiencias Auténticas</h2>
-            <div class="row g-4">
-                <div class="col-lg-4">
-                    <div class="testimonial-card fade-in">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <div id="perfumeCatalog" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+                <!-- Perfumes se cargan dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="perfumeModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="modalImage" src="" class="img-fluid rounded" alt="">
                         </div>
-                        <p class="testimonial-text">"Musc Blanc es absolutamente increíble. La proyección y duración superan mis expectativas. Recibo cumplidos constantemente."</p>
-                        <div class="testimonial-author">
-                            <img src="https://randomuser.me/api/portraits/women/32.jpg" class="testimonial-avatar" alt="Cliente">
-                            <div>
-                                <div class="testimonial-name">María Fernanda</div>
-                                <div class="testimonial-location">Bogotá</div>
+                        <div class="col-md-6">
+                            <p id="modalBrand" class="brand-name fs-4 mb-2"></p>
+                            <span id="modalGender" class="badge mb-4"></span>
+                            <hr>
+                            <div class="notes-section">
+                                <h6>Notas de Salida:</h6>
+                                <p id="modalTopNotes" class="mb-3"></p>
+                                <h6>Notas de Corazón:</h6>
+                                <p id="modalHeartNotes" class="mb-3"></p>
+                                <h6>Notas de Fondo:</h6>
+                                <p id="modalBaseNotes"></p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="testimonial-card fade-in">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">"Finalmente encontré la alternativa perfecta a mi fragancia favorita. Misma calidad, precio increíble. Céfiro es excepcional."</p>
-                        <div class="testimonial-author">
-                            <img src="https://randomuser.me/api/portraits/men/45.jpg" class="testimonial-avatar" alt="Cliente">
-                            <div>
-                                <div class="testimonial-name">Carlos Andrés</div>
-                                <div class="testimonial-location">Medellín</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="testimonial-card fade-in">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <p class="testimonial-text">"La presentación es tan elegante que parece una fragancia de lujo europea. La calidad es impresionante."</p>
-                        <div class="testimonial-author">
-                            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="testimonial-avatar" alt="Cliente">
-                            <div>
-                                <div class="testimonial-name">Ana Lucía</div>
-                                <div class="testimonial-location">Cali</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-close-modal" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn whatsapp-contact-btn" id="contactWhatsAppBtn">
+                        <i class="fab fa-whatsapp me-2"></i>Contactar por WhatsApp
+                    </button>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="cta-title fade-in">Descubre Tu Esencia</h2>
-            <p class="cta-text fade-in">Únete a miles de personas que han encontrado en Céfiro la expresión perfecta de su personalidad.</p>
-            <div class="fade-in">
-                <a href="https://cefiroparfums.github.io/catalogo/" class="btn btn-luxury me-3">Comprar Ahora</a>
-                <a href="https://wa.me/+573106197587" class="btn btn-outline-luxury"><i class="fab fa-whatsapp me-2"></i>WhatsApp</a>
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="copyToast" class="toast" role="alert">
+            <div class="toast-body">
+                <i class="fas fa-check me-2"></i>¡Enlace copiado al portapapeles!
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Contact Section -->
-    <section id="contacto" class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="contact-info fade-in">
-                        <h2 class="section-title text-start">Conecta Con Nosotros</h2>
-                        <div class="contact-item">
-                            <i class="fas fa-phone-alt"></i>
-                            <a href="tel:+573106197587">+57 310 619 7587</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:info@cefiroparfums.com">info@cefiroparfums.com</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Piedecuesta, Santander, Colombia</span>
-                        </div>
-                        <div class="social-icons">
-                            <a href="https://www.instagram.com/cefiro_parfums" class="social-icon" target="_blank">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="https://www.tiktok.com/@cefiro_colombia_oficial" class="social-icon" target="_blank">
-                                <i class="fab fa-tiktok"></i>
-                            </a>
-                            <a href="https://wa.me/+573106197587" class="social-icon" target="_blank">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="fade-in">
-                        <h3 class="mb-4" style="color: var(--primary); font-size: 2rem;">Horarios de Atención</h3>
-                        <div class="contact-hours">
-                            <div class="hour-item">
-                                <strong>Lunes - Viernes:</strong> 8:00 AM - 6:00 PM
-                            </div>
-                            <div class="hour-item">
-                                <strong>Sábados:</strong> 9:00 AM - 4:00 PM
-                            </div>
-                            <div class="hour-item">
-                                <strong>Domingos:</strong> Cerrado
-                            </div>
-                        </div>
-                        <div class="mt-5">
-                            <img src="https://via.placeholder.com/300x150/d4af37/1a1a1a?text=CÉFIRO+PARFUMS" alt="Logo Céfiro" class="img-fluid" style="border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p class="mb-0">&copy; 2024 <strong>Céfiro Parfums</strong>. Todos los derechos reservados. | Hecho con ❤️ en Colombia</p>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Custom JavaScript -->
-    <script src="script.js"></script>
+    <script>
+        const perfumeData = [
+            
+        {
+    "nombre_comercial": "VALENTINO DONNA",
+    "casa_fabricante": "Valentino",
+    "notas": {
+      "salida": "",
+      "corazon": "",
+      "fondo": "Notas atalcadas, avainilladas"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://www.perfumesbogota.com.co/cdn/shop/products/VALENTINO_DONNA_BORN_IN_ROMA_1024x1024@2x.webp?v=1677722034"
+  },
+  {
+    "nombre_comercial": "BLEECKER STREET",
+    "casa_fabricante": "Bond No. 9",
+    "notas": {
+      "salida": "Hojas de violeta, arándano, tomillo",
+      "corazon": "Cedro, jazmín, vainilla, canela",
+      "fondo": "Musgo de roble, gamuza, pachulí, ámbar"
+    },
+    "genero": "Unisex",
+    "imagen_url": "https://perfumescolombia.com.co/cdn/shop/files/bond-n9-bleecker-street-karol-g-100ml-edp-11-premium-4477199.webp?v=1751883931"
+  },
+  {
+    "nombre_comercial": "FLOWERBOMB",
+    "casa_fabricante": "Viktor & Rolf",
+    "notas": {
+      "salida": "Osmanthus, té, bergamota",
+      "corazon": "Orquídea, rosa, fresia, flor de naranjo africano, jazmín",
+      "fondo": "Pachulí, almizcle"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://m.media-amazon.com/images/I/61RWULJE6+L._SX522_.jpg"
+  },
+  {
+    "nombre_comercial": "ECLAIRE",
+    "casa_fabricante": "Lattafa",
+    "notas": {
+      "salida": "Caramelo, leche, azúcar",
+      "corazon": "Flores blancas, miel",
+      "fondo": "Vainilla, praliné, almizcle"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://http2.mlstatic.com/D_NQ_NP_792591-MLA84559080116_052025-O.webp"
+  },
+  {
+    "nombre_comercial": "YARA MOI",
+    "casa_fabricante": "Lattafa",
+    "notas": {
+      "salida": "",
+      "corazon": "",
+      "fondo": ""
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://veronnaperfumeria.com/cdn/shop/files/photo-output_130_1800x1800.heic.jpg?v=1718414496"
+  },
+  {
+    "nombre_comercial": "CLOUD",
+    "casa_fabricante": "Ariana Grande",
+    "notas": {
+      "salida": "Flor de lavanda, pera jugosa, bergamota",
+      "corazon": "Crema de coco, praliné, orquídea de vainilla",
+      "fondo": "Almizcles sensuales, maderas rubias cremosas"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://http2.mlstatic.com/D_NQ_NP_726719-MLU72836480957_112023-O.webp"
+  },
+  {
+    "nombre_comercial": "GOOD GIRL SUPREME",
+    "casa_fabricante": "Carolina Herrera",
+    "notas": {
+      "salida": "Bayas, jazmín",
+      "corazon": "Nardos, haba tonka tostada",
+      "fondo": "Vetiver"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://medipielsa.vtexassets.com/arquivos/ids/194648-800-auto?v=638617520790870000&width=800&height=auto&aspect=true"
+  },
+  {
+    "nombre_comercial": "212 VIP ROSE",
+    "casa_fabricante": "Carolina Herrera",
+    "notas": {
+      "salida": "Champagne Rosé, pimienta rosa",
+      "corazon": "Flor de durazno, bouquet de rosas",
+      "fondo": "Queenwood, almizcle"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://noirperfumeria.co/cdn/shop/files/212-vip-ROse-NP.webp?v=1682953708&width=713"
+  },
+  {
+    "nombre_comercial": "BRIGHT CRYSTAL",
+    "casa_fabricante": "Versace",
+    "notas": {
+      "salida": "Yuzu, granada",
+      "corazon": "Peonía, magnolia, flor de loto",
+      "fondo": "Almizcle, ámbar"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://static.wixstatic.com/media/7e4077_1c1412a8cc4c4dd4ab46ba24760f9920~mv2.png/v1/fill/w_500,h_500,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7e4077_1c1412a8cc4c4dd4ab46ba24760f9920~mv2.png"
+  },
+  {
+    "nombre_comercial": "LA VIE EST BELLE",
+    "casa_fabricante": "Lancôme",
+    "notas": {
+      "salida": "Frambuesa, pimienta rosa, bergamota (Oui La Vie Est Belle); Grosella negra, pera (La Vie Est Belle original)",
+      "corazon": "Rosa, ylang-ylang (Oui La Vie Est Belle); Iris, jazmín, flor de azahar del naranjo (La Vie Est Belle original)",
+      "fondo": "Notas dulces, iris, pachulí (Oui La Vie Est Belle); Pachulí, haba tonka, vainilla, praliné (La Vie Est Belle original)"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://i5.walmartimages.com/asr/3d994134-2478-495e-b5ea-2244fcf4871c_2.a3c248744c84d72028dbee26ccf6f239.jpeg"
+  },
+  {
+    "nombre_comercial": "COCONUT PASSION",
+    "casa_fabricante": "Victoria's Secret",
+    "notas": {
+      "salida": "",
+      "corazon": "",
+      "fondo": "Vainilla, coco, notas dulces, lácteas, atalcadas, tropicales"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://http2.mlstatic.com/D_NQ_NP_857926-MLU73809168593_012024-O.webp"
+  },
+  {
+    "nombre_comercial": "BEAUTY RUSH JUICED BERRY",
+    "casa_fabricante": "Victoria's Secret",
+    "notas": {
+      "salida": "",
+      "corazon": "",
+      "fondo": "Varias bayas (fresas, frambuesas, moras), notas dulces y cítricas"
+    },
+    "genero": "Femenino",
+    "imagen_url": "https://m.media-amazon.com/images/I/61riQDFTskL._AC_SY606_.jpg"
+  },
+  {
+    "nombre_comercial": "9PM",
+    "casa_fabricante": "Afnan",
+    "notas": {
+      "salida": "Manzana, bergamota, lavanda, canela",
+      "corazon": "Flor de naranjo, lirio del valle",
+      "fondo": "Vainilla, haba tonka, ámbar, pachulí"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://http2.mlstatic.com/D_NQ_NP_861650-CBT82788540392_032025-O.webp"
+  },
+  {
+    "nombre_comercial": "VALENTINO UOMO BORN IN ROMA",
+    "casa_fabricante": "Valentino",
+    "notas": {
+      "salida": "Salvia",
+      "corazon": "Jengibre, sal mineral",
+      "fondo": "Vetiver, madera de guayacán"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://www.perfumesbogota.com.co/cdn/shop/products/D_NQ_NP_770818-MEC47398130236_092021-W_1024x1024@2x.jpg?v=1677779209"
+  },
+  {
+    "nombre_comercial": "LE BEAU",
+    "casa_fabricante": "Jean Paul Gaultier",
+    "notas": {
+      "salida": "Piña, iris, jengibre, ciprés",
+      "corazon": "Coco, notas amaderadas",
+      "fondo": "Ámbar, haba tonka"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://www.perfumesbogota.com.co/cdn/shop/products/le_beau_le_male_1024x1024@2x.jpg?v=1677779652"
+  },
+  {
+    "nombre_comercial": "ACQUA DI GIO PROFUMO",
+    "casa_fabricante": "Giorgio Armani",
+    "notas": {
+      "salida": "Notas marinas",
+      "corazon": "Romero, salvia, geranio",
+      "fondo": "Incienso, pachulí"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://perfumescolombia.com.co/cdn/shop/products/acqua-di-gio-profumo-11-premium-1959112.png?v=1751884239"
+  },
+  {
+    "nombre_comercial": "CLUB DE NUIT INTENSE MAN",
+    "casa_fabricante": "Armaf",
+    "notas": {
+      "salida": "Limón, piña, grosella negra, manzana, bergamota",
+      "corazon": "Abedul, jazmín, rosa",
+      "fondo": "Almizcle, ámbar gris, pachulí, vainilla"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://exitocol.vtexassets.com/arquivos/ids/23602302/perfume-armaf-club-de-nuit-intense-man-hombre-locion-105ml.jpg?v=638563955996100000"
+  },
+  {
+    "nombre_comercial": "BAD BOY",
+    "casa_fabricante": "Carolina Herrera",
+    "notas": {
+      "salida": "Bergamota, pimienta negra, pimienta blanca",
+      "corazon": "Cedro, salvia",
+      "fondo": "Haba tonka, cacao, ámbar"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://frutafrescaco.vtexassets.com/arquivos/ids/68925913-1600-auto?v=638887117472670000&width=1600&height=auto&aspect=true"
+  },
+  {
+    "nombre_comercial": "ONE MILLION LUCKY",
+    "casa_fabricante": "Paco Rabanne",
+    "notas": {
+      "salida": "Ciruela, notas ozónicas, pomelo, bergamota",
+      "corazon": "Avellana, miel, cedro, madera de cachemira, jazmín, flor de naranjo",
+      "fondo": "Amberwood, pachulí, musgo de roble, vetiver"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://luryx.com.co/pub/media/catalog/product/cache/17a2882685dcb778cb02abe71b33b15c/_/6/_6_5_65131403_2.jpg"
+  },
+  {
+    "nombre_comercial": "TERRE D HERMES",
+    "casa_fabricante": "Hermès",
+    "notas": {
+      "salida": "Naranja, pomelo",
+      "corazon": "Pimienta",
+      "fondo": "Vetiver, cedro, pachulí, benjuí"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://mwhite.com.co/cdn/shop/files/terre-de-hermes-parfum-200ml-perfumes-574.webp?v=1713450362&width=493"
+  },
+  {
+    "nombre_comercial": "INVICTUS VICTORY",
+    "casa_fabricante": "Paco Rabanne",
+    "notas": {
+      "salida": "Pimienta rosa, limón",
+      "corazon": "Incienso, lavanda",
+      "fondo": "Vainilla, haba tonka, ámbar"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://http2.mlstatic.com/D_NQ_NP_634002-MLA47844547674_102021-O.webp"
+  },
+  {
+    "nombre_comercial": "212 HEROES",
+    "casa_fabricante": "Carolina Herrera",
+    "notas": {
+      "salida": "Pera, cannabis, jengibre",
+      "corazon": "Geranio, salvia",
+      "fondo": "Almizcle, cuero"
+    },
+    "genero": "Masculino",
+    "imagen_url": "https://perfumescolombia.com.co/cdn/shop/products/212-men-heroes-11-premium-1064601.png?v=1751884226"
+  },
+  {
+    "nombre_comercial": "KHAMRAH QAHWA",
+    "casa_fabricante": "Lattafa",
+    "notas": {
+      "salida": "Cardamomo, jengibre, canela",
+      "corazon": "Praliné, flores blancas, frutas confitadas",
+      "fondo": "Café, haba tonka, benjuí, vainilla, almizcle"
+    },
+    "genero": "Unisex",
+    "imagen_url": "https://cdn.wholesale55.com/wp-content/uploads/2024/11/Khamrah-Qahwa-EDP-100-ml-Unisex-by-Lattafa-1.jpg.jpeg"
+  }
+        ];
+
+        let allPerfumes = [];
+        let filteredPerfumes = [];
+        let currentPerfume = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            allPerfumes = perfumeData;
+            filteredPerfumes = [...allPerfumes];
+            renderPerfumes();
+            initializeEventListeners();
+        });
+
+        function initializeEventListeners() {
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            
+            searchButton.addEventListener('click', performSearch);
+            searchInput.addEventListener('keypress', e => {
+                if (e.key === 'Enter') performSearch();
+            });
+
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    applyGenderFilter(this.getAttribute('data-filter'));
+                });
+            });
+
+            document.getElementById('shareLinkBtn').addEventListener('click', copyLink);
+            document.getElementById('contactWhatsAppBtn').addEventListener('click', contactWhatsApp);
+        }
+
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            
+            filteredPerfumes = query === '' ? [...allPerfumes] : 
+                allPerfumes.filter(perfume => {
+                    const searchText = [
+                        perfume.nombre_comercial,
+                        perfume.casa_fabricante,
+                        perfume.notas.salida,
+                        perfume.notas.corazon,
+                        perfume.notas.fondo
+                    ].join(' ').toLowerCase();
+                    
+                    return searchText.includes(query);
+                });
+            
+            renderPerfumes();
+        }
+
+        function applyGenderFilter(gender) {
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+            
+            let baseList = searchQuery === '' ? allPerfumes : 
+                allPerfumes.filter(perfume => {
+                    const searchText = [
+                        perfume.nombre_comercial,
+                        perfume.casa_fabricante,
+                        perfume.notas.salida,
+                        perfume.notas.corazon,
+                        perfume.notas.fondo
+                    ].join(' ').toLowerCase();
+                    
+                    return searchText.includes(searchQuery);
+                });
+
+            filteredPerfumes = gender === 'all' ? baseList : 
+                baseList.filter(perfume => perfume.genero === gender);
+            
+            renderPerfumes();
+        }
+
+        function renderPerfumes() {
+            const catalog = document.getElementById('perfumeCatalog');
+            
+            if (filteredPerfumes.length === 0) {
+                catalog.innerHTML = `
+                    <div class="col-12">
+                        <div class="no-results">
+                            <i class="fas fa-search fa-4x mb-4"></i>
+                            <h4>No se encontraron perfumes</h4>
+                            <p>Intenta con otros términos de búsqueda o filtros</p>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            catalog.innerHTML = filteredPerfumes.map((perfume, index) => `
+                <div class="col">
+                    <div class="card perfume-card h-100">
+                        <div class="position-relative">
+                            <img src="${perfume.imagen_url}" class="card-img-top" alt="${perfume.nombre_comercial}" 
+                                 onerror="this.src='https://via.placeholder.com/300x300/f8f6f0/1a1a1a?text=Sin+Imagen'">
+                            <span class="gender-badge ${perfume.genero.toLowerCase()}">${perfume.genero}</span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="perfume-name">${perfume.nombre_comercial}</h5>
+                            <p class="brand-name">${perfume.casa_fabricante}</p>
+                            <p class="notes-preview flex-grow-1">${getNotesPreview(perfume.notas)}</p>
+                            <button class="btn btn-details mt-auto" onclick="showPerfumeDetails(${index})">
+                                Ver Detalles
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getNotesPreview(notas) {
+            const allNotes = [notas.salida, notas.corazon, notas.fondo]
+                .filter(note => note?.trim())
+                .join(', ');
+            
+            return allNotes.length > 80 ? 
+                allNotes.substring(0, 80) + '...' : 
+                allNotes || 'Notas no especificadas';
+        }
+
+        function showPerfumeDetails(index) {
+            const perfume = filteredPerfumes[index];
+            currentPerfume = perfume;
+            
+            document.getElementById('modalTitle').textContent = perfume.nombre_comercial;
+            document.getElementById('modalBrand').textContent = perfume.casa_fabricante;
+            document.getElementById('modalImage').src = perfume.imagen_url;
+            
+            const genderBadge = document.getElementById('modalGender');
+            genderBadge.textContent = perfume.genero;
+            genderBadge.className = `badge ${perfume.genero.toLowerCase()}`;
+            
+            document.getElementById('modalTopNotes').innerHTML = 
+                perfume.notas.salida || '<span class="empty-note">No especificadas</span>';
+            document.getElementById('modalHeartNotes').innerHTML = 
+                perfume.notas.corazon || '<span class="empty-note">No especificadas</span>';
+            document.getElementById('modalBaseNotes').innerHTML = 
+                perfume.notas.fondo || '<span class="empty-note">No especificadas</span>';
+            
+            new bootstrap.Modal(document.getElementById('perfumeModal')).show();
+        }
+
+        function contactWhatsApp() {
+            if (!currentPerfume) return;
+            
+            const message = `¡Hola Céfiro! Me interesa el perfume *${currentPerfume.nombre_comercial}* de ${currentPerfume.casa_fabricante}. ¿Podrían darme más información sobre disponibilidad y precio? ¡Gracias! 🌿`;
+            const whatsappUrl = `https://wa.me/573106197587?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function copyLink() {
+            const url = window.location.href;
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(url).then(() => showToast());
+            } else {
+                const textarea = document.createElement('textarea');
+                textarea.value = url;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast();
+            }
+        }
+
+        function showToast() {
+            new bootstrap.Toast(document.getElementById('copyToast')).show();
+        }
+    </script>
 </body>
 </html>
