@@ -829,12 +829,23 @@ footer span{color:var(--sv);}
   <div class="corner corner--bl"></div>
   <div class="corner corner--br"></div>
 
-  <!-- Video de fondo: reemplaza hero.mp4 con tu clip real -->
+  <!-- Video de fondo: solo se descarga en pantallas grandes;
+       en móvil se muestra hero-poster.jpg para no gastar datos -->
   <video class="hero-video" autoplay muted loop playsinline
-         poster="hero-poster.jpg"
+         poster="hero-poster.jpg" preload="none"
          onerror="this.style.display='none'">
-    <source src="hero.mp4" type="video/mp4">
   </video>
+  <script>
+    (function(){
+      var v = document.querySelector('.hero-video');
+      if (window.matchMedia('(min-width: 800px)').matches) {
+        var s = document.createElement('source');
+        s.src = 'hero.mp4'; s.type = 'video/mp4';
+        v.appendChild(s); v.load();
+        v.play().catch(function(){});
+      }
+    })();
+  </script>
   <!-- Fallback si no hay video -->
   <div class="hero-no-video"></div>
   <div class="hero-overlay"></div>
