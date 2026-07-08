@@ -1,0 +1,8 @@
+# Solo para uso local (necesitan PHP + base de datos, no funcionan en GitHub Pages)
+index.php
+api/
+assets/js/tarjeta-lealtad.js
+assets/css/tarjeta-lealtad.css
+
+# Respaldo del diseño dorado anterior
+index-dorado-backup.html

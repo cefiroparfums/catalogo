@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Céfiro Parfums — Boutique de Alta Perfumería</title>
+<meta name="description" content="Perfumes de alta concentración inspirados en grandes firmas. Líneas Silver, Gold y Diamante. Fórmula exclusiva con base de alcohol de receta francesa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Raleway:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════
+   TOKENS —PALETA PLATA / NEGRO
+   ═══════════════════════════════════════════════════ */
+:root {
+  --bg:      #080808;
+  --bg2:     #0e0e0e;
+  --surface: #141414;
+  --surf2:   #1c1c1c;
+  --border:  rgba(192,192,192,0.1);
+  --border-h:rgba(192,192,192,0.28);
+
+  --sv:      #C0C0C0;   /* silver principal */
+  --sv2:     #E8E8E8;   /* silver claro     */
+  --sv3:     #909090;   /* silver oscuro    */
+  --sv-dim:  rgba(192,192,192,0.08);
+  --sv-glow: rgba(192,192,192,0.18);
+
+  --cream:   #F5F5F5;
+  --cream2:  #D0D0D0;
+  --muted:   #707070;
+  --muted2:  #999;
+  --white:   #FFFFFF;
+  --ink:     #F0F0F0;
+
+  --shadow:  0 0 60px rgba(192,192,192,0.05);
+  --r: 2px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Raleway',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;cursor:default;}
+
+/* grain overlay */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.5;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+@keyframes lineReveal{from{opacity:0;transform:scaleX(0);}to{opacity:1;transform:scaleX(1);}}
+@keyframes shimmer{0%{background-position:-200% center;}100%{background-position:200% center;}}
+
+/* ═══════════════════════════════════════════════════
+   HERO —VIDEO BG
+   ═══════════════════════════════════════════════════ */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:80px 40px;
+  overflow:hidden;
+  background:#080808;
+}
+
+.hero-video{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  z-index:1;
+  opacity:0.55;
+}
+
+/* Fallback cuando no hay video */
+.hero-no-video{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(192,192,192,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 80% 70%, rgba(192,192,192,0.04) 0%, transparent 60%),
+    linear-gradient(180deg, #080808 0%, #0e0e0e 100%);
+}
+
+.hero-overlay{
+  position:absolute;inset:0;z-index:2;
+  background:linear-gradient(
+    180deg,
+    rgba(8,8,8,0.35) 0%,
+    rgba(8,8,8,0.5)  40%,
+    rgba(8,8,8,0.75) 80%,
+    rgba(8,8,8,0.95) 100%
+  );
+}
+
+.hero-content{position:relative;z-index:3;max-width:780px;}
+
+.hero-eyebrow{
+  font-size:10px;letter-spacing:0.55em;text-transform:uppercase;
+  color:var(--sv);font-weight:300;margin-bottom:36px;
+  animation:fadeUp 1.2s ease 0.3s both;
+}
+
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(54px,8vw,110px);
+  font-weight:400;color:var(--white);
+  letter-spacing:0.05em;line-height:0.95;
+  margin-bottom:8px;
+  animation:fadeUp 1.2s ease 0.6s both;
+}
+.hero-title em{font-style:italic;color:var(--sv2);}
+
+.hero-slogan{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:clamp(17px,2.2vw,24px);
+  color:var(--sv);letter-spacing:0.06em;
+  margin-bottom:14px;
+  animation:fadeUp 1.2s ease 0.85s both;
+}
+
+.hero-sub{
+  font-size:10px;letter-spacing:0.32em;text-transform:uppercase;
+  color:var(--muted2);font-weight:300;
+  animation:fadeUp 1.2s ease 1s both;
+}
+
+.hero-cta-row{
+  display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+  margin-top:40px;
+  animation:fadeUp 1.2s ease 1.2s both;
+}
+
+/* Botón CTA principal —plata brillante */
+.btn-cta{
+  position:relative;overflow:hidden;
+  padding:16px 48px;
+  background:linear-gradient(135deg,#E8E8E8 0%,#C0C0C0 45%,#D8D8D8 100%);
+  color:#080808;border:none;
+  font-family:'Raleway',sans-serif;
+  font-size:10px;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;
+  cursor:pointer;border-radius:var(--r);
+  text-decoration:none;display:inline-flex;align-items:center;gap:10px;
+  transition:box-shadow 0.4s ease,transform 0.2s ease;
+}
+.btn-cta::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.55) 50%,transparent 100%);
+  background-size:200% auto;
+  animation:shimmer 2.6s linear infinite;
+}
+.btn-cta:hover{
+  box-shadow:0 0 28px rgba(192,192,192,0.45),0 0 60px rgba(192,192,192,0.2);
+  transform:translateY(-2px);
+}
+.btn-cta:active{transform:translateY(0);}
+
+.btn-ghost-cta{
+  padding:15px 36px;
+  background:transparent;
+  border:1px solid rgba(192,192,192,0.35);
+  color:var(--sv2);
+  font-family:'Raleway',sans-serif;
+  font-size:10px;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;
+  cursor:pointer;border-radius:var(--r);
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  transition:all 0.35s ease;
+}
+.btn-ghost-cta:hover{background:rgba(192,192,192,0.08);border-color:var(--sv);color:var(--white);}
+
+/* Esquinas decorativas */
+.hero .corner{position:absolute;width:42px;height:42px;}
+.corner--tl{top:28px;left:28px;border-top:1px solid var(--sv);border-left:1px solid var(--sv);animation:fadeUp 1.4s ease 1s both;}
+.corner--tr{top:28px;right:28px;border-top:1px solid var(--sv);border-right:1px solid var(--sv);animation:fadeUp 1.4s ease 1.1s both;}
+.corner--bl{bottom:28px;left:28px;border-bottom:1px solid var(--sv);border-left:1px solid var(--sv);animation:fadeUp 1.4s ease 1.2s both;}
+.corner--br{bottom:28px;right:28px;border-bottom:1px solid var(--sv);border-right:1px solid var(--sv);animation:fadeUp 1.4s ease 1.3s both;}
+
+.hero-line-top{position:absolute;top:46px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--sv),rgba(192,192,192,0.2),transparent);animation:lineReveal 2s ease 0.5s both;}
+.hero-line-bot{position:absolute;bottom:46px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(192,192,192,0.2),var(--sv),transparent);animation:lineReveal 2s ease 0.8s both;}
+
+/* ═══════════════════════════════════════════════════
+   LÁNEAS —CARRUSEL HORIZONTAL
+   ═══════════════════════════════════════════════════ */
+.lines-section{
+  padding:80px 0 64px;
+  border-bottom:1px solid var(--border);
+  overflow:hidden;
+}
+
+.section-eyebrow{
+  font-size:9px;letter-spacing:0.5em;text-transform:uppercase;
+  color:var(--sv3);text-align:center;margin-bottom:12px;
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,3.5vw,42px);font-weight:400;
+  color:var(--cream);text-align:center;margin-bottom:48px;letter-spacing:0.04em;
+}
+.section-title em{font-style:italic;color:var(--sv2);}
+
+.lines-track-wrap{
+  overflow-x:auto;
+  padding:0 40px 20px;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+.lines-track-wrap::-webkit-scrollbar{display:none;}
+
+.lines-track{
+  display:flex;gap:20px;
+  width:max-content;
+  margin:0 auto;
+}
+
+/* Asegurar que los 3 quepan centrados en pantallas grandes */
+@media(min-width:1100px){
+  .lines-track{width:auto;justify-content:center;}
+}
+
+.line-card{
+  flex-shrink:0;width:340px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  overflow:hidden;
+  transition:border-color 0.4s ease,transform 0.4s ease,box-shadow 0.4s ease;
+  display:flex;flex-direction:column;
+}
+.line-card:hover{
+  border-color:var(--border-h);
+  transform:translateY(-4px);
+  box-shadow:0 12px 40px rgba(0,0,0,0.4),0 0 0 1px rgba(192,192,192,0.12);
+}
+
+.line-card-top{
+  height:5px;width:100%;
+}
+.line-silver .line-card-top{background:linear-gradient(90deg,#707070,#E8E8E8,#707070);}
+.line-gold   .line-card-top{background:linear-gradient(90deg,#7a8fa0,#C8D0DA,#7a8fa0);}
+.line-diamante .line-card-top{background:linear-gradient(90deg,#4060a0,#A0C0FF,#60C0E0,#4060a0);}
+
+.line-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  margin:28px 28px 0;
+  font-size:9px;letter-spacing:0.4em;text-transform:uppercase;font-weight:700;
+}
+.line-silver .line-badge{color:var(--sv2);}
+.line-gold   .line-badge{color:#C8D0DA;}
+.line-diamante .line-badge{color:#A0C0FF;}
+
+.line-badge-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.line-silver .line-badge-dot{background:var(--sv2);}
+.line-gold   .line-badge-dot{background:#C8D0DA;}
+.line-diamante .line-badge-dot{background:#A0C0FF;}
+
+.line-card h3{
+  font-family:'Playfair Display',serif;
+  font-size:26px;font-weight:400;
+  color:var(--white);
+  padding:10px 28px 0;line-height:1.1;
+}
+
+.line-card-desc{
+  font-size:12px;line-height:1.7;color:var(--muted2);
+  padding:14px 28px 0;flex:1;
+}
+
+.line-card-features{
+  list-style:none;
+  padding:20px 28px 0;
+  display:flex;flex-direction:column;gap:7px;
+}
+.line-card-features li{
+  font-size:11px;color:var(--cream2);
+  display:flex;align-items:center;gap:10px;
+}
+.line-card-features li::before{
+  content:'';width:16px;height:1px;flex-shrink:0;
+}
+.line-silver .line-card-features li::before{background:var(--sv);}
+.line-gold   .line-card-features li::before{background:#C8D0DA;}
+.line-diamante .line-card-features li::before{background:#A0C0FF;}
+
+.line-card-action{
+  padding:28px;margin-top:auto;
+}
+.btn-line{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 22px;font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;
+  border:1px solid;border-radius:var(--r);cursor:pointer;text-decoration:none;
+  font-family:'Raleway',sans-serif;
+  transition:all 0.3s ease;background:transparent;width:100%;justify-content:center;
+}
+.line-silver .btn-line{border-color:rgba(192,192,192,0.3);color:var(--sv2);}
+.line-silver .btn-line:hover{background:rgba(192,192,192,0.1);border-color:var(--sv2);}
+.line-gold   .btn-line{border-color:rgba(200,208,218,0.3);color:#C8D0DA;}
+.line-gold   .btn-line:hover{background:rgba(200,208,218,0.1);border-color:#C8D0DA;}
+.line-diamante .btn-line{border-color:rgba(160,192,255,0.3);color:#A0C0FF;}
+.line-diamante .btn-line:hover{background:rgba(160,192,255,0.1);border-color:#A0C0FF;}
+
+/* ═══════════════════════════════════════════════════
+   DIFERENCIADORES —STRIP
+   ═══════════════════════════════════════════════════ */
+.diff-strip{
+  padding:48px 40px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:0;
+}
+
+.diff-item{
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  padding:0 44px;
+  border-right:1px solid var(--border);
+  text-align:center;
+}
+.diff-item:last-child{border-right:none;}
+
+.diff-icon{
+  width:36px;height:36px;
+  border:1px solid rgba(192,192,192,0.2);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--sv);
+}
+.diff-label{
+  font-size:9px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--sv2);
+}
+.diff-sub{font-size:11px;color:var(--muted2);line-height:1.4;max-width:140px;}
+
+/* ═══════════════════════════════════════════════════
+   SOCIAL PROOF —TESTIMONIOS
+   ═══════════════════════════════════════════════════ */
+.social-proof{
+  padding:88px 0 80px;
+  background:var(--bg2);
+  border-bottom:1px solid var(--border);
+  overflow:hidden;
+}
+.social-proof-head{
+  text-align:center;padding:0 40px 48px;
+}
+
+/* Carrusel infinito */
+.tcarousel-wrap{
+  position:relative;
+  overflow:hidden;
+  /* fade edges */
+  mask-image:linear-gradient(90deg,transparent 0%,#000 8%,#000 92%,transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 8%,#000 92%,transparent 100%);
+}
+.tcarousel-track{
+  display:flex;
+  gap:20px;
+  width:max-content;
+  animation: tcarousel 38s linear infinite;
+}
+@keyframes tcarousel{
+  0%   { transform:translateX(0); }
+  100% { transform:translateX(-50%); }
+}
+.tcard-google,.tcard-insta{
+  flex-shrink:0;
+  width:320px;
+}
+
+/* Tarjeta Google Maps */
+.tcard-google{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:20px 22px;
+  transition:border-color 0.3s ease,transform 0.3s ease;
+}
+.tcard-google:hover{border-color:var(--border-h);transform:translateY(-3px);}
+
+.tcard-head{display:flex;gap:12px;align-items:center;margin-bottom:12px;}
+.tcard-avatar{
+  width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:700;color:#fff;flex-shrink:0;
+}
+.tcard-info{flex:1;}
+.tcard-name{font-size:13px;font-weight:600;color:var(--cream);}
+.tcard-meta{font-size:10px;color:var(--muted2);margin-top:2px;}
+
+.tcard-stars{
+  display:flex;gap:2px;margin-bottom:10px;
+}
+.tcard-stars span{color:#C0C0C0;font-size:14px;}
+
+.tcard-text{
+  font-size:13px;line-height:1.65;color:var(--cream2);
+  font-style:italic;
+}
+
+.tcard-badge-google{
+  display:inline-flex;align-items:center;gap:5px;
+  margin-top:14px;padding:4px 10px;
+  background:rgba(66,133,244,0.08);
+  border:1px solid rgba(66,133,244,0.2);
+  border-radius:20px;font-size:9px;color:#7ab4ff;letter-spacing:0.05em;
+  text-decoration:none;cursor:pointer;transition:background 0.2s,border-color 0.2s;
+}
+.tcard-badge-google:hover{background:rgba(66,133,244,0.18);border-color:rgba(66,133,244,0.4);}
+
+/* Tarjeta Instagram */
+.tcard-insta{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+  transition:border-color 0.3s ease,transform 0.3s ease;
+}
+.tcard-insta:hover{border-color:var(--border-h);transform:translateY(-3px);}
+
+.tcard-insta-header{
+  display:flex;align-items:center;gap:10px;
+  padding:14px 16px;
+  border-bottom:1px solid var(--border);
+}
+.tcard-insta-avatar{
+  width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:700;color:#fff;flex-shrink:0;
+  background:linear-gradient(135deg,#C0C0C0,#606060);
+}
+.tcard-insta-user{font-size:12px;font-weight:700;color:var(--cream);}
+.tcard-insta-handle{font-size:10px;color:var(--muted2);}
+.tcard-insta-logo{margin-left:auto;opacity:0.4;}
+
+.tcard-insta-body{padding:16px;}
+.tcard-insta-text{font-size:13px;line-height:1.65;color:var(--cream2);}
+.tcard-insta-text strong{color:var(--sv2);font-weight:600;}
+
+.tcard-insta-footer{
+  padding:10px 16px 14px;
+  display:flex;align-items:center;gap:14px;
+  font-size:12px;color:var(--muted2);
+}
+.tcard-insta-like{display:flex;align-items:center;gap:5px;cursor:pointer;transition:color 0.2s;}
+.tcard-insta-like:hover{color:#ff6b6b;}
+
+/* ═══════════════════════════════════════════════════
+   FILTER BAR
+   ═══════════════════════════════════════════════════ */
+.filter-section{
+  position:sticky;top:0;z-index:100;
+  background:rgba(8,8,8,0.97);backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+  padding:0 40px;
+  display:flex;align-items:center;justify-content:center;
+  gap:0;flex-wrap:wrap;min-height:62px;
+}
+
+.filter-label{
+  font-size:9px;font-weight:600;letter-spacing:0.45em;text-transform:uppercase;
+  color:var(--muted);margin-right:24px;
+}
+
+.filter-btn{
+  position:relative;
+  font-family:'Raleway',sans-serif;
+  font-size:10px;font-weight:500;letter-spacing:0.32em;text-transform:uppercase;
+  padding:0 20px;height:100%;min-height:62px;
+  border:none;background:transparent;color:var(--muted2);cursor:pointer;
+  transition:color 0.3s ease;outline:none;
+}
+.filter-btn::after{
+  content:'';position:absolute;bottom:0;left:14px;right:14px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--sv),transparent);
+  transform:scaleX(0);transition:transform 0.4s cubic-bezier(.16,1,.3,1);
+  border-radius:2px;
+}
+.filter-btn.active{color:var(--cream);font-weight:600;}
+.filter-btn.active::after{transform:scaleX(1);}
+.filter-btn:hover{color:var(--cream);}
+
+.filter-divider{width:1px;height:16px;background:var(--border);flex-shrink:0;}
+
+.search-wrap{
+  display:flex;align-items:center;gap:10px;
+  margin-left:24px;padding-left:24px;
+  border-left:1px solid var(--border);height:36px;
+}
+.search-field{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(192,192,192,0.04);border:1px solid rgba(192,192,192,0.12);
+  padding:0 12px;height:32px;border-radius:var(--r);
+  transition:border-color 0.3s,background 0.3s;
+}
+.search-field:focus-within{border-color:rgba(192,192,192,0.4);background:rgba(192,192,192,0.07);}
+.search-field svg{flex-shrink:0;opacity:0.5;transition:opacity 0.3s;}
+.search-field:focus-within svg{opacity:1;}
+.search-input{
+  background:transparent;border:none;color:var(--cream);
+  font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:0.08em;
+  width:165px;outline:none;
+}
+.search-input::placeholder{color:var(--muted);font-size:10px;}
+
+.familia-wrap{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(192,192,192,0.04);border:1px solid rgba(192,192,192,0.12);
+  padding:0 10px 0 12px;height:32px;border-radius:var(--r);
+  transition:border-color 0.3s,background 0.3s;
+}
+.familia-wrap:focus-within{border-color:rgba(192,192,192,0.4);background:rgba(192,192,192,0.07);}
+.familia-select{
+  background:transparent;border:none;color:var(--muted2);
+  font-family:'Raleway',sans-serif;font-size:10px;letter-spacing:0.1em;
+  padding:0 18px 0 0;outline:none;cursor:pointer;appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5' viewBox='0 0 9 5'%3E%3Cpath d='M1 1l3.5 3L8 1' stroke='%23C0C0C0' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 0 center;
+  transition:color 0.3s;
+}
+.familia-select:focus{color:var(--cream);}
+.familia-select option{background:#141414;color:var(--cream);}
+
+/* ═══════════════════════════════════════════════════
+   CATÁLOGO
+   ═══════════════════════════════════════════════════ */
+.catalog-wrapper{max-width:1440px;margin:0 auto;padding:64px 48px 96px;}
+
+.catalog-header{
+  display:flex;align-items:baseline;justify-content:space-between;
+  margin-bottom:48px;padding-bottom:20px;border-bottom:1px solid var(--border);
+}
+.catalog-title{
+  font-family:'Playfair Display',serif;font-size:13px;font-weight:400;font-style:italic;
+  color:var(--muted2);letter-spacing:0.08em;
+}
+.catalog-count{font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);}
+.catalog-count span{color:var(--sv);}
+
+.catalog-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
+  gap:2px;
+}
+
+.card{
+  position:relative;background:var(--surface);cursor:pointer;
+  overflow:hidden;animation:fadeUp 0.7s ease both;
+  border:1px solid var(--border);transition:border-color 0.4s ease;
+}
+.card:hover{border-color:var(--border-h);}
+.card.hidden{display:none;}
+
+.card-image-wrap{width:100%;aspect-ratio:2/3;overflow:hidden;position:relative;background:var(--surf2);}
+.card-image-wrap::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 40%,rgba(8,8,8,0.5) 70%,rgba(8,8,8,0.92) 100%);
+  z-index:3;transition:opacity 0.4s ease;pointer-events:none;
+}
+.card-image-container{position:relative;width:100%;height:100%;}
+
+.card-image-left{position:absolute;left:0;top:0;width:50%;height:100%;overflow:hidden;opacity:0.5;}
+.card-image-left img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform 0.8s cubic-bezier(.16,1,.3,1),filter 0.6s ease;
+  filter:blur(3.5px) brightness(0.75) saturate(0.5);transform:scale(1.1);
+}
+.card-image-right{position:absolute;right:0;top:0;width:50%;height:100%;overflow:hidden;}
+.card-image-right img{
+  width:100%;height:100%;object-fit:contain;object-position:center;display:block;
+  transform:scale(1.35);
+  transition:transform 0.8s cubic-bezier(.16,1,.3,1),filter 0.6s ease;
+  filter:drop-shadow(0 4px 20px rgba(0,0,0,0.7));
+}
+.card-image-divider{
+  position:absolute;left:50%;top:0;width:1px;height:100%;
+  background:linear-gradient(to bottom,transparent,rgba(192,192,192,0.2),transparent);
+  z-index:2;pointer-events:none;
+}
+.card:hover .card-image-left img{transform:scale(1.15);filter:blur(3.5px) brightness(0.85) saturate(0.6);}
+.card:hover .card-image-right img{transform:scale(1.45);filter:drop-shadow(0 4px 24px rgba(0,0,0,0.8));}
+.card:hover .card-image-left{opacity:0.6;}
+
+.card-badge{
+  position:absolute;top:16px;left:16px;
+  font-size:8px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;
+  padding:5px 11px;z-index:5;border:1px solid;
+}
+.badge-hombre {background:rgba(60,80,40,0.7);color:#b8c890;border-color:rgba(60,80,40,0.6);}
+.badge-mujer  {background:rgba(120,60,80,0.7);color:#f0b8c0;border-color:rgba(120,60,80,0.6);}
+.badge-unisex {background:rgba(60,60,60,0.7);color:#c8c8c8;border-color:rgba(100,100,100,0.5);}
+
+.card-number{
+  position:absolute;top:16px;right:16px;
+  font-family:'Playfair Display',serif;font-size:11px;color:rgba(192,192,192,0.35);z-index:5;
+}
+
+.card-info-overlay{
+  position:absolute;bottom:0;left:0;right:0;z-index:4;
+  padding:24px 22px 22px;
+  transform:translateY(8px);transition:transform 0.5s cubic-bezier(.16,1,.3,1);
+}
+.card:hover .card-info-overlay{transform:translateY(0);}
+.card-brand-small{font-size:9px;font-weight:500;letter-spacing:0.35em;text-transform:uppercase;color:var(--sv);margin-bottom:5px;}
+.card-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:400;color:var(--cream);line-height:1.2;margin-bottom:6px;}
+.card-family{font-size:10px;font-weight:300;letter-spacing:0.12em;color:var(--muted2);margin-bottom:14px;}
+
+.card-arrow{
+  width:32px;height:32px;border:1px solid var(--border-h);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--sv);font-size:14px;flex-shrink:0;
+  transition:all 0.3s ease;
+}
+.card:hover .card-arrow{background:var(--sv);color:var(--bg);border-color:var(--sv);}
+
+.empty-state{grid-column:1/-1;text-align:center;padding:100px 20px;display:none;}
+.empty-state.visible{display:block;}
+.empty-state h3{font-family:'Playfair Display',serif;font-size:28px;font-weight:300;color:var(--sv);margin-bottom:12px;}
+.empty-state p{font-size:12px;letter-spacing:0.15em;color:var(--muted);}
+
+/* ═══════════════════════════════════════════════════
+   MODAL
+   ═══════════════════════════════════════════════════ */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(4,4,4,0.88);z-index:1000;
+  display:flex;align-items:center;justify-content:center;padding:24px;
+  opacity:0;visibility:hidden;transition:opacity 0.5s ease,visibility 0.5s ease;
+  backdrop-filter:blur(8px);
+}
+.modal-overlay.open{opacity:1;visibility:visible;}
+
+.modal{
+  background:var(--surface);max-width:920px;width:100%;max-height:92vh;
+  overflow:hidden;display:grid;grid-template-columns:380px 1fr;
+  transform:translateY(40px) scale(0.96);
+  transition:transform 0.55s cubic-bezier(.16,1,.3,1);
+  position:relative;border:1px solid var(--border-h);box-shadow:var(--shadow);
+}
+.modal-overlay.open .modal{transform:translateY(0) scale(1);}
+.modal::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--sv),rgba(192,192,192,0.4),transparent);z-index:10;
+}
+
+.modal-image-col{
+  position:relative;overflow:hidden;
+  background:radial-gradient(ellipse at center,#1c1c1c 0%,#080808 100%);
+  min-height:520px;display:flex;align-items:center;justify-content:center;
+}
+.modal-image-col img{width:100%;height:100%;object-fit:cover;filter:sepia(0) brightness(0.9);transition:transform 8s ease;display:block;}
+.modal-overlay.open .modal-image-col img{transform:scale(1.06);}
+
+.modal-close{
+  position:absolute;top:16px;right:16px;width:38px;height:38px;
+  background:rgba(8,8,8,0.7);border:1px solid var(--border-h);color:var(--sv);
+  font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  z-index:20;transition:all 0.25s ease;
+}
+.modal-close:hover{background:var(--sv);color:var(--bg);border-color:var(--sv);}
+
+.btn-agregar{
+  background:var(--sv);color:#080808;border:none;
+  padding:10px 18px;border-radius:var(--r);
+  font-weight:700;font-size:13px;font-family:inherit;
+  cursor:pointer;white-space:nowrap;transition:background 0.2s,transform 0.1s;
+}
+.btn-agregar:hover{background:var(--sv2);}
+.btn-agregar:active{transform:scale(0.97);}
+
+.modal-content-col{padding:48px 44px 40px;display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:thin;}
+
+.modal-brand{font-size:9.5px;font-weight:600;letter-spacing:0.45em;text-transform:uppercase;color:var(--sv);margin-bottom:10px;}
+.modal-name{font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,32px);font-weight:400;color:var(--cream);line-height:1.1;margin-bottom:14px;}
+.modal-family-tag{
+  display:inline-block;font-size:9px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;
+  padding:6px 14px;border:1px solid rgba(192,192,192,0.22);color:var(--sv);background:rgba(192,192,192,0.04);margin-bottom:28px;
+}
+
+.modal-divider{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
+.modal-divider-line{flex:1;height:1px;background:var(--border);}
+.modal-divider-diamond{width:5px;height:5px;background:var(--sv);transform:rotate(45deg);opacity:0.5;}
+
+.modal-notes-section{margin-bottom:16px;}
+.notes-label{
+  font-size:8.5px;font-weight:600;letter-spacing:0.4em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:8px;
+}
+.notes-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.notes-pills{display:flex;flex-wrap:wrap;gap:5px;}
+.note-pill{font-size:11px;font-weight:300;padding:4px 11px;background:var(--sv-dim);border:1px solid rgba(192,192,192,0.1);color:var(--cream2);letter-spacing:0.04em;}
+
+.modal-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);}
+.info-item-label{font-size:8.5px;font-weight:500;letter-spacing:0.32em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+.info-item-value{font-family:'Playfair Display',serif;font-size:14px;color:var(--cream2);font-weight:400;}
+
+.concentration-wrap{position:relative;display:inline-flex;align-items:center;gap:6px;cursor:help;}
+.info-hint{width:15px;height:15px;border-radius:50%;border:1px solid rgba(192,192,192,0.4);color:var(--sv);font-size:9px;font-family:'Raleway',sans-serif;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.2s;}
+.concentration-wrap:hover .info-hint{background:var(--sv);color:var(--bg);}
+.concentration-tooltip{
+  position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(6px);
+  background:#181818;border:1px solid rgba(192,192,192,0.25);color:var(--cream2);
+  font-family:'Raleway',sans-serif;font-size:12px;font-weight:400;line-height:1.7;
+  padding:14px 16px;width:260px;border-radius:4px;
+  opacity:0;pointer-events:none;transition:all 0.25s ease;z-index:50;
+  box-shadow:0 12px 40px rgba(0,0,0,0.6);white-space:normal;
+}
+.concentration-tooltip strong{color:var(--sv);display:block;margin-bottom:8px;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;padding-bottom:8px;border-bottom:1px solid rgba(192,192,192,0.12);}
+.concentration-tooltip p{margin-top:8px;color:var(--cream2);}
+.concentration-tooltip span{color:var(--sv);font-weight:600;}
+.concentration-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:rgba(192,192,192,0.25);}
+.concentration-wrap:hover .concentration-tooltip{opacity:1;transform:translateX(-50%) translateY(0);}
+
+.stock-badge{
+  display:flex;align-items:center;gap:10px;margin-top:18px;
+  padding:10px 14px;border:1px solid rgba(192,192,192,0.18);border-radius:3px;background:rgba(192,192,192,0.04);
+  animation:stockPulse 2.8s ease-in-out infinite;
+}
+@keyframes stockPulse{0%,100%{border-color:rgba(192,192,192,0.18);background:rgba(192,192,192,0.04);}50%{border-color:rgba(192,192,192,0.45);background:rgba(192,192,192,0.08);box-shadow:0 0 16px rgba(192,192,192,0.08);}}
+.stock-badge.stock-bajo{border-color:rgba(239,68,68,0.25);background:rgba(239,68,68,0.04);animation:stockPulseLow 2s ease-in-out infinite;}
+@keyframes stockPulseLow{0%,100%{border-color:rgba(239,68,68,0.25);}50%{border-color:rgba(239,68,68,0.6);box-shadow:0 0 16px rgba(239,68,68,0.1);}}
+.stock-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--sv);animation:dotBlink 2.8s ease-in-out infinite;}
+@keyframes dotBlink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.stock-badge.stock-bajo .stock-dot{background:#f87171;animation:dotBlinkLow 2s ease-in-out infinite;}
+@keyframes dotBlinkLow{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.7);}}
+.stock-text{font-family:'Raleway',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.08em;color:var(--muted2);}
+.stock-text strong{color:var(--sv);font-weight:700;}
+.stock-badge.stock-bajo .stock-text strong{color:#f87171;}
+
+.modal-description{margin-top:20px;padding:16px 20px;background:rgba(192,192,192,0.03);border-left:2px solid rgba(192,192,192,0.4);}
+.modal-description p{font-family:'Playfair Display',serif;font-size:15px;font-style:italic;font-weight:400;color:var(--cream2);line-height:1.6;}
+
+.modal-form-section{margin-top:28px;padding-top:20px;border-top:1px solid var(--border);}
+.form-title{font-size:11px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--sv);margin-bottom:16px;}
+
+.form-group{margin-bottom:14px;}
+.form-group label{display:block;font-size:9px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.form-group input{width:100%;padding:10px 12px;background:rgba(192,192,192,0.05);border:1px solid rgba(192,192,192,0.18);color:var(--cream);font-family:'Raleway',sans-serif;font-size:13px;outline:none;transition:border-color 0.3s ease;}
+.form-group input:focus{border-color:var(--sv);background:rgba(192,192,192,0.08);}
+
+/* ═══════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════ */
+footer{
+  border-top:1px solid var(--border);padding:56px 40px 48px;
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+}
+.footer-brand{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:var(--sv2);letter-spacing:0.1em;}
+.footer-brand em{font-style:italic;}
+.footer-ig{
+  display:inline-flex;align-items:center;gap:7px;color:var(--muted2);text-decoration:none;
+  font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+  border:1px solid rgba(192,192,192,0.14);padding:7px 16px;border-radius:var(--r);
+  transition:all 0.3s ease;
+}
+.footer-ig:hover{color:var(--sv);border-color:rgba(192,192,192,0.35);background:rgba(192,192,192,0.05);}
+footer p{font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted2);}
+.footer-tagline{font-size:11px;letter-spacing:0.18em;color:var(--cream2);text-transform:none;font-family:'Playfair Display',serif;font-style:italic;}
+.footer-copy{font-size:10px;letter-spacing:0.12em;color:var(--muted2);text-transform:none;}
+footer span{color:var(--sv);}
+
+/* ═══════════════════════════════════════════════════
+   FABs + WhatsApp
+   ═══════════════════════════════════════════════════ */
+.fabs-group{
+  position:fixed;bottom:28px;right:28px;z-index:500;
+  display:flex;flex-direction:column;gap:12px;align-items:flex-end;
+}
+.fab-item{position:relative;display:flex;align-items:center;}
+.fab-tooltip{
+  position:absolute;right:calc(100% + 10px);
+  background:#181818;color:var(--cream2);border:1px solid var(--border-h);
+  padding:6px 12px;border-radius:4px;font-size:11px;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity 0.2s ease;
+}
+.fab-item:hover .fab-tooltip{opacity:1;}
+
+.fab-btn{
+  width:50px;height:50px;border-radius:50%;border:1px solid;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:all 0.3s ease;position:relative;
+}
+.fab-loyalty{background:#141414;border-color:rgba(192,192,192,0.25);color:var(--sv);}
+.fab-loyalty:hover{background:rgba(192,192,192,0.12);border-color:var(--sv);transform:scale(1.08);}
+.fab-cart{background:#141414;border-color:rgba(192,192,192,0.25);color:var(--sv);}
+.fab-cart:hover{background:rgba(192,192,192,0.12);border-color:var(--sv);transform:scale(1.08);}
+.fab-whatsapp{background:#1a3a1a;border-color:rgba(37,211,102,0.3);color:#25D366;}
+.fab-whatsapp:hover{background:rgba(37,211,102,0.15);border-color:#25D366;transform:scale(1.08);box-shadow:0 0 20px rgba(37,211,102,0.25);}
+
+.carrito-cantidad{
+  position:absolute;top:-4px;right:-4px;
+  background:var(--sv);color:#080808;
+  font-size:9px;font-weight:700;
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════ */
+@media(max-width:800px){
+  .modal{grid-template-columns:1fr;}
+  .catalog-wrapper{padding:40px 20px 64px;}
+  .catalog-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));}
+  .diff-strip{padding:32px 20px;}
+  .diff-item{padding:0 20px;}
+  .social-proof{padding:60px 0;}
+  .lines-section{padding:60px 0 48px;}
+  .lines-track-wrap{padding:0 20px 16px;}
+  .hero{padding:60px 24px;}
+}
+@media(max-width:500px){
+  .catalog-grid{grid-template-columns:1fr 1fr;gap:1px;}
+  .filter-section{height:auto;padding:12px 16px;flex-wrap:wrap;}
+  .filter-btn{padding:10px 12px;height:auto;min-height:unset;}
+  .modal-info-grid{grid-template-columns:1fr;}
+  .diff-strip{flex-direction:column;gap:28px;}
+  .diff-item{border-right:none;border-bottom:1px solid var(--border);padding-bottom:24px;}
+  .diff-item:last-child{border-bottom:none;}
+}
+</style>
+<link rel="stylesheet" href="assets/css/carrito.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════ -->
+<header class="hero" id="inicio">
+  <div class="hero-line-top"></div>
+  <div class="corner corner--tl"></div>
+  <div class="corner corner--tr"></div>
+  <div class="corner corner--bl"></div>
+  <div class="corner corner--br"></div>
+
+  <!-- Video de fondo: reemplaza hero.mp4 con tu clip real -->
+  <video class="hero-video" autoplay muted loop playsinline
+         poster="hero-poster.jpg"
+         onerror="this.style.display='none'">
+    <source src="hero.mp4" type="video/mp4">
+  </video>
+  <!-- Fallback si no hay video -->
+  <div class="hero-no-video"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Colección Exclusiva &ensp;·&ensp; Alta Perfumería Inspirada</p>
+    <h1 class="hero-title"><em>Céfiro</em><br>Parfums</h1>
+    <p class="hero-slogan">La Esencia del Estilo Sutil</p>
+    <p class="hero-sub">Alta Concentración 50% &ensp;·&ensp; Base Alcohol Receta Francesa &ensp;·&ensp; Feromonas</p>
+    <div class="hero-cta-row">
+      <a href="#coleccion" class="btn-cta">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M10 2l6 16H4L10 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Explorar la Colección
+      </a>
+      <a href="https://wa.me/573213320564?text=Hola%20C%C3%A9firo.%20Quiero%20asesor%C3%ADa%20premium.%20%C2%BFMe%20ayudan%20a%20conocer%20su%20cat%C3%A1logo%3F"
+         target="_blank" rel="noopener" class="btn-ghost-cta">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Asesoría por WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-line-bot"></div>
+</header>
+
+<!-- ═══════════════════════════════════════════════
+     LÁNEAS DE LA COLECCIÓN
+     ═══════════════════════════════════════════════ -->
+<section class="lines-section">
+  <p class="section-eyebrow">Tres niveles de exclusividad</p>
+  <h2 class="section-title">Nuestra <em>Colección</em></h2>
+
+  <div class="lines-track-wrap">
+    <div class="lines-track">
+
+      <!-- Silver -->
+      <div class="line-card line-silver">
+        <div class="line-card-top"></div>
+        <div class="line-badge"><div class="line-badge-dot"></div>Línea Silver</div>
+        <h3>Fragancias<br>Comerciales</h3>
+        <p class="line-card-desc">Los aromas más queridos del mundo, ahora en tu piel con una concentración que supera al original. Fijación todo el día, proyección que enamora.</p>
+        <ul class="line-card-features">
+          <li>Inspirados en bestsellers globales</li>
+          <li>Perfectas para el día a día</li>
+          <li>Excelente relación fragancia / precio</li>
+          <li>Fijación 8—10 horas</li>
+        </ul>
+        <div class="line-card-action">
+          <a href="#coleccion" class="btn-line">Ver fragancias &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Gold -->
+      <div class="line-card line-gold">
+        <div class="line-card-top"></div>
+        <div class="line-badge"><div class="line-badge-dot"></div>Línea Gold</div>
+        <h3>Diseñador<br>& Árabes</h3>
+        <p class="line-card-desc">Las grandes casas de moda y la perfumería oriental en un solo frasco. Alta proyección y silueta olfativa que te convierte en el centro de atención.</p>
+        <ul class="line-card-features">
+          <li>Inspirados en firmas de lujo</li>
+          <li>Tendencias internacionales</li>
+          <li>Oud, ambar y especias orientales</li>
+          <li>Fijación 10—14 horas</li>
+        </ul>
+        <div class="line-card-action">
+          <a href="#coleccion" class="btn-line">Ver fragancias &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Diamante -->
+      <div class="line-card line-diamante">
+        <div class="line-card-top"></div>
+        <div class="line-badge"><div class="line-badge-dot"></div>Línea Diamante</div>
+        <h3>Perfumería<br>de Nicho</h3>
+        <p class="line-card-desc">Joyas olfativas de casas independientes. Composiciones raras, extractos puros, exclusividad absoluta. Para quienes saben que el lujo es una experiencia sensorial.</p>
+        <ul class="line-card-features">
+          <li>Inspirados en nicho mundial</li>
+          <li>Materias primas premium</li>
+          <li>Producción limitada por fragancia</li>
+          <li>Fijación 12—18 horas</li>
+        </ul>
+        <div class="line-card-action">
+          <a href="https://wa.me/573213320564?text=Hola%20C%C3%A9firo.%20Quiero%20asesor%C3%ADa%20premium.%20Estoy%20interesado%20en%20una%20fragancia%20de%20la%20L%C3%ADnea%20Diamante%20con%20adici%C3%B3n%20de%20hormonas.%20%C2%BFMe%20ayudan%20a%20finalizar%20mi%20orden%3F"
+             target="_blank" rel="noopener" class="btn-line">Asesoría privada &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     DIFERENCIADORES
+     ═══════════════════════════════════════════════ -->
+<div class="diff-strip">
+  <div class="diff-item">
+    <div class="diff-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M12 2C8 8 6 12 6 15a6 6 0 0012 0c0-3-2-7-6-13z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="diff-label">50% Concentración</div>
+    <div class="diff-sub">La mitad del frasco es esencia pura de perfumería</div>
+  </div>
+  <div class="diff-item">
+    <div class="diff-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="diff-label">Receta Francesa</div>
+    <div class="diff-sub">Base de alcohol de receta exclusiva de Grasse</div>
+  </div>
+  <div class="diff-item">
+    <div class="diff-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3" stroke-linecap="round"/></svg>
+    </div>
+    <div class="diff-label">Adición de Hormonas</div>
+    <div class="diff-sub">Incluida sin costo extra en todas nuestras fragancias</div>
+  </div>
+  <div class="diff-item">
+    <div class="diff-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="diff-label">Trato Elegante</div>
+    <div class="diff-sub">Asesoría personalizada y empaque premium en vidrio</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SOCIAL PROOF —TESTIMONIOS
+     ═══════════════════════════════════════════════ -->
+<section class="social-proof">
+  <div class="social-proof-head">
+    <p class="section-eyebrow">Lo que dicen nuestros clientes</p>
+    <h2 class="section-title">Experiencias <em>Reales</em></h2>
+  </div>
+
+  <div class="tcarousel-wrap">
+    <div class="tcarousel-track">
+
+      <!-- ── SET 1 —Reseñas reales Google Maps ── -->
+
+      <!-- 1. Liliana Lamadrid —Duración y calidad -->
+      <div class="tcard-google">
+        <div class="tcard-head">
+          <div class="tcard-avatar" style="background:linear-gradient(135deg,#7a4a2a,#3a1a0a);">L</div>
+          <div class="tcard-info">
+            <div class="tcard-name">Liliana Lamadrid</div>
+            <div class="tcard-meta">Google Maps &middot; Reseña verificada</div>
+          </div>
+        </div>
+        <div class="tcard-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+        <p class="tcard-text">"Excelente atención, tienen los últimos perfumes, perdura el olor y es de excelente calidad, recomendadisimo"</p>
+        <a class="tcard-badge-google" href="https://g.page/r/CZDLHS9sSyMREBM/review" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="#7ab4ff"><path d="M21.35 11.1H12v2.8h5.35c-.23 1.24-1.35 3.63-5.35 3.63-3.22 0-5.85-2.67-5.85-5.96 0-3.28 2.63-5.96 5.85-5.96 1.83 0 3.06.78 3.76 1.45l2.56-2.47C16.63 3.1 14.55 2 12 2 6.48 2 2 6.48 2 12s4.48 10 10 10c5.77 0 9.59-4.06 9.59-9.78 0-.66-.07-1.14-.24-1.12z"/></svg>
+          Google Maps
+        </a>
+      </div>
+
+      <!-- 2. Daniel Suescun —Fidelidad -->
+      <div class="tcard-google">
+        <div class="tcard-head">
+          <div class="tcard-avatar" style="background:linear-gradient(135deg,#1a3a5a,#0a1a2a);">D</div>
+          <div class="tcard-info">
+            <div class="tcard-name">Daniel Suescun</div>
+            <div class="tcard-meta">Google Maps &middot; Reseña verificada</div>
+          </div>
+        </div>
+        <div class="tcard-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+        <p class="tcard-text">"Excelentes perfumes, ya llevo 4 comprados ahí"</p>
+        <a class="tcard-badge-google" href="https://g.page/r/CZDLHS9sSyMREBM/review" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="#7ab4ff"><path d="M21.35 11.1H12v2.8h5.35c-.23 1.24-1.35 3.63-5.35 3.63-3.22 0-5.85-2.67-5.85-5.96 0-3.28 2.63-5.96 5.85-5.96 1.83 0 3.06.78 3.76 1.45l2.56-2.47C16.63 3.1 14.55 2 12 2 6.48 2 2 6.48 2 12s4.48 10 10 10c5.77 0 9.59-4.06 9.59-9.78 0-.66-.07-1.14-.24-1.12z"/></svg>
+          Google Maps
+        </a>
+      </div>
+
+      <!-- 3. Jonathan Arturo Cardona Rua —Smart Buyer -->
+      <div class="tcard-google">
+        <div class="tcard-head">
+          <div class="tcard-avatar" style="background:linear-gradient(135deg,#2a4a2a,#0a1a0a);">J</div>
+          <div class="tcard-info">
+            <div class="tcard-name">Jonathan Arturo Cardona Rua</div>
+            <div class="tcard-meta">Google Maps &middot; Reseña verificada</div>
+          </div>
+        </div>
+        <div class="tcard-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+        <p class="tcard-text">"Muy bueno, económico y de buena calidad."</p>
+        <a class="tcard-badge-google" href="https://g.page/r/CZDLHS9sSyMREBM/review" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="#7ab4ff"><path d="M21.35 11.1H12v2.8h5.35c-.23 1.24-1.35 3.63-5.35 3.63-3.22 0-5.85-2.67-5.85-5.96 0-3.28 2.63-5.96 5.85-5.96 1.83 0 3.06.78 3.76 1.45l2.56-2.47C16.63 3.1 14.55 2 12 2 6.48 2 2 6.48 2 12s4.48 10 10 10c5.77 0 9.59-4.06 9.59-9.78 0-.66-.07-1.14-.24-1.12z"/></svg>
+          Google Maps
+        </a>
+      </div>
+
+      <!-- 4. Cristian Garcia —Regalo / Parejas -->
+      <div class="tcard-google">
+        <div class="tcard-head">
+          <div class="tcard-avatar" style="background:linear-gradient(135deg,#4a1a3a,#1a0a1a);">C</div>
+          <div class="tcard-info">
+            <div class="tcard-name">Cristian Garcia</div>
+            <div class="tcard-meta">Google Maps &middot; Reseña verificada</div>
+          </div>
+        </div>
+        <div class="tcard-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+        <p class="tcard-text">"Los mejores le voy a comprar 10 a mi hermosa novia"</p>
+        <a class="tcard-badge-google" href="https://g.page/r/CZDLHS9sSyMREBM/review" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="#7ab4ff"><path d="M21.35 11.1H12v2.8h5.35c-.23 1.24-1.35 3.63-5.35 3.63-3.22 0-5.85-2.67-5.85-5.96 0-3.28 2.63-5.96 5.85-5.96 1.83 0 3.06.78 3.76 1.45l2.56-2.47C16.63 3.1 14.55 2 12 2 6.48 2 2 6.48 2 12s4.48 10 10 10c5.77 0 9.59-4.06 9.59-9.78 0-.66-.07-1.14-.24-1.12z"/></svg>
+          Google Maps
+        </a>
+      </div>
+
+      <!-- 5. Zareth Daniela —Viral -->
+      <div class="tcard-google">
+        <div class="tcard-head">
+          <div class="tcard-avatar" style="background:linear-gradient(135deg,#4a3a0a,#1a1a0a);">Z</div>
+          <div class="tcard-info">
+            <div class="tcard-name">Zareth Daniela</div>
+            <div class="tcard-meta">Google Maps &middot; Reseña verificada</div>
+          </div>
+        </div>
+        <div class="tcard-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+        <p class="tcard-text">"Los mejores perfumes del multiverso"</p>
+        <a class="tcard-badge-google" href="https://g.page/r/CZDLHS9sSyMREBM/review" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="#7ab4ff"><path d="M21.35 11.1H12v2.8h5.35c-.23 1.24-1.35 3.63-5.35 3.63-3.22 0-5.85-2.67-5.85-5.96 0-3.28 2.63-5.96 5.85-5.96 1.83 0 3.06.78 3.76 1.45l2.56-2.47C16.63 3.1 14.55 2 12 2 6.48 2 2 6.48 2 12s4.48 10 10 10c5.77 0 9.59-4.06 9.59-9.78 0-.66-.07-1.14-.24-1.12z"/></svg>
+          Google Maps
+        </a>
+      </div>
+
+      <!-- ── SET 2 — Clon para loop infinito ── -->
+
+      <div class="tcard-google">
+        <div class="tcard-head">
+          <div class="tcard-avatar" style="background:linear-gradient(135deg,#7a4a2a,#3a1a0a);">L</div>
+          <div class="tcard-info"><div class="tcard-name">Liliana Lamadrid</div><div class="tcard-meta">Google Maps &middot; Reseña verificada</div></div>
+        </div>
+        <div class="tcard-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+        <p class="tcard-text">"Excelente atención, tienen los últimos perfumes, perdura el olor y es de excelente calidad, recomendadisimo"</p>
+        <a class="tcard-badge-google" href="https://g.page/r/CZDLHS9sSyMREBM/review" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="11" height="11" fill="#7ab4ff"><path d="M21.35 11.1H12v2.8h5.35c-.23 1.24-1.35 3.63-5.35 3.63-3.22 0-5.85-2.67-5.85-5.96 0-3.28 2.63-5.96 5.85-5.96 1.83 0 3.06.78 3.76 1.45l2.56-2.47C16.63 3.1 14.55 2 12 2 6.48 2 2 6.48 2 12s4.48 10 10 10c5.77 0 9.59-4.06 9.59-9.78 0-.66-.07-1.14-.24-1.12z"/></svg> Google Maps</a>
+      </div>
+      <div class="tcard-google">
+        <div class="tcard-head">
+          <div class="tcard-avatar" style="background:linear-gradient(135deg,#1a3a5a,#0a1a2a);">D</div>
+          <div class="tcard-info"><div class="tcard-name">Daniel Suescun</div><div class="tcard-meta">Google Maps &middot; Reseña verificada</div></div>
+        </div>
+        <div class="tcard-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+        <p class="tcard-text">"Excelentes perfumes, ya llevo 4 comprados ahí"</p>
+        <a class="tcard-badge-google" href="https://g.page/r/CZDLHS9sSyMREBM/review" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="11" height="11" fill="#7ab4ff"><path d="M21.35 11.1H12v2.8h5.35c-.23 1.24-1.35 3.63-5.35 3.63-3.22 0-5.85-2.67-5.85-5.96 0-3.28 2.63-5.96 5.85-5.96 1.83 0 3.06.78 3.76 1.45l2.56-2.47C16.63 3.1 14.55 2 12 2 6.48 2 2 6.48 2 12s4.48 10 10 10c5.77 0 9.59-4.06 9.59-9.78 0-.66-.07-1.14-.24-1.12z"/></svg> Google Maps</a>
+      </div>
+      <div class="tcard-google">
+        <div class="tcard-head">
+          <div class="tcard-avatar" style="background:linear-gradient(135deg,#2a4a2a,#0a1a0a);">J</div>
+          <div class="tcard-info"><div class="tcard-name">Jonathan Arturo Cardona Rua</div><div class="tcard-meta">Google Maps &middot; Reseña verificada</div></div>
+        </div>
+        <div class="tcard-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+        <p class="tcard-text">"Muy bueno, económico y de buena calidad."</p>
+        <a class="tcard-badge-google" href="https://g.page/r/CZDLHS9sSyMREBM/review" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="11" height="11" fill="#7ab4ff"><path d="M21.35 11.1H12v2.8h5.35c-.23 1.24-1.35 3.63-5.35 3.63-3.22 0-5.85-2.67-5.85-5.96 0-3.28 2.63-5.96 5.85-5.96 1.83 0 3.06.78 3.76 1.45l2.56-2.47C16.63 3.1 14.55 2 12 2 6.48 2 2 6.48 2 12s4.48 10 10 10c5.77 0 9.59-4.06 9.59-9.78 0-.66-.07-1.14-.24-1.12z"/></svg> Google Maps</a>
+      </div>
+      <div class="tcard-google">
+        <div class="tcard-head">
+          <div class="tcard-avatar" style="background:linear-gradient(135deg,#4a1a3a,#1a0a1a);">C</div>
+          <div class="tcard-info"><div class="tcard-name">Cristian Garcia</div><div class="tcard-meta">Google Maps &middot; Reseña verificada</div></div>
+        </div>
+        <div class="tcard-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+        <p class="tcard-text">"Los mejores le voy a comprar 10 a mi hermosa novia"</p>
+        <a class="tcard-badge-google" href="https://g.page/r/CZDLHS9sSyMREBM/review" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="11" height="11" fill="#7ab4ff"><path d="M21.35 11.1H12v2.8h5.35c-.23 1.24-1.35 3.63-5.35 3.63-3.22 0-5.85-2.67-5.85-5.96 0-3.28 2.63-5.96 5.85-5.96 1.83 0 3.06.78 3.76 1.45l2.56-2.47C16.63 3.1 14.55 2 12 2 6.48 2 2 6.48 2 12s4.48 10 10 10c5.77 0 9.59-4.06 9.59-9.78 0-.66-.07-1.14-.24-1.12z"/></svg> Google Maps</a>
+      </div>
+      <div class="tcard-google">
+        <div class="tcard-head">
+          <div class="tcard-avatar" style="background:linear-gradient(135deg,#4a3a0a,#1a1a0a);">Z</div>
+          <div class="tcard-info"><div class="tcard-name">Zareth Daniela</div><div class="tcard-meta">Google Maps &middot; Reseña verificada</div></div>
+        </div>
+        <div class="tcard-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+        <p class="tcard-text">"Los mejores perfumes del multiverso"</p>
+        <a class="tcard-badge-google" href="https://g.page/r/CZDLHS9sSyMREBM/review" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="11" height="11" fill="#7ab4ff"><path d="M21.35 11.1H12v2.8h5.35c-.23 1.24-1.35 3.63-5.35 3.63-3.22 0-5.85-2.67-5.85-5.96 0-3.28 2.63-5.96 5.85-5.96 1.83 0 3.06.78 3.76 1.45l2.56-2.47C16.63 3.1 14.55 2 12 2 6.48 2 2 6.48 2 12s4.48 10 10 10c5.77 0 9.59-4.06 9.59-9.78 0-.66-.07-1.14-.24-1.12z"/></svg> Google Maps</a>
+      </div>
+
+    </div><!-- /tcarousel-track -->
+  </div><!-- /tcarousel-wrap -->
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FILTROS + CATÁLOGO
+     ═══════════════════════════════════════════════ -->
+<nav id="coleccion" class="filter-section" aria-label="Filtros de catálogo">
+  <span class="filter-label">Colección</span>
+  <button class="filter-btn active" data-filter="all">Todos</button>
+  <div class="filter-divider"></div>
+  <button class="filter-btn" data-filter="Hombre">Hombre</button>
+  <div class="filter-divider"></div>
+  <button class="filter-btn" data-filter="Mujer">Mujer</button>
+  <div class="filter-divider"></div>
+  <button class="filter-btn" data-filter="Unisex">Unisex</button>
+
+  <div class="search-wrap">
+    <div class="search-field">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="13" height="13" style="color:var(--sv)"><circle cx="11" cy="11" r="7.5"/><path d="M20.5 20.5l-4-4"/></svg>
+      <input type="text" id="search-nombre" class="search-input" placeholder="Nombre o dirección olfativa…" autocomplete="off">
+    </div>
+    <div class="familia-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="13" height="13" style="color:var(--sv)"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+      <select id="search-familia" class="familia-select">
+        <option value="">Todas las familias</option>
+      </select>
+    </div>
+  </div>
+</nav>
+
+<main class="catalog-wrapper">
+  <div class="catalog-header">
+    <span class="catalog-title">Fragancias disponibles</span>
+    <span class="catalog-count"><span id="visible-count">0</span> referencias</span>
+  </div>
+  <div class="catalog-grid" id="catalog-grid">
+    <div class="empty-state" id="empty-state">
+      <h3>Sin resultados</h3>
+      <p>No se encontraron perfumes para este filtro</p>
+    </div>
+  </div>
+</main>
+
+<!-- ═══════════════════════════════════════════════
+     MODAL
+     ═══════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modal-close" aria-label="Cerrar">✕</button>
+    <div class="modal-image-col" id="modal-image-col">
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,8,8,0.4) 0%,transparent 60%);"></div>
+    </div>
+    <div class="modal-content-col">
+      <div class="modal-brand">Dirección olfativa —<span id="modal-brand"></span></div>
+      <h2 class="modal-name" id="modal-title"></h2>
+      <span class="modal-family-tag" id="modal-family"></span>
+      <div class="modal-divider">
+        <div class="modal-divider-line"></div>
+        <div class="modal-divider-diamond"></div>
+        <div class="modal-divider-line"></div>
+      </div>
+      <div class="modal-notes-section">
+        <div class="notes-label">Salida</div>
+        <div class="notes-pills" id="modal-top-notes"></div>
+      </div>
+      <div class="modal-notes-section">
+        <div class="notes-label">Corazón</div>
+        <div class="notes-pills" id="modal-mid-notes"></div>
+      </div>
+      <div class="modal-notes-section">
+        <div class="notes-label">Fondo</div>
+        <div class="notes-pills" id="modal-base-notes"></div>
+      </div>
+      <div class="modal-info-grid">
+        <div class="info-item">
+          <div class="info-item-label">Género</div>
+          <div class="info-item-value" id="modal-gender"></div>
+        </div>
+        <div class="info-item">
+          <div class="info-item-label">Concentración</div>
+          <div class="concentration-wrap">
+            <span class="info-item-value" id="modal-concentration"></span>
+            <span class="info-hint">?</span>
+            <div class="concentration-tooltip" id="modal-concentration-tooltip">
+              <strong>50% de concentración</strong>
+              <p>En un frasco de <span id="tooltip-ml">100</span>ML, <span id="tooltip-gramos">50</span>g son esencia pura de perfumería. El resto es alcohol de alta pureza. Así se logra una proyección y duración excepcionales.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="modal-stock-badge" class="stock-badge" style="display:none">
+        <div class="stock-dot"></div>
+        <span class="stock-text" id="modal-stock-text"></span>
+      </div>
+      <div class="modal-description">
+        <p id="modal-description"></p>
+      </div>
+      <div class="modal-form-section">
+        <div class="form-title">Seleccionar presentación</div>
+        <div id="modal-variantes-wrap" style="margin-bottom:14px;">
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+            <select id="modal-variante-select" onchange="onVarianteChange()"
+                    style="flex:1;min-width:180px;background:#1c1c1c;color:#f5f5f5;border:1px solid rgba(192,192,192,0.25);padding:10px 12px;border-radius:2px;font-size:13px;cursor:pointer;">
+            </select>
+            <button type="button" class="btn-agregar" onclick="agregarVarianteSeleccionada()">+ Agregar</button>
+          </div>
+          <div id="modal-variante-info" style="margin-top:8px;font-size:12px;color:#999;"></div>
+        </div>
+        <form id="modalForm" class="modal-form" onsubmit="return false;"></form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════ -->
+<footer>
+  <p class="footer-brand">Céfiro <em>Parfums</em></p>
+  <a href="https://www.instagram.com/cefiro_parfums/" target="_blank" rel="noopener" class="footer-ig">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    @cefiro_parfums
+  </a>
+  <p class="footer-tagline"><span>Alta Concentración</span> &ensp;·&ensp; Perfumes Inspirados &ensp;·&ensp; <span>La esencia del estilo sutil</span></p>
+  <p class="footer-copy">© <span id="footer-year"></span> Céfiro Parfums · Todos los derechos reservados</p>
+</footer>
+
+<!-- FABs -->
+<div class="fabs-group">
+  <!-- WhatsApp -->
+  <div class="fab-item">
+    <span class="fab-tooltip">Asesoría por WhatsApp</span>
+    <a href="https://wa.me/573213320564?text=Hola%20C%C3%A9firo.%20Quiero%20asesor%C3%ADa%20premium.%20%C2%BFMe%20ayudan%20a%20elegir%20mi%20fragancia%3F"
+       target="_blank" rel="noopener" class="fab-btn fab-whatsapp" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
+  <!-- Carrito -->
+  <div class="fab-item">
+    <span class="fab-tooltip">Mi carrito</span>
+    <button class="fab-btn fab-cart carrito-icono"
+            onclick="document.getElementById('carrito-modal-overlay').classList.toggle('activo')"
+            aria-label="Carrito de compras">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+      <div class="carrito-cantidad" id="icono-cantidad-carrito"></div>
+    </button>
+  </div>
+</div>
+
+<!-- Carrito Modal -->
+<div class="carrito-modal-overlay" id="carrito-modal-overlay">
+  <div class="carrito-modal">
+    <div class="carrito-header">
+      <h2>Mi Carrito</h2>
+      <button class="carrito-cerrar" onclick="document.getElementById('carrito-modal-overlay').classList.remove('activo')">✕</button>
+    </div>
+    <div class="carrito-contenido" id="lista-carrito">
+      <p style="padding:40px 20px;text-align:center;color:#707070;">Tu carrito está vacío</p>
+    </div>
+    <div id="carrito-resumen"></div>
+    <div class="carrito-fte-contacto">
+      <label>Tu Nombre</label>
+      <input type="text" id="carrito-nombre" placeholder="Ej: María García" maxlength="100">
+      <label>Teléfono (WhatsApp)</label>
+      <div class="carrito-phone-wrap">
+        <span class="carrito-phone-prefix">+57</span>
+        <input type="tel" id="carrito-telefono" placeholder="312 123 4567" maxlength="10" inputmode="numeric">
+      </div>
+    </div>
+    <div class="carrito-acciones">
+      <button class="btn-carrito btn-vaciar" onclick="confirmVaciar()">Vaciar Carrito</button>
+      <button class="btn-carrito btn-enviar-whatsapp" id="btn-enviar-whatsapp" onclick="enviarCarritoWhatsApp()" disabled>Enviar por WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Los productos se cargan desde dos archivos editables:
+//   data/perfumes.json  → datos e imagen de cada perfume
+//   data/precios.json   → presentaciones (ml) y precios
+let PRODUCTOS = [];
+
+function construirVariantes(perfume, precios) {
+  const porPerfume = precios.por_perfume || {};
+  const lista = porPerfume[perfume.nombre] || porPerfume[String(perfume.id)] || precios.presentaciones_default || [];
+  return lista.map(v => ({
+    id: perfume.id * 1000 + v.ml,
+    ml: v.ml,
+    presentacion: v.presentacion || '',
+    precio: v.precio,
+    disponibilidad: v.disponibilidad || 'fabricable',
+    stock: v.stock,
+    unidades_fabricables: v.unidades_fabricables
+  }));
+}
+
+function poblarFamilias() {
+  const sel = document.getElementById('search-familia');
+  if (!sel) return;
+  const familias = [...new Set(PRODUCTOS.map(p => (p.familia_olfativa || '').trim()).filter(f => f))].sort();
+  familias.forEach(f => {
+    const opt = document.createElement('option');
+    opt.value = f; opt.textContent = f;
+    sel.appendChild(opt);
+  });
+}
+
+Promise.all([
+  fetch('data/perfumes.json').then(r => { if (!r.ok) throw new Error('perfumes.json'); return r.json(); }),
+  fetch('data/precios.json').then(r => { if (!r.ok) throw new Error('precios.json'); return r.json(); })
+]).then(([perfumes, precios]) => {
+  PRODUCTOS = perfumes.map(p => ({ ...p, variantes: construirVariantes(p, precios) }));
+  poblarFamilias();
+  renderCards();
+}).catch(err => {
+  console.error('Error cargando el catálogo:', err);
+  const empty = document.getElementById('empty-state');
+  if (empty) {
+    empty.querySelector('h3').textContent = 'No se pudo cargar el catálogo';
+    empty.querySelector('p').textContent = 'Verifica que data/perfumes.json y data/precios.json existan y sean JSON válido.';
+    empty.classList.add('visible');
+  }
+});
+
+const grid       = document.getElementById('catalog-grid');
+const emptyState = document.getElementById('empty-state');
+const countEl    = document.getElementById('visible-count');
+let activeFilter = 'all';
+let selectedProduct = null;
+
+function buildCard(p, idx) {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.dataset.gender  = p.genero;
+  card.dataset.nombre  = (p.nombre || '') + ' ' + (p.referencia_inspiracion || '');
+  card.dataset.familia = (p.familia_olfativa || '').trim();
+  card.dataset.productId = p.id;
+
+  const imgWrap = document.createElement('div');
+  imgWrap.className = 'card-image-wrap';
+
+  const imgContainer = document.createElement('div');
+  imgContainer.className = 'card-image-container';
+
+  const imgLeft = document.createElement('div');
+  imgLeft.className = 'card-image-left';
+  const imgL = document.createElement('img');
+  imgL.src = p.imagen_url || 'assets/img/products/Botella_perfume.png';
+  imgL.alt = p.nombre; imgL.loading = 'lazy';
+  imgLeft.appendChild(imgL);
+  imgContainer.appendChild(imgLeft);
+
+  const divider = document.createElement('div');
+  divider.className = 'card-image-divider';
+  imgContainer.appendChild(divider);
+
+  const imgRight = document.createElement('div');
+  imgRight.className = 'card-image-right';
+  const imgR = document.createElement('img');
+  imgR.src = 'assets/img/products/Botella_perfume.png';
+  imgR.alt = p.nombre; imgR.loading = 'lazy';
+  imgRight.appendChild(imgR);
+  imgContainer.appendChild(imgRight);
+  imgWrap.appendChild(imgContainer);
+
+  if (p.genero) {
+    const badge = document.createElement('div');
+    badge.className = `card-badge badge-${p.genero.toLowerCase()}`;
+    badge.textContent = p.genero;
+    imgWrap.appendChild(badge);
+  }
+
+  const num = document.createElement('div');
+  num.className = 'card-number';
+  num.textContent = String(idx + 1).padStart(2, '0');
+  imgWrap.appendChild(num);
+
+  const overlay = document.createElement('div');
+  overlay.className = 'card-info-overlay';
+  overlay.innerHTML = `
+    <div class="card-brand-small">Dir. olfativa —${p.referencia_inspiracion || 'Céfiro'}</div>
+    <div class="card-name">${p.nombre}</div>
+    <div class="card-family">${p.familia_olfativa}</div>`;
+  imgWrap.appendChild(overlay);
+
+  card.appendChild(imgWrap);
+  card.addEventListener('click', () => openModal(p));
+  return card;
+}
+
+function renderCards() {
+  grid.querySelectorAll('.card').forEach(c => c.remove());
+  let visible = 0;
+  PRODUCTOS.forEach((p, i) => {
+    const card = buildCard(p, i);
+    if (activeFilter !== 'all' && p.genero !== activeFilter) card.classList.add('hidden');
+    else visible++;
+    grid.insertBefore(card, emptyState);
+  });
+  countEl.textContent = visible;
+  emptyState.classList.toggle('visible', visible === 0);
+}
+
+function filterCards() {
+  const nombre  = (document.getElementById('search-nombre')?.value || '').toLowerCase().trim();
+  const familia = (document.getElementById('search-familia')?.value || '').trim();
+  let visible = 0;
+  grid.querySelectorAll('.card').forEach(card => {
+    const ok = (activeFilter === 'all' || card.dataset.gender === activeFilter)
+            && (!nombre  || card.dataset.nombre.toLowerCase().includes(nombre))
+            && (!familia || card.dataset.familia === familia);
+    card.classList.toggle('hidden', !ok);
+    if (ok) visible++;
+  });
+  countEl.textContent = visible;
+  emptyState.classList.toggle('visible', visible === 0);
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    filterCards();
+  });
+});
+document.getElementById('search-nombre')?.addEventListener('input', filterCards);
+document.getElementById('search-familia')?.addEventListener('change', filterCards);
+
+const overlay   = document.getElementById('modal-overlay');
+const modalClose = document.getElementById('modal-close');
+
+function openModal(p) {
+  selectedProduct = p;
+  document.getElementById('modal-brand').textContent = p.referencia_inspiracion || 'Céfiro';
+  document.getElementById('modal-title').textContent = p.nombre;
+  document.getElementById('modal-family').textContent = p.familia_olfativa;
+  document.getElementById('modal-gender').textContent = p.genero;
+
+  const primeraVariante = (p.variantes && p.variantes.length > 0) ? p.variantes[0] : null;
+  const concText = (primeraVariante && primeraVariante.concentracion) || p.concentracion || '50%';
+  document.getElementById('modal-concentration').textContent = concText;
+  const concNum = parseFloat(concText) || 47.5;
+  const mlRef   = primeraVariante ? primeraVariante.ml : 100;
+  document.getElementById('tooltip-ml').textContent = mlRef;
+  document.getElementById('tooltip-gramos').textContent = ((concNum / 100) * mlRef).toFixed(0);
+  document.getElementById('modal-description').textContent = p.descripcion_emotiva;
+
+  const sel = document.getElementById('modal-variante-select');
+  sel.innerHTML = '';
+  if (p.variantes && p.variantes.length > 0) {
+    p.variantes.forEach(v => {
+      const opt = document.createElement('option');
+      opt.value = v.id;
+      opt.textContent = `${v.ml}ml ${v.presentacion || ''} —$${v.precio.toLocaleString('es-CO')}`.replace(/\s+/g, ' ').trim();
+      opt.dataset.variante = JSON.stringify(v);
+      sel.appendChild(opt);
+    });
+    onVarianteChange();
+    document.getElementById('modal-variantes-wrap').style.display = 'block';
+  } else {
+    document.getElementById('modal-variantes-wrap').style.display = 'none';
+    document.getElementById('modal-stock-badge').style.display = 'none';
+  }
+
+  const parseNotes = str => {
+    if (!str) return [];
+    return typeof str === 'string' ? str.split(',').map(n => n.trim()).filter(n => n) : (Array.isArray(str) ? str : []);
+  };
+  document.getElementById('modal-top-notes').innerHTML  = parseNotes(p.notas_salida).map(n => `<span class="note-pill">${n}</span>`).join('');
+  document.getElementById('modal-mid-notes').innerHTML  = parseNotes(p.notas_corazon).map(n => `<span class="note-pill">${n}</span>`).join('');
+  document.getElementById('modal-base-notes').innerHTML = parseNotes(p.notas_fondo).map(n => `<span class="note-pill">${n}</span>`).join('');
+
+  const imgCol = document.getElementById('modal-image-col');
+  imgCol.innerHTML = '<div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,8,8,0.4) 0%,transparent 60%);z-index:1;"></div>';
+  const modalImg = document.createElement('img');
+  modalImg.src = p.imagen_url || 'assets/img/products/Botella_perfume.png';
+  modalImg.alt = p.nombre;
+  modalImg.style.cssText = 'width:100%;height:100%;object-fit:contain;object-position:center;display:block;padding:24px 16px;';
+  imgCol.appendChild(modalImg);
+  document.getElementById('modalForm').reset();
+  overlay.classList.add('open');
+}
+
+function getVarianteSeleccionada() {
+  const sel = document.getElementById('modal-variante-select');
+  if (!sel || !sel.value) return null;
+  return JSON.parse(sel.options[sel.selectedIndex].dataset.variante);
+}
+
+function onVarianteChange() {
+  const v = getVarianteSeleccionada();
+  if (!v) return;
+  const stockBadge = document.getElementById('modal-stock-badge');
+  const stockText  = document.getElementById('modal-stock-text');
+  if (v.disponibilidad === 'stock' && v.stock > 0) {
+    stockBadge.style.display = 'flex';
+    stockBadge.className = v.stock <= 3 ? 'stock-badge stock-bajo' : 'stock-badge';
+    stockText.innerHTML = v.stock <= 3
+      ? `¡Solo quedan <strong>${v.stock} unidad${v.stock > 1 ? 'es' : ''}</strong>!`
+      : `<strong>${v.stock} unidades</strong> disponibles`;
+  } else if (v.disponibilidad === 'fabricable') {
+    const fab = v.unidades_fabricables;
+    stockBadge.style.display = 'flex';
+    stockBadge.className = (fab != null && fab <= 8) ? 'stock-badge stock-bajo' : 'stock-badge';
+    stockText.innerHTML = (fab != null && fab <= 8)
+      ? `Quedan <strong>${fab} unidades</strong> disponibles`
+      : `Disponible · <strong>Fabricado bajo pedido</strong>`;
+  } else {
+    stockBadge.style.display = 'none';
+  }
+}
+
+function agregarVarianteSeleccionada() {
+  if (!selectedProduct) return;
+  const v = getVarianteSeleccionada();
+  if (!v) { alert('Selecciona una presentación'); return; }
+  carrito.agregarVariante(selectedProduct, v);
+}
+
+modalClose.addEventListener('click', () => overlay.classList.remove('open'));
+overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); });
+
+document.getElementById('footer-year').textContent = new Date().getFullYear();
+</script>
+
+<script src="assets/js/carrito.js"></script>
+<script>
+document.getElementById('carrito-nombre').addEventListener('input', validarFormulario);
+document.getElementById('carrito-telefono').addEventListener('input', function() {
+  this.value = this.value.replace(/\D/g, '').slice(0, 10);
+  validarFormulario();
+});
+
+function getTelefono() { return '+57' + document.getElementById('carrito-telefono').value.replace(/\D/g, ''); }
+
+function validarFormulario() {
+  const nombre = document.getElementById('carrito-nombre').value.trim();
+  const digits = document.getElementById('carrito-telefono').value.replace(/\D/g, '');
+  document.getElementById('btn-enviar-whatsapp').disabled = !(nombre.length > 2 && digits.length === 10 && carrito.items.length > 0);
+}
+
+function confirmVaciar() {
+  if (confirm('¿Estás seguro de que deseas vaciar el carrito?')) { carrito.vaciarCarrito(); validarFormulario(); }
+}
+
+function enviarCarritoWhatsApp() {
+  if (carrito.items.length === 0) { alert('Tu carrito está vacío'); return; }
+  const nombre   = document.getElementById('carrito-nombre').value.trim();
+  const telefono = getTelefono();
+  if (!nombre || nombre.length < 3) { alert('Por favor ingresa tu nombre completo'); return; }
+  if (telefono.replace(/\D/g, '').length < 12) { alert('Por favor ingresa un número de 10 dígitos'); return; }
+
+  // Sin backend: el pedido se envía directamente por WhatsApp
+  const ordenId = 'W' + Date.now().toString().slice(-6);
+  const total   = carrito.obtenerTotal();
+  const msg     = carrito.construirMensajeWhatsApp(nombre, telefono, ordenId);
+  const waUrl   = `https://wa.me/${carrito.telefonoEmpresa.replace(/\D/g,'')}?text=${encodeURIComponent(msg)}`;
+  window.open(waUrl, '_blank');
+
+  // Vaciar carrito y cerrar panel
+  carrito.vaciarCarrito();
+  document.getElementById('carrito-nombre').value = '';
+  document.getElementById('carrito-telefono').value = '';
+  document.getElementById('carrito-modal-overlay').classList.remove('activo');
+  validarFormulario();
+
+  // Modal de confirmación
+  document.getElementById('confirm-orden-id').textContent = '#' + ordenId;
+  document.getElementById('confirm-total').textContent = '$' + Number(total).toLocaleString('es-CO');
+  document.getElementById('confirm-nombre').textContent = nombre;
+  document.getElementById('btn-confirmar-whatsapp').onclick = () => window.open(waUrl, '_blank');
+  document.getElementById('modal-confirmacion').classList.add('activo');
+}
+
+const observer = new MutationObserver(validarFormulario);
+observer.observe(document.getElementById('lista-carrito'), { childList: true });
+</script>
+
+<!-- Modal confirmación de pedido + pago -->
+<div id="modal-confirmacion" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:#181610;border:1px solid rgba(200,208,218,0.25);padding:40px 36px;max-width:460px;width:90%;text-align:center;position:relative;">
+    <div style="font-size:28px;margin-bottom:8px;">🎉</div>
+    <h2 style="font-size:18px;font-weight:400;color:#C8D0DA;letter-spacing:0.06em;margin-bottom:6px;">¡Pedido enviado!</h2>
+    <p style="font-size:13px;color:#a09880;margin-bottom:20px;">
+      Orden <strong id="confirm-orden-id" style="color:#f5f0e8;"></strong> para
+      <strong id="confirm-nombre" style="color:#f5f0e8;"></strong><br>
+      Total: <strong id="confirm-total" style="color:#C8D0DA;font-size:16px;"></strong>
+    </p>
+    <p style="font-size:12px;color:#6b6555;margin-bottom:28px;">Tu pedido se abrió en WhatsApp. Envía el mensaje para confirmarlo y coordinar pago y entrega.</p>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <button id="btn-confirmar-whatsapp" style="padding:13px;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.3);color:#25d366;font-size:12px;font-weight:700;letter-spacing:0.1em;cursor:pointer;">
+        💬 Abrir WhatsApp de nuevo
+      </button>
+      <button onclick="document.getElementById('modal-confirmacion').classList.remove('activo')" style="padding:10px;background:transparent;border:1px solid rgba(255,255,255,0.08);color:#6b6555;font-size:11px;cursor:pointer;">
+        Cerrar
+      </button>
+    </div>
+  </div>
+</div>
+<script>
+const modalConf = document.getElementById('modal-confirmacion');
+modalConf.addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('activo');
+});
+// Activar display flex cuando la clase .activo se agrega
+const confObserver = new MutationObserver(() => {
+  modalConf.style.display = modalConf.classList.contains('activo') ? 'flex' : 'none';
+});
+confObserver.observe(modalConf, { attributes: true, attributeFilter: ['class'] });
+</script>
+</body>
+</html>
+
