@@ -6,3 +6,6 @@ assets/css/tarjeta-lealtad.css
 
 # Respaldo del diseño dorado anterior
 index-dorado-backup.html
+
+# Instrucciones y configuración de Claude Code (solo local)
+.claude/
