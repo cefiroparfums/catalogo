@@ -10,7 +10,7 @@
     "notas_fondo": "Almizcle, Musgo de Roble",
     "descripcion_emotiva": "Liderazgo, ambición y triunfo.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/aventurero-69d9a1ee6693a.avif"
+    "imagen_url": "assets/img/products/aventurero.avif"
   },
   {
     "id": 2,
@@ -23,7 +23,7 @@
     "notas_fondo": "Haba Tonka, Cacao",
     "descripcion_emotiva": "Rebeldía elegante y magnetismo seductor.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/baddie-men-69d9a03ee02ee.avif"
+    "imagen_url": "assets/img/products/baddie-men.avif"
   },
   {
     "id": 3,
@@ -36,7 +36,7 @@
     "notas_fondo": "Ámbar, Sándalo, Vainilla, Pachulí",
     "descripcion_emotiva": "Transmite sofisticación urbana y creatividad vibrante.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/bono-bleecker-69d9a04c42881.avif"
+    "imagen_url": "assets/img/products/bono-bleecker.avif"
   },
   {
     "id": 4,
@@ -44,12 +44,12 @@
     "referencia_inspiracion": "Carolina Herrera Good Girl",
     "genero": "Mujer",
     "familia_olfativa": "Ámbar Floral",
-    "notas_salida": "Almendra",
-    "notas_corazon": "Jazmín",
-    "notas_fondo": "Vainilla",
-    "descripcion_emotiva": "Seductora y poderosa.",
+    "notas_salida": "Almendra, Café",
+    "notas_corazon": "Jazmín, Flor de Naranjo",
+    "notas_fondo": "Vainilla, Cacao, Sándalo",
+    "descripcion_emotiva": "Seductora, poderosa y adictiva.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/carline-buena-chica-69d9a0593c875.avif"
+    "imagen_url": "assets/img/products/carline-buena-chica.avif"
   },
   {
     "id": 5,
@@ -58,11 +58,11 @@
     "genero": "Hombre",
     "familia_olfativa": "Aromática Fresca",
     "notas_salida": "Bergamota, Mandarina",
-    "notas_corazon": "Té Verde",
-    "notas_fondo": "Almizcle, Sándalo",
-    "descripcion_emotiva": "Frescura pura y serenidad.",
+    "notas_corazon": "Té Verde, Grosella Negra",
+    "notas_fondo": "Almizcle, Sándalo, Ámbar",
+    "descripcion_emotiva": "Frescura pura y serenidad absoluta.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/chris-plata-69d9a0769b36e.avif"
+    "imagen_url": "assets/img/products/chris-plata.avif"
   },
   {
     "id": 6,
@@ -73,9 +73,9 @@
     "notas_salida": "Limón, Piña, Bergamota, Grosella Negra, Manzana",
     "notas_corazon": "Abedul, Jazmín, Rosa",
     "notas_fondo": "Almizcle, Ámbar Gris, Pachulí, Vainilla",
-    "descripcion_emotiva": "Evoca éxito, seguridad y presencia dominante. Deja una estela elegante que inspira admiración.",
+    "descripcion_emotiva": "Éxito, seguridad y presencia dominante.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/club-de-nuit-69d9a086328e8.avif"
+    "imagen_url": "assets/img/products/club-de-nuit.avif"
   },
   {
     "id": 7,
@@ -83,12 +83,12 @@
     "referencia_inspiracion": "Dior Sauvage Elixir",
     "genero": "Hombre",
     "familia_olfativa": "Aromática Especiada",
-    "notas_salida": "Canela, Cardamomo",
-    "notas_corazon": "Lavanda",
-    "notas_fondo": "Ámbar, Pachulí",
-    "descripcion_emotiva": "Misterioso e intensamente atractivo.",
+    "notas_salida": "Canela, Cardamomo, Nuez Moscada",
+    "notas_corazon": "Lavanda, Salvia",
+    "notas_fondo": "Ámbar, Pachulí, Regaliz",
+    "descripcion_emotiva": "Misterioso, intenso y magnético.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/elixir-savage-69d9a093ca812.avif"
+    "imagen_url": "assets/img/products/elixir-savage.avif"
   },
   {
     "id": 8,
@@ -96,12 +96,12 @@
     "referencia_inspiracion": "Mont Blanc Starwalker",
     "genero": "Hombre",
     "familia_olfativa": "Amaderada Especiada",
-    "notas_salida": "Bambú",
-    "notas_corazon": "Cedro",
-    "notas_fondo": "Ámbar",
+    "notas_salida": "Bambú, Mandarina",
+    "notas_corazon": "Cedro, Nuez Moscada",
+    "notas_fondo": "Ámbar, Almizcle",
     "descripcion_emotiva": "Elegancia fresca y moderna.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/estrella-caminante-69d9a0a26b71c.avif"
+    "imagen_url": "assets/img/products/estrella-caminante.avif"
   },
   {
     "id": 9,
@@ -109,12 +109,12 @@
     "referencia_inspiracion": "Jean Paul Gaultier Le Beau",
     "genero": "Hombre",
     "familia_olfativa": "Amaderada Aromática",
-    "notas_salida": "Bergamota",
-    "notas_corazon": "Coco",
-    "notas_fondo": "Haba Tonka",
-    "descripcion_emotiva": "Sensual y tropical.",
+    "notas_salida": "Bergamota, Limón",
+    "notas_corazon": "Coco, Jazmín",
+    "notas_fondo": "Haba Tonka, Vainilla, Sándalo",
+    "descripcion_emotiva": "Sensual, tropical y veraniego.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/galapago-el-bello-69d9a0e2de800.avif"
+    "imagen_url": "assets/img/products/galapago-el-bello.avif"
   },
   {
     "id": 10,
@@ -122,12 +122,12 @@
     "referencia_inspiracion": "Xerjoff Erba Pura",
     "genero": "Unisex",
     "familia_olfativa": "Ámbar Frutal",
-    "notas_salida": "Naranja, Limón",
-    "notas_corazon": "Frutas Exóticas",
-    "notas_fondo": "Vainilla, Ámbar",
-    "descripcion_emotiva": "Alegre, luminoso y adictivo.",
+    "notas_salida": "Naranja, Limón, Bergamota",
+    "notas_corazon": "Frutas Exóticas, Jazmín",
+    "notas_fondo": "Vainilla, Ámbar, Almizcle",
+    "descripcion_emotiva": "Alegre, luminoso y adictivamente fresco.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/herba-pura-69d9a0d2dfc80.avif"
+    "imagen_url": "assets/img/products/herba-pura.avif"
   },
   {
     "id": 11,
@@ -135,12 +135,12 @@
     "referencia_inspiracion": "Paco Rabanne Invictus Victory Elixir",
     "genero": "Hombre",
     "familia_olfativa": "Ámbar Amaderada",
-    "notas_salida": "Lavanda",
-    "notas_corazon": "Incienso",
-    "notas_fondo": "Vainilla",
-    "descripcion_emotiva": "Triunfo y poder absoluto.",
+    "notas_salida": "Lavanda, Pomelo",
+    "notas_corazon": "Incienso, Elemí",
+    "notas_fondo": "Vainilla, Pachulí, Ámbar",
+    "descripcion_emotiva": "Triunfo, poder y confianza absoluta.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/inedit-victory-elixir-69d9a0c69874b.avif"
+    "imagen_url": "assets/img/products/inedit-victory-elixir.avif"
   },
   {
     "id": 12,
@@ -148,12 +148,12 @@
     "referencia_inspiracion": "Lattafa Khamrah",
     "genero": "Unisex",
     "familia_olfativa": "Ámbar Vainilla",
-    "notas_salida": "Canela, Bergamota",
-    "notas_corazon": "Dátiles",
-    "notas_fondo": "Vainilla, Benjuí",
-    "descripcion_emotiva": "Cálido y envolvente.",
+    "notas_salida": "Canela, Bergamota, Nuez Moscada",
+    "notas_corazon": "Dátiles, Haba Tonka",
+    "notas_fondo": "Vainilla, Benjuí, Sándalo, Pachulí",
+    "descripcion_emotiva": "Cálido, envolvente y especiado.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/khamrah-69d9a0b7a5b41.avif"
+    "imagen_url": "assets/img/products/khamrah.avif"
   },
   {
     "id": 13,
@@ -161,12 +161,12 @@
     "referencia_inspiracion": "Paco Rabanne Lady Million",
     "genero": "Mujer",
     "familia_olfativa": "Floral Frutal",
-    "notas_salida": "Frambuesa",
-    "notas_corazon": "Jazmín",
-    "notas_fondo": "Miel",
-    "descripcion_emotiva": "Glamurosa y radiante.",
+    "notas_salida": "Frambuesa, Naranja",
+    "notas_corazon": "Jazmín, Azahar",
+    "notas_fondo": "Miel, Pachulí",
+    "descripcion_emotiva": "Glamurosa, radiante y dorada.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/lamy-69d9a1cd926e9.avif"
+    "imagen_url": "assets/img/products/lamy.avif"
   },
   {
     "id": 14,
@@ -174,12 +174,12 @@
     "referencia_inspiracion": "Lancôme La Vie Est Belle Elixir",
     "genero": "Mujer",
     "familia_olfativa": "Floral Gourmand",
-    "notas_salida": "Frambuesa",
-    "notas_corazon": "Iris",
-    "notas_fondo": "Cacao",
+    "notas_salida": "Frambuesa, Grosella Negra",
+    "notas_corazon": "Iris, Jazmín",
+    "notas_fondo": "Cacao, Vainilla, Pachulí",
     "descripcion_emotiva": "Dulce, intensa y profundamente feliz.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/larissa-l-elixir-69d9a1b665cad.avif"
+    "imagen_url": "assets/img/products/larissa-l-elixir.avif"
   },
   {
     "id": 15,
@@ -187,12 +187,12 @@
     "referencia_inspiracion": "Dolce & Gabbana Light Blue",
     "genero": "Mujer",
     "familia_olfativa": "Floral Frutal",
-    "notas_salida": "Limón Siciliano",
-    "notas_corazon": "Jazmín",
-    "notas_fondo": "Almizcle",
+    "notas_salida": "Limón Siciliano, Manzana",
+    "notas_corazon": "Jazmín, Rosa",
+    "notas_fondo": "Almizcle, Cedro",
     "descripcion_emotiva": "Frescura mediterránea y libertad.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/luciolle-69d9a1a462f26.avif"
+    "imagen_url": "assets/img/products/luciolle.avif"
   },
   {
     "id": 16,
@@ -200,12 +200,12 @@
     "referencia_inspiracion": "Paco Rabanne One Million Lucky",
     "genero": "Hombre",
     "familia_olfativa": "Amaderada Gourmand",
-    "notas_salida": "Ciruela, Pomelo",
-    "notas_corazon": "Avellana",
-    "notas_fondo": "Pachulí",
-    "descripcion_emotiva": "Carismático y vibrante.",
+    "notas_salida": "Ciruela, Pomelo, Miel",
+    "notas_corazon": "Avellana, Jazmín",
+    "notas_fondo": "Pachulí, Cedro, Ámbar",
+    "descripcion_emotiva": "Carismático, vibrante y afortunado.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/oline-lucky-69d9a195b408e.avif"
+    "imagen_url": "assets/img/products/oline-lucky.avif"
   },
   {
     "id": 17,
@@ -213,12 +213,12 @@
     "referencia_inspiracion": "Louis Vuitton Ombre Nomade",
     "genero": "Unisex",
     "familia_olfativa": "Ámbar Amaderada",
-    "notas_salida": "Frambuesa",
-    "notas_corazon": "Rosa",
-    "notas_fondo": "Oud",
-    "descripcion_emotiva": "Lujo oscuro y sofisticado.",
+    "notas_salida": "Frambuesa, Azafrán",
+    "notas_corazon": "Rosa, Olíbano",
+    "notas_fondo": "Oud, Ámbar, Pachulí",
+    "descripcion_emotiva": "Lujo oscuro, sofisticado y misterioso.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/ombre-nomade-69d9a1883e05d.avif"
+    "imagen_url": "assets/img/products/ombre-nomade.avif"
   },
   {
     "id": 18,
@@ -226,25 +226,25 @@
     "referencia_inspiracion": "Chanel No. 5",
     "genero": "Mujer",
     "familia_olfativa": "Floral Aldehídica",
-    "notas_salida": "Aldehídos, Ylang-Ylang",
-    "notas_corazon": "Iris, Rosa",
-    "notas_fondo": "Sándalo, Vainilla",
+    "notas_salida": "Aldehídos, Ylang-Ylang, Naranja",
+    "notas_corazon": "Iris, Rosa, Jazmín",
+    "notas_fondo": "Sándalo, Vainilla, Almizcle",
     "descripcion_emotiva": "Elegancia eterna y feminidad clásica.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/pentalys-if-69d9a17a1119b.avif"
+    "imagen_url": "assets/img/products/pentalys-if.avif"
   },
   {
     "id": 19,
     "nombre": "Valentino Donna",
     "referencia_inspiracion": "Valentino Donna",
     "genero": "Mujer",
-    "familia_olfativa": "Floral",
-    "notas_salida": "Bergamota",
-    "notas_corazon": "Rosa",
-    "notas_fondo": "Vainilla",
-    "descripcion_emotiva": "Romántica y elegante.",
+    "familia_olfativa": "Floral Amaderada",
+    "notas_salida": "Bergamota, Iris",
+    "notas_corazon": "Rosa, Jazmín",
+    "notas_fondo": "Vainilla, Sándalo, Cuero",
+    "descripcion_emotiva": "Romántica, elegante y sofisticada.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/valentino-donna-69d9a12fdc4a6.avif"
+    "imagen_url": "assets/img/products/valentino-donna.avif"
   },
   {
     "id": 20,
@@ -252,12 +252,12 @@
     "referencia_inspiracion": "Valentino Born In Roma",
     "genero": "Hombre",
     "familia_olfativa": "Amaderada Especiada",
-    "notas_salida": "Violeta",
-    "notas_corazon": "Jengibre",
-    "notas_fondo": "Vetiver",
-    "descripcion_emotiva": "Estilo urbano sofisticado.",
+    "notas_salida": "Violeta, Bergamota",
+    "notas_corazon": "Jengibre, Salvia",
+    "notas_fondo": "Vetiver, Cedro, Pachulí",
+    "descripcion_emotiva": "Estilo urbano sofisticado y contemporáneo.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/valentino-nacido-en-roma-69d9a11d4d8e5.avif"
+    "imagen_url": "assets/img/products/valentino-nacido-en-roma.avif"
   },
   {
     "id": 21,
@@ -265,11 +265,310 @@
     "referencia_inspiracion": "Lattafa Yara",
     "genero": "Mujer",
     "familia_olfativa": "Ámbar Dulce",
-    "notas_salida": "Mandarina",
-    "notas_corazon": "Notas Tropicales",
-    "notas_fondo": "Vainilla",
-    "descripcion_emotiva": "Dulce y encantador.",
+    "notas_salida": "Mandarina, Heliotropo",
+    "notas_corazon": "Notas Tropicales, Jazmín",
+    "notas_fondo": "Vainilla, Almizcle, Sándalo",
+    "descripcion_emotiva": "Dulce, encantador y adictivo.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/yara-69d9a111906b9.avif"
+    "imagen_url": "assets/img/products/yara.avif"
+  },
+  {
+    "id": 22,
+    "nombre": "Invictus Legend",
+    "referencia_inspiracion": "Paco Rabanne Invictus Legend",
+    "genero": "Hombre",
+    "familia_olfativa": "Aromática Amaderada",
+    "notas_salida": "Salvia, Pomelo",
+    "notas_corazon": "Bayas de Junípero, Lavanda",
+    "notas_fondo": "Ámbar, Pachulí",
+    "descripcion_emotiva": "Conquista y espíritu de campeón.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/invictus-legend.avif"
+  },
+  {
+    "id": 23,
+    "nombre": "9 PM",
+    "referencia_inspiracion": "Afnan 9 PM",
+    "genero": "Hombre",
+    "familia_olfativa": "Ámbar Frutal",
+    "notas_salida": "Manzana, Canela, Bergamota",
+    "notas_corazon": "Lavanda, Jazmín",
+    "notas_fondo": "Vainilla, Haba Tonka, Almizcle",
+    "descripcion_emotiva": "Frescura nocturna y seducción moderna.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/9-pm.avif"
+  },
+  {
+    "id": 24,
+    "nombre": "Sortilegio",
+    "referencia_inspiracion": "Sortilegio",
+    "genero": "Mujer",
+    "familia_olfativa": "Floral Frutal",
+    "notas_salida": "Durazno, Frambuesa",
+    "notas_corazon": "Rosa, Violeta",
+    "notas_fondo": "Vainilla, Almizcle",
+    "descripcion_emotiva": "Seducción mágica y femenina.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/sortilegio.avif"
+  },
+  {
+    "id": 25,
+    "nombre": "CK IN2U",
+    "referencia_inspiracion": "Calvin Klein CK IN2U",
+    "genero": "Unisex",
+    "familia_olfativa": "Cítrica Aromática",
+    "notas_salida": "Toronja, Menta, Limón",
+    "notas_corazon": "Orquídea, Café",
+    "notas_fondo": "Almizcle, Vainilla, Cedro",
+    "descripcion_emotiva": "Juventud y energía vibrante.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/ck-in2u.avif"
+  },
+  {
+    "id": 26,
+    "nombre": "Eros",
+    "referencia_inspiracion": "Versace Eros",
+    "genero": "Hombre",
+    "familia_olfativa": "Aromática Amaderada",
+    "notas_salida": "Menta, Manzana, Limón",
+    "notas_corazon": "Haba Tonka, Geranio",
+    "notas_fondo": "Vainilla, Cedro, Pachulí",
+    "descripcion_emotiva": "Pasión y deseo ardiente.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/eros.avif"
+  },
+  {
+    "id": 27,
+    "nombre": "Bad Boy",
+    "referencia_inspiracion": "Carolina Herrera Bad Boy",
+    "genero": "Hombre",
+    "familia_olfativa": "Ámbar Especiada",
+    "notas_salida": "Pimienta Negra, Bergamota",
+    "notas_corazon": "Salvia, Cedro",
+    "notas_fondo": "Haba Tonka, Cacao",
+    "descripcion_emotiva": "Rebeldía elegante y magnetismo seductor.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/bad-boy.avif"
+  },
+  {
+    "id": 28,
+    "nombre": "Bleu de Chanel",
+    "referencia_inspiracion": "Chanel Bleu de Chanel",
+    "genero": "Hombre",
+    "familia_olfativa": "Amaderada Aromática",
+    "notas_salida": "Limón, Menta, Pomelo",
+    "notas_corazon": "Jengibre, Jazmín",
+    "notas_fondo": "Cedro, Sándalo, Incienso",
+    "descripcion_emotiva": "Elegancia y libertad masculina.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/bleu-de-chanel.avif"
+  },
+  {
+    "id": 29,
+    "nombre": "One Million",
+    "referencia_inspiracion": "Paco Rabanne One Million",
+    "genero": "Hombre",
+    "familia_olfativa": "Ámbar Especiada",
+    "notas_salida": "Menta, Pomelo, Canela",
+    "notas_corazon": "Rosa, Canela",
+    "notas_fondo": "Cuero, Ámbar, Pachulí",
+    "descripcion_emotiva": "Poder, éxito y lujo dorado.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/one-million.avif"
+  },
+  {
+    "id": 30,
+    "nombre": "Acqua di Giò",
+    "referencia_inspiracion": "Giorgio Armani Acqua di Giò",
+    "genero": "Hombre",
+    "familia_olfativa": "Aromática Acuática",
+    "notas_salida": "Limón, Bergamota, Naranja",
+    "notas_corazon": "Jazmín, Calone",
+    "notas_fondo": "Cedro, Almizcle",
+    "descripcion_emotiva": "Frescura marina y libertad.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/acqua-di-gio.avif"
+  },
+  {
+    "id": 31,
+    "nombre": "212 Heroes",
+    "referencia_inspiracion": "Carolina Herrera 212 Heroes",
+    "genero": "Hombre",
+    "familia_olfativa": "Amaderada Especiada",
+    "notas_salida": "Pimienta Rosa, Mandarina",
+    "notas_corazon": "Cedro, Jengibre",
+    "notas_fondo": "Vetiver, Pachulí",
+    "descripcion_emotiva": "Heroísmo moderno y audaz.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/212-heroes.avif"
+  },
+  {
+    "id": 32,
+    "nombre": "Asad Elixir",
+    "referencia_inspiracion": "Lattafa Asad",
+    "genero": "Hombre",
+    "familia_olfativa": "Aromática Especiada",
+    "notas_salida": "Pimienta, Bergamota",
+    "notas_corazon": "Lavanda, Anís",
+    "notas_fondo": "Ámbar, Pachulí, Vainilla",
+    "descripcion_emotiva": "Intensidad y misterio seductor.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/asad-elixir.avif"
+  },
+  {
+    "id": 33,
+    "nombre": "Insurgente",
+    "referencia_inspiracion": "Insurgente",
+    "genero": "Hombre",
+    "familia_olfativa": "Amaderada Especiada",
+    "notas_salida": "Cardamomo, Limón",
+    "notas_corazon": "Cedro, Incienso",
+    "notas_fondo": "Ámbar, Almizcle",
+    "descripcion_emotiva": "Rebeldía y fuerza interior.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/insurgente.avif"
+  },
+  {
+    "id": 34,
+    "nombre": "Fantasy",
+    "referencia_inspiracion": "Britney Spears Fantasy",
+    "genero": "Mujer",
+    "familia_olfativa": "Floral Frutal",
+    "notas_salida": "Kiwi, Lichi",
+    "notas_corazon": "Jazmín, Orquídea",
+    "notas_fondo": "Almizcle, Vainilla",
+    "descripcion_emotiva": "Dulce, juvenil y soñador.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/fantasy.avif"
+  },
+  {
+    "id": 35,
+    "nombre": "Beauty Juice Berry",
+    "referencia_inspiracion": "Beauty Juice Berry",
+    "genero": "Mujer",
+    "familia_olfativa": "Frutal Dulce",
+    "notas_salida": "Fresa, Frambuesa",
+    "notas_corazon": "Jazmín, Violeta",
+    "notas_fondo": "Vainilla, Almizcle",
+    "descripcion_emotiva": "Fresca, juvenil y dulce.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/beauty-juice-berry.avif"
+  },
+  {
+    "id": 36,
+    "nombre": "Black Opium",
+    "referencia_inspiracion": "Yves Saint Laurent Black Opium",
+    "genero": "Mujer",
+    "familia_olfativa": "Gourmand Amaderada",
+    "notas_salida": "Café, Naranja",
+    "notas_corazon": "Jazmín, Flor de Naranjo",
+    "notas_fondo": "Vainilla, Pachulí, Cedro",
+    "descripcion_emotiva": "Adictiva, intensa y misteriosa.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/black-opium.avif"
+  },
+  {
+    "id": 37,
+    "nombre": "Éclaire",
+    "referencia_inspiracion": "Éclaire",
+    "genero": "Unisex",
+    "familia_olfativa": "Gourmand",
+    "notas_salida": "Caramelo, Leche",
+    "notas_corazon": "Vainilla, Coco",
+    "notas_fondo": "Almizcle, Ámbar",
+    "descripcion_emotiva": "Dulzura y calidez envolvente.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/eclaire.avif"
+  },
+  {
+    "id": 38,
+    "nombre": "Stronger with You",
+    "referencia_inspiracion": "Emporio Armani Stronger With You",
+    "genero": "Hombre",
+    "familia_olfativa": "Gourmand Amaderada",
+    "notas_salida": "Canela, Cardamomo",
+    "notas_corazon": "Salvia, Lavanda",
+    "notas_fondo": "Vainilla, Castaña, Pachulí",
+    "descripcion_emotiva": "Conexión y fuerza emocional.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/stronger-with-you.avif"
+  },
+  {
+    "id": 39,
+    "nombre": "Baru",
+    "referencia_inspiracion": "Baru",
+    "genero": "Hombre",
+    "familia_olfativa": "Amaderada Aromática",
+    "notas_salida": "Bergamota, Pimienta",
+    "notas_corazon": "Cedro, Jazmín",
+    "notas_fondo": "Vetiver, Almizcle",
+    "descripcion_emotiva": "Frescura y seguridad.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/baru.avif"
+  },
+  {
+    "id": 40,
+    "nombre": "Paradoxe",
+    "referencia_inspiracion": "Prada Paradoxe",
+    "genero": "Mujer",
+    "familia_olfativa": "Ámbar Floral",
+    "notas_salida": "Bergamota, Pera",
+    "notas_corazon": "Jazmín, Flor de Naranjo",
+    "notas_fondo": "Vainilla, Almizcle, Sándalo",
+    "descripcion_emotiva": "Femenina, moderna y contradictoria.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/paradoxe.avif"
+  },
+  {
+    "id": 41,
+    "nombre": "Santal 33",
+    "referencia_inspiracion": "Le Labo Santal 33",
+    "genero": "Unisex",
+    "familia_olfativa": "Amaderada Especiada",
+    "notas_salida": "Cardamomo, Iris",
+    "notas_corazon": "Violeta, Cedro",
+    "notas_fondo": "Sándalo, Cuero, Almizcle",
+    "descripcion_emotiva": "Elegancia minimalista y adictiva.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/santal-33.avif"
+  },
+  {
+    "id": 42,
+    "nombre": "Cloud",
+    "referencia_inspiracion": "Ariana Grande Cloud",
+    "genero": "Mujer",
+    "familia_olfativa": "Gourmand Floral",
+    "notas_salida": "Lavanda, Pera",
+    "notas_corazon": "Coco, Vainilla",
+    "notas_fondo": "Almizcle, Ámbar",
+    "descripcion_emotiva": "Dulce, etéreo y soñador.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/cloud.avif"
+  },
+  {
+    "id": 43,
+    "nombre": "J'Adore",
+    "referencia_inspiracion": "Dior J'Adore",
+    "genero": "Mujer",
+    "familia_olfativa": "Floral",
+    "notas_salida": "Mandarina, Melón",
+    "notas_corazon": "Jazmín, Rosa, Orquídea",
+    "notas_fondo": "Almizcle, Vainilla",
+    "descripcion_emotiva": "Elegancia y feminidad radiante.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/jadore.avif"
+  },
+  {
+    "id": 44,
+    "nombre": "Coco Mademoiselle",
+    "referencia_inspiracion": "Chanel Coco Mademoiselle",
+    "genero": "Mujer",
+    "familia_olfativa": "Ámbar Floral",
+    "notas_salida": "Naranja, Bergamota",
+    "notas_corazon": "Rosa, Jazmín",
+    "notas_fondo": "Pachulí, Vainilla, Almizcle",
+    "descripcion_emotiva": "Elegancia moderna y audaz.",
+    "concentracion": "50% + Musk Tahara + Feromonas",
+    "imagen_url": "assets/img/products/coco-mademoiselle.avif"
   }
 ]
