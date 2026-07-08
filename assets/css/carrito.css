@@ -7,7 +7,7 @@
     position: fixed;
     bottom: 32px;
     right: 32px;
-    z-index: 10000;
+    z-index: 500; /* por debajo de los modales (z-index 1000) para no tapar sus botones */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -77,9 +77,9 @@
 }
 
 .fab-cart {
-    background: linear-gradient(135deg, #C8D0DA 0%, #c9a227 100%);
+    background: linear-gradient(135deg, #E8E8E8 0%, #909090 100%);
     color: #0c0b09;
-    box-shadow: 0 4px 20px rgba(200,208,218,0.35);
+    box-shadow: 0 4px 20px rgba(192,192,192,0.35);
 }
 
 .fab-cart:hover {
