@@ -790,7 +790,23 @@ footer span{color:var(--sv);}
    RESPONSIVE
    ═══════════════════════════════════════════════════ */
 @media(max-width:800px){
-  .modal{grid-template-columns:1fr;}
+  /* Modal apilado y desplazable en móvil: la imagen ya no come toda la
+     pantalla y toda la info (notas, variantes, agregar) queda accesible */
+  .modal-overlay{padding:12px;}
+  .modal{
+    display:block;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    max-height:calc(100vh - 24px);
+    max-height:calc(100dvh - 24px);
+  }
+  .modal-close{
+    position:sticky;top:10px;
+    margin:10px 10px -48px auto;
+    z-index:30;
+  }
+  .modal-image-col{min-height:0;height:40vh;}
+  .modal-content-col{overflow:visible;padding:26px 20px 36px;}
   .catalog-wrapper{padding:40px 20px 64px;}
   .catalog-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));}
   .diff-strip{padding:32px 20px;}
@@ -829,23 +845,11 @@ footer span{color:var(--sv);}
   <div class="corner corner--bl"></div>
   <div class="corner corner--br"></div>
 
-  <!-- Video de fondo: solo se descarga en pantallas grandes;
-       en móvil se muestra hero-poster.jpg para no gastar datos -->
+  <!-- Video de fondo en todas las pantallas (también móvil) -->
   <video class="hero-video" autoplay muted loop playsinline
-         poster="hero-poster.jpg" preload="none"
          onerror="this.style.display='none'">
+    <source src="hero.mp4" type="video/mp4">
   </video>
-  <script>
-    (function(){
-      var v = document.querySelector('.hero-video');
-      if (window.matchMedia('(min-width: 800px)').matches) {
-        var s = document.createElement('source');
-        s.src = 'hero.mp4'; s.type = 'video/mp4';
-        v.appendChild(s); v.load();
-        v.play().catch(function(){});
-      }
-    })();
-  </script>
   <!-- Fallback si no hay video -->
   <div class="hero-no-video"></div>
   <div class="hero-overlay"></div>
