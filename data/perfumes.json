@@ -283,7 +283,7 @@
     "notas_fondo": "Ámbar, Pachulí",
     "descripcion_emotiva": "Conquista y espíritu de campeón.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/invictus-legend.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.54323.aviff"
   },
   {
     "id": 23,
@@ -296,7 +296,7 @@
     "notas_fondo": "Vainilla, Haba Tonka, Almizcle",
     "descripcion_emotiva": "Frescura nocturna y seducción moderna.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/9-pm.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.65414.avif"
   },
   {
     "id": 24,
@@ -309,7 +309,7 @@
     "notas_fondo": "Vainilla, Almizcle",
     "descripcion_emotiva": "Seducción mágica y femenina.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/sortilegio.avif"
+    "imagen_url": "assets/img/products/sortilegio.png"
   },
   {
     "id": 25,
@@ -322,7 +322,7 @@
     "notas_fondo": "Almizcle, Vainilla, Cedro",
     "descripcion_emotiva": "Juventud y energía vibrante.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/ck-in2u.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.933.avif"
   },
   {
     "id": 26,
@@ -335,7 +335,7 @@
     "notas_fondo": "Vainilla, Cedro, Pachulí",
     "descripcion_emotiva": "Pasión y deseo ardiente.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/eros.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.16657.avif"
   },
   {
     "id": 27,
@@ -348,11 +348,11 @@
     "notas_fondo": "Haba Tonka, Cacao",
     "descripcion_emotiva": "Rebeldía elegante y magnetismo seductor.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/bad-boy.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.55449.avif"
   },
   {
     "id": 28,
-    "nombre": "Bleu de Chanel",
+    "nombre": "Azul de Chanel",
     "referencia_inspiracion": "Chanel Bleu de Chanel",
     "genero": "Hombre",
     "familia_olfativa": "Amaderada Aromática",
@@ -361,11 +361,11 @@
     "notas_fondo": "Cedro, Sándalo, Incienso",
     "descripcion_emotiva": "Elegancia y libertad masculina.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/bleu-de-chanel.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.9099.avif"
   },
   {
     "id": 29,
-    "nombre": "One Million",
+    "nombre": "1 Million",
     "referencia_inspiracion": "Paco Rabanne One Million",
     "genero": "Hombre",
     "familia_olfativa": "Ámbar Especiada",
@@ -374,11 +374,11 @@
     "notas_fondo": "Cuero, Ámbar, Pachulí",
     "descripcion_emotiva": "Poder, éxito y lujo dorado.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/one-million.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.3747.avif"
   },
   {
     "id": 30,
-    "nombre": "Acqua di Giò",
+    "nombre": "Acqua profundo",
     "referencia_inspiracion": "Giorgio Armani Acqua di Giò",
     "genero": "Hombre",
     "familia_olfativa": "Aromática Acuática",
@@ -387,7 +387,7 @@
     "notas_fondo": "Cedro, Almizcle",
     "descripcion_emotiva": "Frescura marina y libertad.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/acqua-di-gio.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.29727.avif"
   },
   {
     "id": 31,
@@ -400,7 +400,7 @@
     "notas_fondo": "Vetiver, Pachulí",
     "descripcion_emotiva": "Heroísmo moderno y audaz.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/212-heroes.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.65988.avif"
   },
   {
     "id": 32,
@@ -413,7 +413,7 @@
     "notas_fondo": "Ámbar, Pachulí, Vainilla",
     "descripcion_emotiva": "Intensidad y misterio seductor.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/asad-elixir.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.117616.avif"
   },
   {
     "id": 33,
@@ -426,7 +426,7 @@
     "notas_fondo": "Ámbar, Almizcle",
     "descripcion_emotiva": "Rebeldía y fuerza interior.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/insurgente.avif"
+    "imagen_url": "assets/img/products/insurgente.png"
   },
   {
     "id": 34,
