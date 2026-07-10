@@ -283,7 +283,7 @@
     "notas_fondo": "Ámbar, Pachulí",
     "descripcion_emotiva": "Conquista y espíritu de campeón.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.54323.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.54323.aviff"
   },
   {
     "id": 23,
@@ -413,7 +413,7 @@
     "notas_fondo": "Ámbar, Pachulí, Vainilla",
     "descripcion_emotiva": "Intensidad y misterio seductor.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.117616.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.12201.avif"
   },
   {
     "id": 33,
@@ -439,7 +439,7 @@
     "notas_fondo": "Almizcle, Vainilla",
     "descripcion_emotiva": "Dulce, juvenil y soñador.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/fantasy.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.600.avif"
   },
   {
     "id": 35,
@@ -452,7 +452,7 @@
     "notas_fondo": "Vainilla, Almizcle",
     "descripcion_emotiva": "Fresca, juvenil y dulce.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/beauty-juice-berry.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.14456.avif"
   },
   {
     "id": 36,
@@ -465,7 +465,7 @@
     "notas_fondo": "Vainilla, Pachulí, Cedro",
     "descripcion_emotiva": "Adictiva, intensa y misteriosa.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/black-opium.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.25324.avif"
   },
   {
     "id": 37,
@@ -478,7 +478,7 @@
     "notas_fondo": "Almizcle, Ámbar",
     "descripcion_emotiva": "Dulzura y calidez envolvente.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/eclaire.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.93628.avif"
   },
   {
     "id": 38,
@@ -491,13 +491,13 @@
     "notas_fondo": "Vainilla, Castaña, Pachulí",
     "descripcion_emotiva": "Conexión y fuerza emocional.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/stronger-with-you.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.52802.avif"
   },
   {
     "id": 39,
     "nombre": "Baru",
     "referencia_inspiracion": "Baru",
-    "genero": "Hombre",
+    "genero": "Unisex",
     "familia_olfativa": "Amaderada Aromática",
     "notas_salida": "Bergamota, Pimienta",
     "notas_corazon": "Cedro, Jazmín",
@@ -517,11 +517,11 @@
     "notas_fondo": "Vainilla, Almizcle, Sándalo",
     "descripcion_emotiva": "Femenina, moderna y contradictoria.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/paradoxe.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.75668.avif"
   },
   {
     "id": 41,
-    "nombre": "Santal 33",
+    "nombre": "SANDALO 33",
     "referencia_inspiracion": "Le Labo Santal 33",
     "genero": "Unisex",
     "familia_olfativa": "Amaderada Especiada",
@@ -530,7 +530,7 @@
     "notas_fondo": "Sándalo, Cuero, Almizcle",
     "descripcion_emotiva": "Elegancia minimalista y adictiva.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/santal-33.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.12201.avif"
   },
   {
     "id": 42,
@@ -543,11 +543,11 @@
     "notas_fondo": "Almizcle, Ámbar",
     "descripcion_emotiva": "Dulce, etéreo y soñador.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/cloud.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.50384.avif"
   },
   {
     "id": 43,
-    "nombre": "J'Adore",
+    "nombre": "JAdore",
     "referencia_inspiracion": "Dior J'Adore",
     "genero": "Mujer",
     "familia_olfativa": "Floral",
@@ -556,11 +556,11 @@
     "notas_fondo": "Almizcle, Vainilla",
     "descripcion_emotiva": "Elegancia y feminidad radiante.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/jadore.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.210.avif"
   },
   {
     "id": 44,
-    "nombre": "Coco Mademoiselle",
+    "nombre": "Mademoiselle",
     "referencia_inspiracion": "Chanel Coco Mademoiselle",
     "genero": "Mujer",
     "familia_olfativa": "Ámbar Floral",
@@ -569,6 +569,6 @@
     "notas_fondo": "Pachulí, Vainilla, Almizcle",
     "descripcion_emotiva": "Elegancia moderna y audaz.",
     "concentracion": "50% + Musk Tahara + Feromonas",
-    "imagen_url": "assets/img/products/coco-mademoiselle.avif"
+    "imagen_url": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.611.avif"
   }
 ]
