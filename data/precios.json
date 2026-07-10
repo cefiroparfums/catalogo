@@ -1,14 +1,14 @@
 {
   "presentaciones_default": [
-    { "ml": 30,  "presentacion": "Vidrio", "precio": 45000 },
-    { "ml": 50,  "presentacion": "Vidrio", "precio": 70000 },
-    { "ml": 100, "presentacion": "Vidrio", "precio": 110000 }
+    { "ml": 30,  "presentacion": "Vidrio", "precio": 35000 },
+    { "ml": 50,  "presentacion": "Vidrio", "precio": 60000 },
+    { "ml": 100, "presentacion": "Vidrio", "precio": 80000 }
   ],
   "por_perfume": {
     "Ombre Nomade": [
-      { "ml": 30,  "presentacion": "Vidrio", "precio": 55000 },
+      { "ml": 30,  "presentacion": "Vidrio", "precio": 45000 },
       { "ml": 50,  "presentacion": "Vidrio", "precio": 85000 },
-      { "ml": 100, "presentacion": "Vidrio", "precio": 130000 }
+      { "ml": 100, "presentacion": "Vidrio", "precio": 100000 }
     ]
   }
 }
