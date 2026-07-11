@@ -1370,9 +1370,9 @@ function buildCard(p, idx) {
   const imgLeft = document.createElement('div');
   imgLeft.className = 'card-image-left';
   const imgL = document.createElement('img');
-  imgL.src = p.imagen_url || 'assets/img/products/Botella_perfume.png';
+  imgL.src = p.imagen_url || 'assets/img/products/Botella_perfume.webp';
   imgL.alt = p.nombre; imgL.loading = 'lazy';
-  imgL.onerror = function() { this.onerror = null; this.src = 'assets/img/products/Botella_perfume.png'; };
+  imgL.onerror = function() { this.onerror = null; this.src = 'assets/img/products/Botella_perfume.webp'; };
   imgLeft.appendChild(imgL);
   imgContainer.appendChild(imgLeft);
 
@@ -1383,7 +1383,7 @@ function buildCard(p, idx) {
   const imgRight = document.createElement('div');
   imgRight.className = 'card-image-right';
   const imgR = document.createElement('img');
-  imgR.src = 'assets/img/products/Botella_perfume.png';
+  imgR.src = 'assets/img/products/Botella_perfume.webp';
   imgR.alt = p.nombre; imgR.loading = 'lazy';
   imgRight.appendChild(imgR);
   imgContainer.appendChild(imgRight);
@@ -1500,8 +1500,8 @@ function openModal(p) {
   const imgCol = document.getElementById('modal-image-col');
   imgCol.innerHTML = '<div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,8,8,0.4) 0%,transparent 60%);z-index:1;"></div>';
   const modalImg = document.createElement('img');
-  modalImg.src = p.imagen_url || 'assets/img/products/Botella_perfume.png';
-  modalImg.onerror = function() { this.onerror = null; this.src = 'assets/img/products/Botella_perfume.png'; };
+  modalImg.src = p.imagen_url || 'assets/img/products/Botella_perfume.webp';
+  modalImg.onerror = function() { this.onerror = null; this.src = 'assets/img/products/Botella_perfume.webp'; };
   modalImg.alt = p.nombre;
   modalImg.style.cssText = 'width:100%;height:100%;object-fit:contain;object-position:center;display:block;padding:24px 16px;';
   imgCol.appendChild(modalImg);
