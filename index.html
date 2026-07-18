@@ -7,6 +7,9 @@
 <meta name="description" content="Perfumes de alta concentración inspirados en grandes firmas. Líneas Silver, Gold y Diamante. Fórmula exclusiva con base de alcohol de receta francesa.">
 <link rel="icon" type="image/png" href="Logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fimgs.net" crossorigin>
+<link rel="dns-prefetch" href="https://wa.me">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Raleway:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════════
@@ -831,7 +834,22 @@ footer span{color:var(--sv);}
   .diff-item:last-child{border-bottom:none;}
 }
 </style>
-<link rel="stylesheet" href="assets/css/carrito.css">
+<link rel="preload" as="style" href="assets/css/carrito.css" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="assets/css/carrito.css"></noscript>
+<script>
+// Conexiones lentas (2G/3G): no cargar el video del hero
+if (navigator.connection && ['slow-2g', '2g', '3g'].includes(navigator.connection.effectiveType)) {
+  document.documentElement.dataset.videoDisabled = 'true';
+  // Quitar el video del DOM para cancelar/evitar su descarga (display:none no basta)
+  document.addEventListener('DOMContentLoaded', function () {
+    var v = document.querySelector('.hero-video');
+    if (v) { v.remove(); }
+  });
+}
+</script>
+<style>
+[data-video-disabled="true"] .hero-video { display: none !important; }
+</style>
 </head>
 <body>
 
@@ -845,10 +863,14 @@ footer span{color:var(--sv);}
   <div class="corner corner--bl"></div>
   <div class="corner corner--br"></div>
 
-  <!-- Video de fondo en todas las pantallas (también móvil) -->
-  <video class="hero-video" autoplay muted loop playsinline
+  <!-- Video de fondo en todas las pantallas (también móvil).
+       Fuentes optimizadas: WebM móvil 1,05 MB / WebM desktop 2,86 MB / MP4 fallback 2,54 MB -->
+  <video class="hero-video" autoplay muted loop playsinline id="hero-vid"
+         poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect width='1920' height='1080' fill='%23080808'/%3E%3C/svg%3E"
          onerror="this.style.display='none'">
-    <source src="hero.mp4" type="video/mp4">
+    <source src="assets/videos/hero-mobile.webm" type="video/webm" media="(max-width: 768px)">
+    <source src="assets/videos/hero-desktop.webm" type="video/webm">
+    <source src="assets/videos/hero-optimizado.mp4" type="video/mp4">
   </video>
   <!-- Fallback si no hay video -->
   <div class="hero-no-video"></div>
@@ -1370,9 +1392,12 @@ function buildCard(p, idx) {
   const imgLeft = document.createElement('div');
   imgLeft.className = 'card-image-left';
   const imgL = document.createElement('img');
-  imgL.src = p.imagen_url || 'assets/img/products/Botella_perfume.webp';
+  imgL.dataset.src = p.imagen_url || 'assets/img/products/Botella_perfume.webp';
   imgL.alt = p.nombre; imgL.loading = 'lazy';
   imgL.onerror = function() { this.onerror = null; this.src = 'assets/img/products/Botella_perfume.webp'; };
+  // Lazy load con IntersectionObserver (definido al final del body); fallback: carga directa
+  if (window.imgObserver) { window.imgObserver.observe(imgL); }
+  else { imgL.src = imgL.dataset.src; }
   imgLeft.appendChild(imgL);
   imgContainer.appendChild(imgLeft);
 
@@ -1635,6 +1660,27 @@ const confObserver = new MutationObserver(() => {
   modalConf.style.display = modalConf.classList.contains('activo') ? 'flex' : 'none';
 });
 confObserver.observe(modalConf, { attributes: true, attributeFilter: ['class'] });
+</script>
+<script>
+// Lazy load inteligente de imágenes de producto: solo se cargan al acercarse al viewport.
+// buildCard() registra cada imagen nueva en window.imgObserver al crearla.
+window.imgObserver = ('IntersectionObserver' in window) ? new IntersectionObserver((entries, obs) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const img = e.target;
+      if (img.dataset.src && !img.src) img.src = img.dataset.src;
+      obs.unobserve(img);
+    }
+  });
+}, { rootMargin: '100px' }) : null;
+
+// Barrido de seguridad: imágenes con data-src ya presentes en el DOM
+setTimeout(() => {
+  document.querySelectorAll('img[data-src]').forEach(i => {
+    if (window.imgObserver) imgObserver.observe(i);
+    else if (!i.src) i.src = i.dataset.src;
+  });
+}, 500);
 </script>
 </body>
 </html>
